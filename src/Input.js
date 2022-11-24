@@ -28,9 +28,9 @@ class Input extends React.Component{
        return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <h1>{this.state.submit}</h1>
                     <input value = {this.state.input} onChange = {this.handleChange}/> 
                     <button type='submit'>Submit</button>  
+                    <h1>{this.state.submit}</h1>
                 </form>
             </div>
         ); 
