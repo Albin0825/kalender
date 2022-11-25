@@ -68,3 +68,38 @@
   letter-spacing: 0.125em;
   border-radius: 7px;
 }
+
+.rubrik {
+  text-align: center;
+  color: red;
+  margin-top: 5px;
+}
+
+.desc,
+.time,
+.inv {
+  margin-top: 30px;
+  text-align: left;
+  font-size: x-large;
+  margin-left: 15px;
+}
+
+.desc {
+  color:green;
+}
+
+.time {
+  color: steelblue;
+}
+
+.inv {
+  color: coral;
+}
+
+.vpil {
+  color: black;
+  font-size: 2em;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 15px;
+}
