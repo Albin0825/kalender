@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.con {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+.con > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -100;
+}
+
+.window {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  background: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.12) 100%);
+  width: calc(100vw / 4);
+  height: calc(100vh - 200px);
+  padding: 17px;
+  border-radius: 17px;
+}
+
+.blur {
+  backdrop-filter: blur(40px);
+}
+
+.window > h1 {
+  font-size: calc(17px * 4);
+  font-weight: 600;
+}
+
+.window > input {
+  background-color: transparent;
+  width: 80%;
+  margin: 14px;
+  padding: 0.5em;
+  border: none;
+}
+
+.window > input:not(input[type=submit]) {
+  border-bottom: 2px solid #32323280;
+}
+.window > input[type=submit] {
+  color:#F0EBCE;
+  background: linear-gradient(135deg, #395144 0%, #4E6C50 100%);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.125em;
+  border-radius: 7px;
+}
