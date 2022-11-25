@@ -26,98 +26,88 @@
 }
 
 .window {
+  position: relative;
   background-color: #ffffff;
   width: calc(200vw / 4);
   height: calc(100vh - 200px);
   border-radius: 17px;
 }
 
-/* sidebar Nav */
-
+/*Positionen för pop up menyn med öppna och stäng knappen*/
 .navBar {
-  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
+/*Designen för öppna och stäng knappen*/
 .navBar button {
-  position: fixed;
-  z-index: 10;
-  cursor: pointer;
-  bottom: 100px;
-  right: 375px;
+  background: transparent;
+  border: none;
 }
 
-@keyframes popout{
-  from{transform:scale(0)}
-  to{transform:scale(1)}
-}
 
+/*Pop up menyn*/
 .menuNav1 {
-  position: fixed;
+  position: absolute;
   background: darkcyan;
+  background-image: url(add.png);
+  bottom: 60px;
+}
+
+.menuNav2 {
+  position: absolute;
+  background: darkcyan;
+  background-image: url(edit.png);
+  right: 45px;
+  bottom: 45px;
+}
+
+.menuNav3 {
+  position: absolute;
+  background: darkcyan;
+  background-image: url(trash.png);
+  right: 60px;
+}
+
+.menuNav1,
+.menuNav2,
+.menuNav3 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 77%;
   height: 40px;
-  width: 0;
-  overflow: hidden;
-  max-width: 40px;
-  z-index: 9;
-  top: 445px;
-  right: 375px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
 }
 
 .menuNav1.showMenu,
 .menuNav2.showMenu,
 .menuNav3.showMenu {
-  width: 100%;
   animation: popout 0.5s cubic-bezier(.47,1.64,.41,.8);
 }
 
-.menuNav1 li:first-child,
-.menuNav2 li:first-child,
-.menuNav3 li:first-child{
-  margin-top: 7rem;
+.menuNav1.noMenu,
+.menuNav2.noMenu,
+.menuNav3.noMenu {
+  animation: popin 0.5s cubic-bezier(.47,1.64,.41,.8);
+  animation-fill-mode: forwards;
 }
 
-
-.menuNav2 {
-  position: fixed;
-  background: darkcyan;
-  height: 40px;
-  width: 0;
-  overflow: hidden;
-  max-width: 40px;
-  z-index: 9;
-  top: 460px;
-  right: 417.5px;
-  border-radius: 50%;
+/*Animationerna för när pop up menyn öppnas och stängs*/
+@keyframes popout{
+  from{transform:scale(0)}
+  to{transform:scale(1)}
 }
 
-.menuNav3 {
-  position: fixed;
-  background: darkcyan;
-  height: 40px;
-  width: 0;
-  overflow: hidden;
-  max-width: 40px;
-  z-index: 9;
-  top: 500px;
-  right: 435px;
-  border-radius: 50%;
-}
-
-
-a {
-  display: block;
-  padding: 10px 40px;
-  text-decoration: none;
-  color: #3fffd2;
-  text-transform: uppercase;
-  font-weight: bold;
-  position: relative;
-  top: 350px;
-  left: 50px;
-}
-
-.navBar button {
-  background: transparent;;
-  border: none;
+@keyframes popin{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(0);
+  }
 }
