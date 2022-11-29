@@ -53,8 +53,9 @@ function Hamburger() {
   
     return (
         <nav className="navBar">
+
             <button onClick={handleToggle}>{navbarOpen ? (<MdClose style={{color: "red", width: "40px", height: "40px"}} />) : (<FiMenu style={{color: "#7b7b7b", width: "40px", height: "40px"}} />)}</button>
-            <Link className={`menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to={Data} />
+            <Link className={`menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to=""/>
             <Link className={`menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to={Data2} />
             <Link className={`menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to={Data3} />
         </nav>
