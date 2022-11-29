@@ -60,7 +60,7 @@
 .window > input:not(input[type=submit]) {
   border-bottom: 2px solid #32323280;
 }
-.window > input[type=submit] {
+.window > button {
   color:#F0EBCE;
   background: linear-gradient(135deg, #395144 0%, #4E6C50 100%);
   font-size: 17px;
