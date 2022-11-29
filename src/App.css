@@ -56,7 +56,8 @@
   font-weight: 600;
 }
 
-.window > input {
+.window > input,
+.window > button {
   background-color: transparent;
   width: 80%;
   margin: 14px;
@@ -64,7 +65,7 @@
   border: none;
 }
 
-.window > input:not(input[type=submit]) {
+.window > input {
   border-bottom: 2px solid #32323280;
 }
 
@@ -132,45 +133,42 @@
 }
 
 /*Designen för öppna och stäng knappen*/
-.navBar button {
-  background: transparent;
-  border: none;
-}
-
-
-/*Pop up menyn*/
-.menuNav1 {
+.button {
   position: absolute;
   background: darkcyan;
-  background-image: url(./bilder/add.png);
-  bottom: 60px;
-}
-
-.menuNav2 {
-  position: absolute;
-  background: darkcyan;
-  background-image: url(./bilder/edit.png);
-  right: 45px;
-  bottom: 45px;
-}
-
-.menuNav3 {
-  position: absolute;
-  background: darkcyan;
-  background-image: url(./bilder/trash.png);
-  right: 60px;
-}
-
-.menuNav1,
-.menuNav2,
-.menuNav3 {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 77%;
   height: 40px;
   aspect-ratio: 1 / 1;
+  border: none;
   border-radius: 50%;
 }
+
+/*Pop up menyn*/
+button.noMenu {
+  background-image: url(./bilder/menu.svg);
+}
+button.showMenu {
+  background-image: url(./bilder/x.svg);
+}
+
+.menuNav1 {
+  background-image: url(./bilder/add.svg);
+  bottom: 60px;
+}
+
+.menuNav2 {
+  background-image: url(./bilder/edit.svg);
+  right: 45px;
+  bottom: 45px;
+}
+
+.menuNav3 {
+  background-image: url(./bilder/trash.svg);
+  right: 60px;
+}
+
 
 .menuNav1.showMenu,
 .menuNav2.showMenu,
@@ -192,10 +190,6 @@
 }
 
 @keyframes popin{
-  from{
-    transform:scale(1);
-  }
-  to{
-    transform:scale(0);
-  }
+  from{transform:scale(1)}
+  to{transform:scale(0)}
 }

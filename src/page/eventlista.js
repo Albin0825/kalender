@@ -2,7 +2,7 @@ import BG from '../marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import '../App.css';
 import Data from "../component/data.js";
 
-import * as React from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function App() {

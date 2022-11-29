@@ -1,6 +1,6 @@
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import '../App.css';
-import Data from "../../../kalenderlol/src/component/data.js";
+import Data from "../component/data.js";
 import HeaderBar from './header';
 
 import React from "react";
@@ -8,7 +8,6 @@ import React from "react";
 function Login() {
     return (
         <div>
-            <HeaderBar/>
             <div className='con'>
                 <img src={BG} alt="background image"/>
                 <div className="window blur">

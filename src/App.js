@@ -4,15 +4,14 @@ import Home from "./component/Home";
 import Back from "./component/Back";
 import Login from "./page/login";
 import OneEventOpen from "./page/OneEventOpen";
+import Hamburger from "./page/Hamburger";
+
+import HeaderBar from "./page/header";
 
 function App() {
   return (
     <div>
-        <Link to="/Home">Kalender</Link>
-        <Link to="/Back">tillbaka</Link>
-        <Link style={{textDecoration: "none"}} to='/Login'>Login</Link>
-        <Link style={{textDecoration: "none"}} to='/OneEventOpen'>OneEventOpen</Link>
-        <Link to="/Hamburger">Hamburgar meny</Link>
+      <HeaderBar/>
       <Routes>
         <Route path="/Hamburger" element={<Hamburger />} />
         <Route path="/Home" element={ <Home/> } />
