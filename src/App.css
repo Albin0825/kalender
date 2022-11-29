@@ -117,3 +117,85 @@
   aspect-ratio: 86 / 67;
   margin: 15px;
 }
+
+
+
+
+/*Positionen för pop up menyn med öppna och stäng knappen*/
+.navBar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+/*Designen för öppna och stäng knappen*/
+.navBar button {
+  background: transparent;
+  border: none;
+}
+
+
+/*Pop up menyn*/
+.menuNav1 {
+  position: absolute;
+  background: darkcyan;
+  background-image: url(./bilder/add.png);
+  bottom: 60px;
+}
+
+.menuNav2 {
+  position: absolute;
+  background: darkcyan;
+  background-image: url(./bilder/edit.png);
+  right: 45px;
+  bottom: 45px;
+}
+
+.menuNav3 {
+  position: absolute;
+  background: darkcyan;
+  background-image: url(./bilder/trash.png);
+  right: 60px;
+}
+
+.menuNav1,
+.menuNav2,
+.menuNav3 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 77%;
+  height: 40px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+.menuNav1.showMenu,
+.menuNav2.showMenu,
+.menuNav3.showMenu {
+  animation: popout 0.5s cubic-bezier(.47,1.64,.41,.8);
+}
+
+.menuNav1.noMenu,
+.menuNav2.noMenu,
+.menuNav3.noMenu {
+  animation: popin 0.5s cubic-bezier(.47,1.64,.41,.8);
+  animation-fill-mode: forwards;
+}
+
+/*Animationerna för när pop up menyn öppnas och stängs*/
+@keyframes popout{
+  from{transform:scale(0)}
+  to{transform:scale(1)}
+}
+
+@keyframes popin{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(0);
+  }
+}

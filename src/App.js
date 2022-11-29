@@ -12,7 +12,9 @@ function App() {
         <Link to="/Back">tillbaka</Link>
         <Link style={{textDecoration: "none"}} to='/Login'>Login</Link>
         <Link style={{textDecoration: "none"}} to='/OneEventOpen'>OneEventOpen</Link>
+        <Link to="/Hamburger">Hamburgar meny</Link>
       <Routes>
+        <Route path="/Hamburger" element={<Hamburger />} />
         <Route path="/Home" element={ <Home/> } />
         <Route path="/Back" element={ <Back/> } />
         <Route path="/Login" element ={<Login />} />
