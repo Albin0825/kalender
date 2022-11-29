@@ -19,7 +19,6 @@ function HeaderBar() {
                 </li>
             </ul>
         </nav>;
-    console.log(setup)
     return (
         <header>
             {setup}

@@ -9,6 +9,14 @@ function Hamburger() {
         setNavbarOpen(prev => !prev)
     }
 
+    fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=1&token=df04626fbf42c665f6a80817cd6672ae10a3eda3")
+    .then(res => res.json())
+    .then(
+        (result)=>{
+            console.log(result)
+        }
+    )
+
     return (
         <div className="con">
             <img src={BG} alt="background image"/>
