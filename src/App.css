@@ -29,10 +29,6 @@
 }
 
 .window {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
   background: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.12) 100%);
   width: calc(100vw / 4);
   height: calc(100vh - 200px);
@@ -40,8 +36,19 @@
   border-radius: 17px;
 }
 
+.window:not(.notlogin){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
 .blur {
   backdrop-filter: blur(40px);
+}
+
+.notlogin {
+  width: calc(100vw / 2.5);
 }
 
 .window > h1 {
@@ -60,6 +67,7 @@
 .window > input:not(input[type=submit]) {
   border-bottom: 2px solid #32323280;
 }
+
 .window > button {
   color:#F0EBCE;
   background: linear-gradient(135deg, #395144 0%, #4E6C50 100%);
@@ -72,7 +80,7 @@
 .rubrik {
   text-align: center;
   color: red;
-  margin-top: 5px;
+  margin-top: -10px;
 }
 
 .desc,
@@ -97,9 +105,15 @@
 }
 
 .vpil {
-  color: black;
+  color: skyblue;
   font-size: 2em;
   position: absolute;
-  margin-top: 5px;
-  margin-left: 15px;
+  top: 0;
+  left: 0;
+}
+
+.vpil > img{
+  width: 50px;
+  aspect-ratio: 86 / 67;
+  margin: 15px;
 }
