@@ -8,19 +8,62 @@ function Hamburger() {
     const handleToggle = () => {
         setNavbarOpen(prev => !prev)
     }
+    
+    /*const [item, setItem] = useState([]);
+    useEffect (()=>{
+        fetch("http://takeee.ntigskovde.se/login.php?username=Zacke&password=jaggillarkatter1")
+        .then(res => res.json())
+        .then(
+            (result)=>{
+                console.log(result["Data"])
+                setItem(result["Data"])
+            }
+        )
+    }, [])*/
 
-    fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=1&token=df04626fbf42c665f6a80817cd6672ae10a3eda3")
-    .then(res => res.json())
-    .then(
-        (result)=>{
-            console.log(result)
-        }
-    )
+    const [items, setItems] = useState([]);
+    useEffect (()=>{
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=33&token=c0918f28ff97b4db3796993a65bd33df097c6d96")
+        .then(res => res.json())
+        .then(
+            (result)=>{
+                const d = result["Data"]["My events"];
+                for(let i = 0;i<d.length;i++) {
+                    console.log(d[i])
+                    setItems(d[i])
+                }
+            }
+        )
+    }, [])
+
 
     return (
         <div className="con">
             <img src={BG} alt="background image"/>
             <div className="window blur notlogin">
+          {/* <div>
+               {Object.keys(item).map((key, index) => {
+                return(
+                    <div key={index}>
+                        <li>
+                            {key}: {item[key]}
+                        </li>
+                    </div>
+                    );
+                })} 
+            </div>*/} 
+              <div>
+                {Object.keys(items).map((key, index) => {
+                return(
+                    <div key={index}>
+                        <div>
+                            {key}: {items[key]}
+                        </div>
+                    </div>
+                    );
+                })}
+              </div>
+              
                 <nav className="navBar">
                     <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
                     <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to=""/>
@@ -30,7 +73,6 @@ function Hamburger() {
             </div>
         </div>
     );
-
 }
 
 export default Hamburger;
