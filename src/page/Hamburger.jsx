@@ -23,7 +23,7 @@ function Hamburger() {
 
     const [items, setItems] = useState([]);
     useEffect (()=>{
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=33&token=c0918f28ff97b4db3796993a65bd33df097c6d96")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=38&token=8d596ec0c6910c9d229d527dfa53973e631f2c00")
         .then(res => res.json())
         .then(
             (result)=>{
@@ -31,12 +31,13 @@ function Hamburger() {
                 for(let i = 0;i<d.length;i++) {
                     console.log(d[i])
                     setItems(d[i])
-                }
+                    continue;
+                }   
             }
         )
     }, [])
-
-
+    console.log(items)
+    const list = [];
     return (
         <div className="con">
             <img src={BG} alt="background image"/>
@@ -54,14 +55,14 @@ function Hamburger() {
             </div>*/} 
               <div>
                 {Object.keys(items).map((key, index) => {
-                return(
-                    <div key={index}>
-                        <div>
+                    
+                    list.push(
+                        <div key={index}>
                             {key}: {items[key]}
                         </div>
-                    </div>
                     );
                 })}
+                {list}
               </div>
               
                 <nav className="navBar">
