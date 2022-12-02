@@ -6,7 +6,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #222;
   font-family: 'Poppins', sans-serif;
+}
+nav,
+header > img {
+  flex-basis: calc(100% / 2 - 100px);
+}
+li:not(:last-child) {
+  margin-right: 100px;
 }
 
 .con {
@@ -76,6 +84,12 @@
   font-weight: 500;
   letter-spacing: 0.125em;
   border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.window > button:hover {
+  color: #0f1431;
 }
 
 .rubrik {
