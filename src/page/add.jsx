@@ -1,33 +1,54 @@
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
-import React, {useState, useEffect} from "react"
-import {Link} from "react-router-dom"
+import ARROW from '../bilder/Vector.svg';
+import React, {useState} from "react"
+import { Link } from "react-router-dom"
 import '../App.css';
 
 function Add() {
 
-    fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=1&token=18f97fdf964f9c03fe97bdc4fc57407da9e0f021")
-    .then(res => res.json())
-    .then(
-        (result)=>{
-            console.log(result)
-        }
-    )
+    const [title, setTitle] = useState([]);
+    const [description, setDescription] = useState([]);
+    const [startdate, setStartdate] = useState([]);
+    const [enddate, setEnddate] = useState([]);
 
-    const [item, setItem] = useState([]);
-    useEffect (()=>{
-        fetch("http://takeee.ntigskovde.se/login.php?username=root&password=root")
-        .then(res => res.json())
-        .then(
-            (result)=>{
-                console.log(result)
-            }
-        )
-    }, [])
-
+    const handleChangeTitle = (e) => {
+        setTitle(e.target.value);
+    }
+    const handleChangeDescription = (e) => {
+        setDescription(e.target.value);
+    }
+    const handleChangeStartdate= (e) => {
+        setStartdate(e.target.value);
+    }
+    const handleChangeEnddate = (e) => {
+        setEnddate(e.target.value);
+    }
+    function send(){
+        /*fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=28b292be5c912a34de42ad6368d76f0c9907ce00&title="+title+"&description="+description+"&startDate="+startdate+"&endDate="+enddate+"")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    const d = result["Data"]["My events"];
+                    for (let i = 0; i < d.length; i++) {
+                        console.log(d[i])
+                        setItems(d[i])
+                    }
+                }
+            )*/
+    }
+    const text = 0;
     return (
         <div className="con">
-            <img src={BG} alt="background image"/>
+            <img src={BG} alt="background image" />
             <div className="window blur notlogin">
+                <Link to='/Login' className="vpil"><img src={ARROW} alt="Go back" /></Link>
+                <div key={text}>
+                    <h2>Title: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
+                    <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
+                    <h2>Start-date: <input type="text" name={text} onChange={handleChangeStartdate} /></h2>
+                    <h2>End-date: <input type="text" name={text} onChange={handleChangeEnddate} /></h2>
+                    <button onClick={send}>Add</button>
+                </div>
                 
             </div>
         </div>

@@ -23,7 +23,7 @@ function Hamburger() {
 
     const [items, setItems] = useState([]);
     useEffect (()=>{
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=38&token=8d596ec0c6910c9d229d527dfa53973e631f2c00")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=38&token=28b292be5c912a34de42ad6368d76f0c9907ce00")
         .then(res => res.json())
         .then(
             (result)=>{
@@ -31,7 +31,6 @@ function Hamburger() {
                 for(let i = 0;i<d.length;i++) {
                     console.log(d[i])
                     setItems(d[i])
-                    continue;
                 }   
             }
         )
