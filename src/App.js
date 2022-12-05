@@ -8,6 +8,7 @@ import Hamburger from "./page/Hamburger";
 import Datadump from "./component/Datadump";
 import Add from "./page/add";
 import Eventlist from "./page/eventList";
+import Edit from "./page/edit";
 
 import HeaderBar from "./page/header";
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/OneEventOpen" element = { <OneEventOpen/> } />
         <Route path="/Datadump" element = { <Datadump/> } />
         <Route path="/Add" element ={ <Add/> } />
+        <Route path="/Edit" element ={<Edit />} />
       </Routes>
     </div>
   );
