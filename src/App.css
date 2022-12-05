@@ -81,7 +81,7 @@
 .rubrik {
   text-align: center;
   color: red;
-  margin-top: -10px;
+  margin-top: -20px;
 }
 
 .desc,
@@ -90,7 +90,7 @@
   margin-top: 30px;
   text-align: left;
   font-size: x-large;
-  margin-left: 15px;
+  margin-left: 5px;
 }
 
 .desc {
@@ -106,8 +106,6 @@
 }
 
 .vpil {
-  color: skyblue;
-  font-size: 2em;
   position: absolute;
   top: 0;
   left: 0;
@@ -116,11 +114,8 @@
 .vpil > img{
   width: 50px;
   aspect-ratio: 86 / 67;
-  margin: 15px;
+  margin: 25px;
 }
-
-
-
 
 /*Positionen för pop up menyn med öppna och stäng knappen*/
 .navBar {
@@ -169,7 +164,6 @@ button.showMenu {
   right: 60px;
 }
 
-
 .menuNav1.showMenu,
 .menuNav2.showMenu,
 .menuNav3.showMenu {
@@ -192,4 +186,30 @@ button.showMenu {
 @keyframes popin{
   from{transform:scale(1)}
   to{transform:scale(0)}
+}
+
+.Login{
+  color:#F0EBCE;
+  background: linear-gradient(135deg, #395144 0%, #4E6C50 100%);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.125em;
+  border-radius: 7px;
+  width: 350px;
+  height: 40px;
+}
+
+.Login:link {
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  text-decoration: none;
+}
+
+.Login:hover {
+  color: gray;
+}
+
+.Login:active {
+  color: lightgray;
 }

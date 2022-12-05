@@ -9,7 +9,7 @@ function App() {
       <img src={BG} alt="background image"/>
         <div className="window blur notlogin">
           <Link to='/Login' className="vpil"><img src={ARROW} alt="Go back"/></Link>
-          <h1 className="rubrik">Hej!</h1>
+          <h1 className="rubrik">Rubrik!</h1>
           <p className="desc">Desc: </p>
           <p className="time">Time: </p>
           <p className="inv">Invites: </p>

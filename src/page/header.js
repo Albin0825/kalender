@@ -16,6 +16,8 @@ function HeaderBar() {
                     <Link style={{textDecoration: "none"}} to='/Login'>Login</Link>
                     <Link style={{textDecoration: "none"}} to='/OneEventOpen'>OneEventOpen</Link>
                     <Link style={{textDecoration: "none"}} to="/Hamburger">Hamburger meny</Link>
+                    <Link style={{textDecoration: "none"}} to="/Datadump">DATA</Link>
+                   
                 </li>
             </ul>
         </nav>;
