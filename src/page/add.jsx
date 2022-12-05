@@ -49,7 +49,7 @@ function Add() {
             <div className="window blur notlogin">
                 <Link to='/OneEventOpen' className="vpil"><img src={ARROW} alt="Go back" /></Link>
                 <div key={text}>
-                    <h1>{item}</h1>
+                    <h1 className ="error">{item}</h1>
                     <h2>Title: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
                     <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
                     <h2>Start-date: <input type="text" name={text} onChange={handleChangeStartdate} /></h2>
