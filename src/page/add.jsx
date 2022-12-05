@@ -25,7 +25,7 @@ function Add() {
         setEnddate(e.target.value);
     }
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=06f2cd760126aedd9f20a5bab4f1bf6f6072c0c4&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=9bc5ce37ec62c6cf415b16b1344991b42df28213&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -34,6 +34,7 @@ function Add() {
                         navigate('/OneEventOpen')
                     }
                     else {
+                        console.log(result["Data"])
                         console.log("Invalid user/tokens")
                     }
                 }

@@ -13,7 +13,7 @@ function App() {
 
   const [items, setItems] = useState([]);
     useEffect (()=>{
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=38&token=06f2cd760126aedd9f20a5bab4f1bf6f6072c0c4")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=38&token=adca9bf28a56e8a04a621a12faefb93b57092a09")
         .then(res => res.json())
         .then(
             (result)=>{
