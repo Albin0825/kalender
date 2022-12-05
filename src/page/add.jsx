@@ -1,11 +1,12 @@
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import ARROW from '../bilder/Vector.svg';
-import React, {useState} from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
 
 function Add() {
 
+    let navigate = useNavigate();
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
     const [startdate, setStartdate] = useState([]);
@@ -17,24 +18,26 @@ function Add() {
     const handleChangeDescription = (e) => {
         setDescription(e.target.value);
     }
-    const handleChangeStartdate= (e) => {
+    const handleChangeStartdate = (e) => {
         setStartdate(e.target.value);
     }
     const handleChangeEnddate = (e) => {
         setEnddate(e.target.value);
     }
-    function send(){
-        /*fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=28b292be5c912a34de42ad6368d76f0c9907ce00&title="+title+"&description="+description+"&startDate="+startdate+"&endDate="+enddate+"")
+    function send() {
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=06f2cd760126aedd9f20a5bab4f1bf6f6072c0c4&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
             .then(res => res.json())
             .then(
                 (result) => {
-                    const d = result["Data"]["My events"];
-                    for (let i = 0; i < d.length; i++) {
-                        console.log(d[i])
-                        setItems(d[i])
+                    if (result["Data"]["Result"] != undefined) {
+                        console.log(result["Data"])
+                        navigate('/OneEventOpen')
+                    }
+                    else {
+                        console.log("Invalid user/tokens")
                     }
                 }
-            )*/
+            )
     }
     const text = 0;
     return (
@@ -47,9 +50,9 @@ function Add() {
                     <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
                     <h2>Start-date: <input type="text" name={text} onChange={handleChangeStartdate} /></h2>
                     <h2>End-date: <input type="text" name={text} onChange={handleChangeEnddate} /></h2>
-                    <button onClick={send}>Add</button>
+                    <button onClick={send} className="add">Add</button>
                 </div>
-                
+
             </div>
         </div>
     );
