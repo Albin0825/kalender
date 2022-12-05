@@ -4,29 +4,21 @@ import * as React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Home from "./component/Home";
 import Back from "./component/Back";
+import Eventlist from "./page/eventLista";
+import Data from "./component/data";
 import { Link } from "react-router-dom";
 
-function App() {
-  const [isOpen, setOpen] = React.useState(false);
+export default function App() {
 
-  const handleClick = () => {
-    setOpen(!isOpen);
-  };
 
   return (
     <div className="con">
-      <button type="button" onClick={handleClick} id="back" class="arrow">Back</button>
-      <button type="button" onClick={handleClick} id="forward" class="arrow">Forward</button>
-      <img src={BG} alt="background image"/>
-      <div className="window blur">
-        <Link to="/Home">Kalender</Link>
-        <Link to="/Back">tillbaka</Link>
-        <button type="button" onClick={handleClick}>Suspicious button</button>
-        
-      </div>
       <Routes>
+        <Route path="/" element={<Eventlist/>} />
         <Route path="/Home" element={ <Home/> } />
         <Route path="/Back" element={ <Back/> } />
+        <Route path="/Eventlist" element={ <Eventlist/> } />
+        <Route path="/Data" element={ <Data/> } />
       </Routes>
       
     </div>
@@ -34,4 +26,3 @@ function App() {
 }
 
 
-export default App;
