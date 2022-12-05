@@ -7,7 +7,6 @@ import OneEventOpen from "./page/OneEventOpen";
 import Hamburger from "./page/Hamburger";
 import Add from "./page/add";
 import Eventlist from "./page/eventLista.jsx";
-
 import HeaderBar from "./page/header";
 
 function App() {
