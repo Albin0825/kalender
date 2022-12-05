@@ -1,28 +1,31 @@
-import BG from './bilder/andrew-neel-cckf4TsHAuw-unsplash.jpg';
-import './App.css';
-import * as React from 'react';
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import { Routes, Route, Link } from "react-router-dom";
 import Home from "./component/Home";
 import Back from "./component/Back";
-import Eventlist from "./page/eventLista";
-import Data from "./component/data";
-import { Link } from "react-router-dom";
+import Login from "./page/login";
+import OneEventOpen from "./page/OneEventOpen";
+import Hamburger from "./page/Hamburger";
+import Add from "./page/add";
+import Eventlist from "./page/eventLista.jsx";
 
-export default function App() {
+import HeaderBar from "./page/header";
 
-
+function App() {
   return (
-    <div className="con">
+    <div>
+      <HeaderBar/>
       <Routes>
-        <Route path="/" element={<Eventlist/>} />
+        <Route path="/Hamburger" element={<Hamburger />} />
         <Route path="/Home" element={ <Home/> } />
         <Route path="/Back" element={ <Back/> } />
-        <Route path="/Eventlist" element={ <Eventlist/> } />
-        <Route path="/Data" element={ <Data/> } />
+        <Route path="/Login" element ={<Login />} />
+        <Route patch="/Eventlist" element={<Eventlist />} />
+        <Route path="/OneEventOpen" element ={<OneEventOpen />} />
+        <Route path="/Add" element ={<Add />} />
       </Routes>
-      
     </div>
   );
 }
 
+export default App;
 
