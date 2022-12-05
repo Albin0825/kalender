@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
 
-function Add() {
+function Edit() {
 
     let navigate = useNavigate();
     const [title, setTitle] = useState([]);
@@ -25,7 +25,7 @@ function Add() {
         setEnddate(e.target.value);
     }
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=06f2cd760126aedd9f20a5bab4f1bf6f6072c0c4&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=editEvent&uID=38&token=fab0563efcbc4dc78a38c7ffbf6d902216e58ec4&eID=18&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -34,6 +34,7 @@ function Add() {
                         navigate('/OneEventOpen')
                     }
                     else {
+                        console.log(result["Data"])
                         console.log("Invalid input")
                     }
                 }
@@ -50,7 +51,7 @@ function Add() {
                     <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
                     <h2>Start-date: <input type="text" name={text} onChange={handleChangeStartdate} /></h2>
                     <h2>End-date: <input type="text" name={text} onChange={handleChangeEnddate} /></h2>
-                    <button onClick={send} className="add">Add</button>
+                    <button onClick={send} className="add">Edit</button>
                 </div>
 
             </div>
@@ -58,4 +59,4 @@ function Add() {
     );
 }
 
-export default Add;
+export default Edit;

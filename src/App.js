@@ -6,6 +6,7 @@ import Login from "./page/login";
 import OneEventOpen from "./page/OneEventOpen";
 import Hamburger from "./page/Hamburger";
 import Add from "./page/add";
+import Edit from "./page/edit";
 
 import HeaderBar from "./page/header";
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/Login" element ={<Login />} />
         <Route path="/OneEventOpen" element ={<OneEventOpen />} />
         <Route path="/Add" element ={<Add />} />
+        <Route path="/Edit" element ={<Edit />} />
       </Routes>
     </div>
   );
