@@ -5,8 +5,8 @@ import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
 
 function Add() {
-
     let navigate = useNavigate();
+    const [item, setItem] = useState([])
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
     const [startdate, setStartdate] = useState([]);
@@ -25,15 +25,18 @@ function Add() {
         setEnddate(e.target.value);
     }
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=06f2cd760126aedd9f20a5bab4f1bf6f6072c0c4&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=35dbc360dd3c6814fda7a137e8653fa01225da98&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
             .then(res => res.json())
             .then(
                 (result) => {
+                    
                     if (result["Data"]["Result"] != undefined) {
                         console.log(result["Data"])
                         navigate('/OneEventOpen')
+
                     }
                     else {
+                        setItem(result["Data"])
                         console.log("Invalid input")
                     }
                 }
@@ -46,6 +49,7 @@ function Add() {
             <div className="window blur notlogin">
                 <Link to='/OneEventOpen' className="vpil"><img src={ARROW} alt="Go back" /></Link>
                 <div key={text}>
+                    <h1>{item}</h1>
                     <h2>Title: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
                     <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
                     <h2>Start-date: <input type="text" name={text} onChange={handleChangeStartdate} /></h2>
