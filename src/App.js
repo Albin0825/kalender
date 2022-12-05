@@ -5,6 +5,7 @@ import Back from "./component/Back";
 import Login from "./page/login";
 import OneEventOpen from "./page/OneEventOpen";
 import Hamburger from "./page/Hamburger";
+import Add from "./page/add";
 
 import HeaderBar from "./page/header";
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/Back" element={ <Back/> } />
         <Route path="/Login" element ={<Login />} />
         <Route path="/OneEventOpen" element ={<OneEventOpen />} />
+        <Route path="/Add" element ={<Add />} />
       </Routes>
     </div>
   );
