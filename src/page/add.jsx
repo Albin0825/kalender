@@ -25,7 +25,7 @@ function Add() {
         setEnddate(e.target.value);
     }
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=35dbc360dd3c6814fda7a137e8653fa01225da98&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=92c77a3c539f07e42685475e288cc3cc81c6da1e&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -52,8 +52,8 @@ function Add() {
                     <h1 className ="error">{item}</h1>
                     <h2>Title: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
                     <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
-                    <h2>Start-date: <input type="text" name={text} onChange={handleChangeStartdate} /></h2>
-                    <h2>End-date: <input type="text" name={text} onChange={handleChangeEnddate} /></h2>
+                    <h2>Start-date: <input type="date" name={text} onChange={handleChangeStartdate} /><input type="time" name={text} onChange={handleChangeStartdate} /></h2>
+                    <h2>End-date: <input type="date" name={text} onChange={handleChangeEnddate} /><input type="time" name={text} onChange={handleChangeEnddate} /></h2>
                     <button onClick={send} className="add">Add</button>
                 </div>
 

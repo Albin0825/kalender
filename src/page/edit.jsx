@@ -49,8 +49,8 @@ function Edit() {
                 <div key={text}>
                     <h2>Title: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
                     <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
-                    <h2>Start-date: <input type="text" name={text} onChange={handleChangeStartdate} /></h2>
-                    <h2>End-date: <input type="text" name={text} onChange={handleChangeEnddate} /></h2>
+                    <h2>Start-date: <input type="date" name={text} onChange={handleChangeDescription} /><input type="time" name={text} onChange={handleChangeDescription} /></h2>
+                    <h2>End-date: <input type="date" name={text} onChange={handleChangeDescription} /><input type="time" name={text} onChange={handleChangeDescription} /></h2>
                     <button onClick={send} className="add">Edit</button>
                 </div>
 
