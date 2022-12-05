@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import '../App.css';
-import Data from "../component/data.js";
 import HeaderBar from './header';
 
 
