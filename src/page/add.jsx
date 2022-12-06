@@ -10,7 +10,9 @@ function Add() {
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
     const [startdate, setStartdate] = useState([]);
+    const [starttime, setStarttime] = useState([]);
     const [enddate, setEnddate] = useState([]);
+    const [endtime, setEndtime] = useState([]);
 
     const handleChangeTitle = (e) => {
         setTitle(e.target.value);
@@ -21,11 +23,18 @@ function Add() {
     const handleChangeStartdate = (e) => {
         setStartdate(e.target.value);
     }
+    const handleChangeStarttime = (e) => {
+        setStarttime(e.target.value);
+    }
     const handleChangeEnddate = (e) => {
         setEnddate(e.target.value);
     }
+    const handleChangeEndtime = (e) => {
+        setEndtime(e.target.value);
+    }
+
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=92c77a3c539f07e42685475e288cc3cc81c6da1e&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=d05527e179c2ceb028f74cc6eca43d2b044e2a1d&title=" + title + "&description=" + description + "&startDate=" + startdate+" "+starttime + "&endDate=" + enddate +" "+endtime+ "")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -37,7 +46,7 @@ function Add() {
                     }
                     else {
                         setItem(result["Data"])
-                        console.log("Invalid input")
+                        console.log(startdate)
                     }
                 }
             )
@@ -52,8 +61,8 @@ function Add() {
                     <h1 className ="error">{item}</h1>
                     <h2>Title: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
                     <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
-                    <h2>Start-date: <input type="date" name={text} onChange={handleChangeStartdate} /><input type="time" name={text} onChange={handleChangeStartdate} /></h2>
-                    <h2>End-date: <input type="date" name={text} onChange={handleChangeEnddate} /><input type="time" name={text} onChange={handleChangeEnddate} /></h2>
+                    <h2>Start-date: <input type="date" name={text} onChange={handleChangeStartdate} /><input type="time" name={text} onChange={handleChangeStarttime} /></h2>
+                    <h2>End-date: <input type="date" name={text} onChange={handleChangeEnddate} /><input type="time" name={text} onChange={handleChangeEndtime} /></h2>
                     <button onClick={send} className="add">Add</button>
                 </div>
 
