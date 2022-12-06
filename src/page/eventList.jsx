@@ -8,7 +8,9 @@ function Eventlista(response){
 
     const [eventlist, setEventlist] = useState([]);
     const getEvents = async () => {
-        let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=33&token=ad5e158186e7e75d0a38e60eaad62e41821e212b";
+        const [userid,setUserid] = useState(loadLS('userid'));
+        const [token,setToken] = useState(loadLS('token'));
+        let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+userid+"&token="+username;
         const response = await fetch(`${API_URL}`)
         .then(response => response.json())
         .then(

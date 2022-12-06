@@ -19,6 +19,9 @@ function HeaderBar() {
                     <Link style={{textDecoration: "none"}} to="/Hamburger">Hamburger meny</Link>
                 </li>
                 <li style={{display: "inline-block", textAlign: "center"}}>
+                    <Link style={{textDecoration: "none"}} to="/Eventlist">Eventlist</Link>
+                </li>
+                <li style={{display: "inline-block", textAlign: "center"}}>
                     <Link style={{textDecoration: "none"}} to="/Datadump">DATA</Link>
                 </li>
             </ul>
