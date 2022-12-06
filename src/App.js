@@ -5,8 +5,10 @@ import Back from "./component/Back";
 import Login from "./page/login";
 import OneEventOpen from "./page/OneEventOpen";
 import Hamburger from "./page/Hamburger";
+import Datadump from "./component/Datadump";
 import Add from "./page/add";
 import Eventlist from "./page/eventList";
+import Edit from "./page/edit";
 
 import HeaderBar from "./page/header";
 
@@ -21,7 +23,9 @@ function App() {
         <Route path="/Login" element ={<Login />} />
         <Route path='/Eventlist' element={<Eventlist />} />
         <Route path="/OneEventOpen" element ={<OneEventOpen />} />
+        <Route path="/Datadump" element = { <Datadump/> } />
         <Route path="/Add" element ={<Add />} />
+        <Route path="/Edit" element ={<Edit />} />
       </Routes>
     </div>
   );

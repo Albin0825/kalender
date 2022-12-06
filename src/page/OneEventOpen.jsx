@@ -13,7 +13,7 @@ function App() {
 
   const [items, setItems] = useState([]);
     useEffect (()=>{
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=38&token=06f2cd760126aedd9f20a5bab4f1bf6f6072c0c4")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=38&token=fab0563efcbc4dc78a38c7ffbf6d902216e58ec4")
         .then(res => res.json())
         .then(
             (result)=>{
@@ -30,15 +30,15 @@ function App() {
     <div className="con">
       <img src={BG} alt="background image"/>
         <div className="window blur notlogin">
-          <Link to='/Login' className="vpil"><img src={ARROW} alt="Go back"/></Link>
+          <Link to='/OneEventOpen' className="vpil"><img src={ARROW} alt="Go back"/></Link>
           <h1 className="rubrik">Hej!</h1>
-          <p className="desc">Desc: <input type="text"></input></p>
-          <p className="time">Time: <input type="text"></input></p>
-          <p className="inv">Invites: <input type="text"></input></p>
+          <p className="desc">Desc: </p>
+          <p className="time">Time: </p>
+          <p className="inv">Invites: </p>
           <nav className="navBar">
               <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
               <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
-              <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="" />
+              <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/edit" />
               <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="" />
           </nav>
         </div>
