@@ -40,7 +40,6 @@ li:not(:last-child) {
   background: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.12) 100%);
   width: calc(100vw / 4);
   height: calc(100vh - 200px);
-  padding: 17px;
   border-radius: 17px;
 }
 
@@ -53,6 +52,10 @@ li:not(:last-child) {
 
 .blur {
   backdrop-filter: blur(40px);
+}
+
+.kalender {
+  width: calc(100vw / 1.5);
 }
 
 .notlogin {
