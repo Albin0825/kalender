@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import '../App.css';
 import HeaderBar from './header';
+import { saveLs } from '../component/Funktioner';
 
 
 
 function Login() {
     let navigate = useNavigate();
+    let uID;
+    let token;
     const [user, setUser ] = useState();
     const [password, setPassword ] = useState();
     const handleChangeUser = (e) => {
@@ -25,7 +28,11 @@ function Login() {
             (result)=>{
                 if(result.Data.Token != undefined) {
                     console.log(result.Data.Token)
-                    navigate('/OneEventOpen');
+                    console.log(result.Data.uID)
+                    saveLs('uID',result.Data.uID);
+                    saveLs('token',result.Data.token);
+                    saveLs('admin',result.Data.admin);
+                    navigate('/Eventlist');
                 }
             }
         )
