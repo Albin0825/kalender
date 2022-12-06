@@ -29,10 +29,10 @@ function Login() {
                 if(result.Data.Token != undefined) {
                     console.log(result.Data.Token)
                     console.log(result.Data.uID)
+                    navigate('/OneEventOpen');
                     saveLs('uID',result.Data.uID);
                     saveLs('token',result.Data.token);
                     saveLs('admin',result.Data.admin);
-                    navigate('/Eventlist');
                 }
             }
         )
