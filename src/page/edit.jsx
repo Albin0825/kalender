@@ -10,7 +10,9 @@ function Edit() {
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
     const [startdate, setStartdate] = useState([]);
+    const [starttime, setStarttime] = useState([]);
     const [enddate, setEnddate] = useState([]);
+    const [endtime, setEndtime] = useState([]);
 
     const handleChangeTitle = (e) => {
         setTitle(e.target.value);
@@ -21,11 +23,18 @@ function Edit() {
     const handleChangeStartdate = (e) => {
         setStartdate(e.target.value);
     }
+    const handleChangeStarttime = (e) => {
+        setStarttime(e.target.value);
+    }
     const handleChangeEnddate = (e) => {
         setEnddate(e.target.value);
     }
+    const handleChangeEndtime = (e) => {
+        setEndtime(e.target.value);
+    }
+
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=editEvent&uID=38&token=fab0563efcbc4dc78a38c7ffbf6d902216e58ec4&eID=18&title=" + title + "&description=" + description + "&startDate=" + startdate + "&endDate=" + enddate + "")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=editEvent&uID=38&token=fab0563efcbc4dc78a38c7ffbf6d902216e58ec4&eID=18&title=" + title + "&description=" + description + "&startDate=" + startdate+" "+starttime + "&endDate=" + enddate +" "+endtime+ "")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -49,8 +58,8 @@ function Edit() {
                 <div key={text}>
                     <h2>Title: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
                     <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
-                    <h2>Start-date: <input type="date" name={text} onChange={handleChangeDescription} /><input type="time" name={text} onChange={handleChangeDescription} /></h2>
-                    <h2>End-date: <input type="date" name={text} onChange={handleChangeDescription} /><input type="time" name={text} onChange={handleChangeDescription} /></h2>
+                    <h2>Start-date: <input type="date" name={text} onChange={handleChangeStartdate} /><input type="time" name={text} onChange={handleChangeStarttime} /></h2>
+                    <h2>End-date: <input type="date" name={text} onChange={handleChangeEnddate} /><input type="time" name={text} onChange={handleChangeEndtime} /></h2>
                     <button onClick={send} className="add">Edit</button>
                 </div>
 
