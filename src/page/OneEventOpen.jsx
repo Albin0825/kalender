@@ -30,7 +30,7 @@ function App() {
     <div className="con">
       <img src={BG} alt="background image"/>
         <div className="window blur notlogin">
-          <Link to='/OneEventOpen' className="vpil"><img src={ARROW} alt="Go back"/></Link>
+          <Link to='/Login' className="vpil"><img src={ARROW} alt="Go back"/></Link>
           <h1 className="rubrik">Hej!</h1>
           <p className="desc">Desc: </p>
           <p className="time">Time: </p>
