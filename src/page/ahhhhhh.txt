@@ -1,0 +1,52 @@
+import BG from '../bilder/andrew-neel-cckf4TsHAuw-unsplash.jpg';
+import '../App.css';
+import { useEffect, useState } from "react";
+import React from 'react';
+import Event from '../component/Event';
+
+function Eventlista(response){
+
+
+    const [eventlist, setEventlist] = useState([]);
+    const getEvents = async () => {
+        //const [userid,setUserid] = useState(loadLS('userid'));
+        //const [token,setToken] = useState(loadLS('token'));
+        let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+39+"&token=17c22096fc6cee0f2b599c45714861fa8f3a462e"+username;
+        const response = await fetch(`${API_URL}`)
+        .then(response => response.json())
+        .then(
+            (result)=>{
+                console.log(result["Data"]["My events"]);
+                setEventlist(result["Data"]["My events"]);
+            }
+        )
+        
+       //const data = await response.json(); 
+    }
+
+    function send() {
+        navigate('/OneEventOpen');
+    }
+  
+    return(
+        <div className="lista">   
+            <img src={BG} alt="background image"/>
+                <div className="window blur lista">
+                    <button onClick={send}>OneEventOpen</button>
+                <input id="showEvents" type="button" onClick={() => getEvents()} value="click"></input>
+                {eventlist.length}
+                {eventlist?.length?(
+                eventlist.map((events) => (
+                <Event key={events["ID"].toString()} event={events} />    
+                )))
+                :(
+                    <div>this is fel</div>
+                )}
+            </div>
+        </div>
+    )
+}
+
+
+
+export default Eventlista;
