@@ -1,4 +1,4 @@
-{/*import '../App.css';
+import '../App.css';
 import { useEffect, useState } from "react";
 import * as React from 'react';
 import Event from '../component/Event';
@@ -40,4 +40,4 @@ function Eventlista(response){
     )
 }
 
-export default Eventlista;*/}
+export default Eventlista;

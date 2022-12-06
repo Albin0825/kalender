@@ -7,6 +7,7 @@ import '../App.css';
 function Edit() {
 
     let navigate = useNavigate();
+    const [id, setID] = useState([]);
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
     const [startdate, setStartdate] = useState([]);
@@ -14,6 +15,9 @@ function Edit() {
     const [enddate, setEnddate] = useState([]);
     const [endtime, setEndtime] = useState([]);
 
+    const handleChangeID = (e) => {
+        setID(e.target.value);
+    }
     const handleChangeTitle = (e) => {
         setTitle(e.target.value);
     }
@@ -34,7 +38,7 @@ function Edit() {
     }
 
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=editEvent&uID=38&token=fab0563efcbc4dc78a38c7ffbf6d902216e58ec4&eID=18&title=" + title + "&description=" + description + "&startDate=" + startdate+" "+starttime + "&endDate=" + enddate +" "+endtime+ "")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=editEvent&uID=38&token=fab0563efcbc4dc78a38c7ffbf6d902216e58ec4&eID="+ id +"&title=" + title + "&description=" + description + "&startDate=" + startdate+" "+starttime + "&endDate=" + enddate +" "+endtime+ "")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -56,6 +60,7 @@ function Edit() {
             <div className="window blur notlogin">
                 <Link to='/OneEventOpen' className="vpil"><img src={ARROW} alt="Go back" /></Link>
                 <div key={text}>
+                    <h2>ID: <input type="text" name={text} onChange={handleChangeID} /></h2>
                     <h2>Title: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
                     <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
                     <h2>Start-date: <input type="date" name={text} onChange={handleChangeStartdate} /><input type="time" name={text} onChange={handleChangeStarttime} /></h2>
