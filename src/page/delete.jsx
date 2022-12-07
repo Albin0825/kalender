@@ -3,10 +3,13 @@ import ARROW from '../bilder/Vector.svg';
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
+import { loadLs } from '../component/Funktioner';
 
 function Delete() {
 
     let navigate = useNavigate();
+    const [uid, setUid] = useState(loadLs('uID'));
+    const [token, setToken] = useState(loadLs('token'));
     const [id, setID] = useState([]);
 
     const handleChangeID = (e) => {
@@ -14,7 +17,7 @@ function Delete() {
     }
 
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=deleteEvent&uID=38&token=109736f6e0c46bc894cb64b1bd0a44b395eff484&eID="+ id +"")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=deleteEvent&uID="+ uid +"&token="+ token +"&eID="+ id +"")
             .then(res => res.json())
             .then(
                 (result) => {
