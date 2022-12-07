@@ -11,6 +11,7 @@ import Eventlist from "./page/eventList";
 import Edit from "./page/edit";
 import Delete from "./page/delete";
 import Kalender from "./page/kalender";
+import Createuser from "./page/createUser";
 
 import HeaderBar from "./page/header";
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/Edit" element ={<Edit />} />
         <Route path="/Delete" element ={<Delete />} />
         <Route path="/Kalender" element ={<Kalender />} />
+        <Route path="/Createuser" element ={<Createuser />} />
       </Routes>
     </div>
   );
