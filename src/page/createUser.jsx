@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 function Createuser (){
     const [uid, setUid] = useState(loadLs('uID'));
     const [token, setToken] = useState(loadLs('token'));
+    const [eventlist, setEventlist] = useState([]);
 
     const createNewUser = async () => {
         let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token="+token;
