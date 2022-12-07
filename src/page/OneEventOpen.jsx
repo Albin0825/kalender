@@ -11,21 +11,6 @@ function App() {
         setNavbarOpen(prev => !prev)
     }
 
-  const [items, setItems] = useState([]);
-    useEffect (()=>{
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=38&token=fab0563efcbc4dc78a38c7ffbf6d902216e58ec4")
-        .then(res => res.json())
-        .then(
-            (result)=>{
-                const d = result["Data"]["My events"];
-                for(let i = 0;i<d.length;i++) {
-                    console.log(d[i])
-                    setItems(d[i])
-                }   
-            }
-        )
-    }, [])
-
   return (
     <div className="con">
       <img src={BG} alt="background image"/>
@@ -37,9 +22,8 @@ function App() {
           <p className="inv">Invites: </p>
           <nav className="navBar">
               <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
-              <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
               <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/edit" />
-              <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="" />
+              <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
           </nav>
         </div>
     </div>
