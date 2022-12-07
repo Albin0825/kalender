@@ -8,8 +8,8 @@ import { loadLs } from '../component/Funktioner';
 function Edit() {
 
     let navigate = useNavigate();
-    const [uid, setUid] = useState(loadLs('uID'));
-    const [token, setToken] = useState(loadLs('token'));
+    const [uid] = useState(loadLs('uID'));
+    const [token] = useState(loadLs('token'));
     const [id, setID] = useState([]);
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
