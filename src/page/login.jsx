@@ -31,7 +31,7 @@ function Login() {
                     console.log(result.Data.uID)
                     navigate('/OneEventOpen');
                     saveLs('uID',result.Data.uID);
-                    saveLs('token',result.Data.token);
+                    saveLs('token',result.Data.Token);
                     saveLs('admin',result.Data.admin);
                 }
             }
