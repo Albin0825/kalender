@@ -18,7 +18,7 @@ function Eventlista(response){
 
     
     const getEvents = async () => {
-        let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token="+token;
+        let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token="+token+"";
         const response = await fetch(`${API_URL}`)
         .then(response => response.json())
         .then(

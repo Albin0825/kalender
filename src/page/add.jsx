@@ -3,9 +3,12 @@ import ARROW from '../bilder/Vector.svg';
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
+import { loadLs } from '../component/Funktioner';
 
 function Add() {
     let navigate = useNavigate();
+    const [uid, setUid] = useState(loadLs('uID'));
+    const [token, setToken] = useState(loadLs('token'));
     const [item, setItem] = useState([])
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
@@ -34,7 +37,7 @@ function Add() {
     }
 
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=109736f6e0c46bc894cb64b1bd0a44b395eff484&title=" + title + "&description=" + description + "&startDate=" + startdate+" "+starttime + "&endDate=" + enddate +" "+endtime+ "")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID="+ uid +"&token="+ token +"&title=" + title + "&description=" + description + "&startDate=" + startdate+" "+starttime + "&endDate=" + enddate +" "+endtime+ "")
             .then(res => res.json())
             .then(
                 (result) => {

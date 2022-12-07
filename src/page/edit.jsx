@@ -3,10 +3,13 @@ import ARROW from '../bilder/Vector.svg';
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
+import { loadLs } from '../component/Funktioner';
 
 function Edit() {
 
     let navigate = useNavigate();
+    const [uid, setUid] = useState(loadLs('uID'));
+    const [token, setToken] = useState(loadLs('token'));
     const [id, setID] = useState([]);
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);
@@ -38,7 +41,7 @@ function Edit() {
     }
 
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=editEvent&uID=38&token=109736f6e0c46bc894cb64b1bd0a44b395eff484&eID="+ id +"&title=" + title + "&description=" + description + "&startDate=" + startdate+" "+starttime + "&endDate=" + enddate +" "+endtime+ "")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=editEvent&uID="+ uid +"&token="+ token +"&eID="+ id +"&title=" + title + "&description=" + description + "&startDate=" + startdate+" "+starttime + "&endDate=" + enddate +" "+endtime+ "")
             .then(res => res.json())
             .then(
                 (result) => {
