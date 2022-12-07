@@ -18,20 +18,27 @@ function DaysOnMonth() {
     )
   }
   return (
-    <table style={{
-      width: "100%",
-      height: "100%"
-    }}>
-      <tr>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-        <th>Sunday</th>
-      </tr>
-      {days}
+    <table
+      width = "100%"
+      height = "100%"
+      cellspacing = "111"
+    >
+      <caption align="top">
+      </caption>
+      <thead>
+        <tr>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+          <th>Sunday</th>
+        </tr>
+      </thead>
+      <tbody>
+        {days}
+      </tbody>
     </table>
   );
 }

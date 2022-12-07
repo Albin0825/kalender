@@ -12,13 +12,13 @@ function Eventlista(response){
         setNavbarOpen(prev => !prev)
     }
 
-    const [uid, setUid] = useState(loadLs('uID'));
-    const [token, setToken] = useState(loadLs('token'));
+    const [uid] = useState(loadLs('uID'));
+    const [token] = useState(loadLs('token'));
     const [eventlist, setEventlist] = useState([]);
 
     
     const getEvents = async () => {
-        let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token="+token;
+        let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token="+token+"";
         const response = await fetch(`${API_URL}`)
         .then(response => response.json())
         .then(
