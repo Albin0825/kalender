@@ -172,8 +172,7 @@ button.showMenu {
 
 .menuNav2 {
   background-image: url(./bilder/edit.svg);
-  right: 45px;
-  bottom: 45px;
+  bottom: 60px;
 }
 
 .menuNav3 {
