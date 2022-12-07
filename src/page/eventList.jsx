@@ -12,8 +12,8 @@ function Eventlista(response){
         setNavbarOpen(prev => !prev)
     }
 
-    const [uid, setUid] = useState(loadLs('uID'));
-    const [token, setToken] = useState(loadLs('token'));
+    const [uid] = useState(loadLs('uID'));
+    const [token] = useState(loadLs('token'));
     const [eventlist, setEventlist] = useState([]);
 
     

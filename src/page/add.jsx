@@ -7,8 +7,8 @@ import { loadLs } from '../component/Funktioner';
 
 function Add() {
     let navigate = useNavigate();
-    const [uid, setUid] = useState(loadLs('uID'));
-    const [token, setToken] = useState(loadLs('token'));
+    const [uid] = useState(loadLs('uID'));
+    const [token] = useState(loadLs('token'));
     const [item, setItem] = useState([])
     const [title, setTitle] = useState([]);
     const [description, setDescription] = useState([]);

@@ -10,8 +10,8 @@ import { loadLs } from '../component/Funktioner';
 
 function Kalender() {
 
-    const [uid, setUid] = useState(loadLs('uID'));
-    const [token, setToken] = useState(loadLs('token'));
+    const [uid] = useState(loadLs('uID'));
+    const [token] = useState(loadLs('token'));
 
     const [items, setItems] = useState([]);
     useEffect (()=>{

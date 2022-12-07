@@ -58,6 +58,11 @@ li:not(:last-child) {
   width: calc(100vw / 1.5);
 }
 
+th{
+  position: relative;
+  margin-left: 20px;
+}
+
 .notlogin {
   width: calc(100vw / 2.5);
 }
