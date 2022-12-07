@@ -3,8 +3,15 @@ import { useEffect, useState } from "react";
 import * as React from 'react';
 import Event from '../component/Event';
 import { loadLs } from '../component/Funktioner';
+import { Link } from 'react-router-dom';
 
 function Eventlista(response){
+
+    const [navbarOpen, setNavbarOpen] = useState(false)
+    const handleToggle = () => {
+        setNavbarOpen(prev => !prev)
+    }
+
     const [uid, setUid] = useState(loadLs('uID'));
     const [token, setToken] = useState(loadLs('token'));
     const API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token"+token;
@@ -35,6 +42,11 @@ function Eventlista(response){
                 :(
                     <div>this is fel</div>
                 )}
+            <nav className="navBar">
+                <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
+                <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
+                <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
+            </nav>
             </div>
         </div>
     )

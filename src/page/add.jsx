@@ -34,7 +34,7 @@ function Add() {
     }
 
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=d05527e179c2ceb028f74cc6eca43d2b044e2a1d&title=" + title + "&description=" + description + "&startDate=" + startdate+" "+starttime + "&endDate=" + enddate +" "+endtime+ "")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=createEvent&uID=38&token=109736f6e0c46bc894cb64b1bd0a44b395eff484&title=" + title + "&description=" + description + "&startDate=" + startdate+" "+starttime + "&endDate=" + enddate +" "+endtime+ "")
             .then(res => res.json())
             .then(
                 (result) => {

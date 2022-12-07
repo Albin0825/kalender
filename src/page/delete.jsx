@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
 
-function Edit() {
+function Delete() {
 
     let navigate = useNavigate();
     const [id, setID] = useState([]);
@@ -14,13 +14,13 @@ function Edit() {
     }
 
     function send() {
-        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=deleteEvent&uID=38&token=fab0563efcbc4dc78a38c7ffbf6d902216e58ec4&eID="+ id +"")
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=deleteEvent&uID=38&token=109736f6e0c46bc894cb64b1bd0a44b395eff484&eID="+ id +"")
             .then(res => res.json())
             .then(
                 (result) => {
                     if (result["Data"]["Result"] != undefined) {
                         console.log(result["Data"])
-                        navigate('/OneEventOpen')
+                        navigate('/Kalender')
                     }
                     else {
                         console.log(result["Data"])
@@ -45,4 +45,4 @@ function Edit() {
     );
 }
 
-export default Edit;
+export default Delete;

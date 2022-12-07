@@ -10,6 +10,8 @@ import Datadump from "./component/Datadump";
 import Add from "./page/add";
 import Eventlist from "./page/eventList";
 import Edit from "./page/edit";
+import Delete from "./page/delete";
+import Kalender from "./page/kalender";
 
 import HeaderBar from "./page/header";
 
@@ -27,6 +29,8 @@ function App() {
         <Route path="/Datadump" element = { <Datadump/> } />
         <Route path="/Add" element ={<Add />} />
         <Route path="/Edit" element ={<Edit />} />
+        <Route path="/Delete" element ={<Delete />} />
+        <Route path="/Kalender" element ={<Kalender />} />
       </Routes>
     </div>
   );
