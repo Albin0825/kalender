@@ -27,9 +27,10 @@ function Login() {
         .then(
             (result)=>{
                 if(result.Data.Token != undefined) {
-                    console.log(result.Data.Token)
-                    console.log(result.Data.uID)
-                    navigate('/OneEventOpen');
+                    console.log(result.Data.Token);
+                    console.log(result.Data.uID);
+                    console.log(result.Data.Admin);
+                    navigate('/Kalender');
                     saveLs('uID',result.Data.uID);
                     saveLs('token',result.Data.Token);
                     saveLs('admin',result.Data.admin);

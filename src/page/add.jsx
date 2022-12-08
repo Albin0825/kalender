@@ -44,11 +44,11 @@ function Add() {
                     
                     if (result["Data"]["Result"] != undefined) {
                         console.log(result["Data"])
+
                         navigate('/OneEventOpen')
                         saveLs('title',result.Data.title);
                         saveLs('token',result.Data.Token);
-                        saveLs('admin',result.Data.admin);
-                    }
+                        saveLs('admin',result.Data.admin);       }
                     else {
                         setItem(result["Data"])
                         console.log(startdate)
@@ -61,7 +61,7 @@ function Add() {
         <div className="con">
             <img src={BG} alt="background image" />
             <div className="window blur notlogin">
-                <Link to='/OneEventOpen' className="vpil"><img src={ARROW} alt="Go back" /></Link>
+                <Link to='/Eventlist' className="vpil"><img src={ARROW} alt="Go back" /></Link>
                 <div key={text}>
                     <h1 className ="error">{item}</h1>
                     <h2>Title: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
