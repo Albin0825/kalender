@@ -1,5 +1,6 @@
 import '../App.css';
 import BG from '../bilder/andrew-neel-cckf4TsHAuw-unsplash.jpg';
+
 import { useEffect, useState } from "react";
 import React from 'react';
 import Event from '../component/Event';

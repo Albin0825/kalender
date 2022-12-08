@@ -1,4 +1,4 @@
-import BG from '../bilder/andrew-neel-cckf4TsHAuw-unsplash.jpg';
+import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import ARROW from '../bilder/Vector.svg';
 import React, {useState, useEffect} from "react"
 import '../App.css';
@@ -15,7 +15,7 @@ function App() {
     <div className="con">
       <img src={BG} alt="background image"/>
         <div className="window blur notlogin">
-          <Link to='/Login' className="vpil"><img src={ARROW} alt="Go back"/></Link>
+          <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
           <h1 className="rubrik">Hej!</h1>
           <p className="desc">Desc: </p>
           <p className="time">Time: </p>
