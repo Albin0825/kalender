@@ -3,7 +3,7 @@ import ARROW from '../bilder/Vector.svg';
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
-import { loadLs } from '../component/Funktioner';
+import { loadLs, saveLs} from '../component/Funktioner';
 
 function Add() {
     let navigate = useNavigate();
@@ -44,9 +44,11 @@ function Add() {
                     
                     if (result["Data"]["Result"] != undefined) {
                         console.log(result["Data"])
-                        navigate('/Eventlist')
 
-                    }
+                        navigate('/OneEventOpen')
+                        saveLs('title',result.Data.title);
+                        saveLs('token',result.Data.Token);
+                        saveLs('admin',result.Data.admin);       }
                     else {
                         setItem(result["Data"])
                         console.log(startdate)
