@@ -1,4 +1,6 @@
 import '../App.css';
+import BG from '../bilder/andrew-neel-cckf4TsHAuw-unsplash.jpg';
+
 import { useEffect, useState } from "react";
 import React from 'react';
 import Event from '../component/Event';
@@ -34,22 +36,23 @@ function Eventlista(response){
     }
   
     return(
-        <div>   
-            <div>
-                <input id="showEvents" type="button" onClick={() => getEvents()} value="click"></input>
-                {eventlist.length}
-                {eventlist?.length?(
-                eventlist.map((events) => (
-                <Event key={events["ID"].toString()} event={events} />    
-                )))
-                :(
-                    <div>this is fel</div>
-                )}
-            <nav className="navBar">
-                <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
-                <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
-                <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
-            </nav>
+        <div className='lista'>   
+            <div className='eventList'>
+                <img src={BG} alt="background image" />
+                    <input id="showEvents" type="button" onClick={() => getEvents()} value="click"></input>
+                    {eventlist.length}
+                    {eventlist?.length?(
+                    eventlist.map((events) => (
+                    <Event key={events["ID"].toString()} event={events} />    
+                    )))
+                    :(
+                        <div>this is fel</div>
+                    )}
+                <nav className="navBar">
+                    <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
+                    <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
+                    <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
+                </nav>
             </div>
         </div>
     )

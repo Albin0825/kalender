@@ -23,6 +23,7 @@ function App() {
         <Route path="/Hamburger" element={ <Hamburger/> } />
         <Route path="/Home" element={ <Home/> } />
         <Route path="/Back" element={ <Back/> } />
+        <Route path="/" element ={<Login />} />
         <Route path="/Login" element ={<Login />} />
         <Route path='/Eventlist' element={<Eventlist />} />
         <Route path="/OneEventOpen" element ={<OneEventOpen />} />

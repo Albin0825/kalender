@@ -19,7 +19,7 @@ function Createuser (){
                 console.log(loadLs());
                 console.log("bruh", loadLs('token'));
                 console.log(result["Data"]["My events"]);
-                setEventlist(result["Data"]["My events"]);
+                //setEventlist(result["Data"]["My events"]);
             }
         )
         
