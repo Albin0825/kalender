@@ -5,16 +5,17 @@ import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import '../App.css';
 //import DaysOnMonth from "../component/daysOnMonth"
 import Calendar from 'react-calendar'
-import { loadLs } from '../component/Funktioner';
+import { loadLs, saveLs } from '../component/Funktioner';
 
 
 
 function Kalender() {
 
+    let navigate = useNavigate();
     const [uid] = useState(loadLs('uID'));
     const [token] = useState(loadLs('token'));
-
     const [items, setItems] = useState([]);
+    const [date] = useState([new Date()]);
     useEffect (()=>{
         fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+ uid +"&token="+ token +"")
         .then(res => res.json())
@@ -29,13 +30,24 @@ function Kalender() {
         )
     }, [])
 
+    const callDay = (date) => {
+        if(date == items["startDate"] || date == items["endDate"]){
+            navigate('/Eventlist')
+        }
+        else{
+            console.log(date)
+            console.log(items["startDate"])
+            console.log("There are no events here")
+        }
+    };//moment(day.dateString).format(_format)
+
     return (
         <div>
             <div className='con'>
                 <img src={BG} alt="background image"/>
                 <div className="window blur kalender" style={{overflow: "hidden", border: "solid 1px hsla(0, 0%, 0%, 0.25"}}>
                     {/*<DaysOnMonth/>*/}
-                    <Calendar />
+                    <Calendar value={date} onClickDay={callDay}/>
                 </div>
             </div>
         </div>
