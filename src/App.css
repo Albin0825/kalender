@@ -398,7 +398,7 @@ h2{
 
 #avatar > img{
   border-radius: 50%;
-  height: 150px;
+  height: 100px;
 
 }
 #usrnm {
@@ -407,4 +407,17 @@ h2{
   margin-right: auto;
  
 }
-
+  display: flex;
+  justify-content: center;
+  
+}
+#dsc{
+  margin-top: -2vh;
+  display: flex;
+  justify-content: center;
+}
+#mail{
+  margin-top: -2vh;
+  display: flex;
+  justify-content: center;
+}
