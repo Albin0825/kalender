@@ -9,10 +9,12 @@
   color: #222;
   font-family: 'Poppins', sans-serif;
 }
+
 nav,
 header > img {
   flex-basis: calc(100% / 2 - 100px);
 }
+
 li:not(:last-child) {
   margin-right: 100px;
 }
@@ -26,7 +28,7 @@ li:not(:last-child) {
   height: 100vh;
 }
 
-.con > img {
+.con,.eventList > img {
   position: absolute;
   top: 0;
   left: 0;
@@ -405,3 +407,4 @@ h2{
   margin-right: auto;
  
 }
+
