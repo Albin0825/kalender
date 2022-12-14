@@ -50,6 +50,13 @@ li:not(:last-child) {
   flex-flow: column;
 }
 
+.window:not(.profile){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
 .blur {
   backdrop-filter: blur(40px);
 }
@@ -385,4 +392,16 @@ h2{
 
 .Login:active {
   color: lightgray;
+}
+
+#avatar > img{
+  border-radius: 50%;
+  height: 150px;
+
+}
+#usrnm {
+  font-size: larger;
+  margin-left: auto;
+  margin-right: auto;
+ 
 }
