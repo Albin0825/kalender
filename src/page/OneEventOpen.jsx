@@ -16,10 +16,10 @@ function App() {
       <img src={BG} alt="background image"/>
         <div className="window blur notlogin">
           <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
-          <h1 className="rubrik">Hej!</h1>
-          <p className="desc">Desc: </p>
-          <p className="time">Time: </p>
-          <p className="inv">Invites: </p>
+          <h1 className="rubrik">Rubrik!</h1>
+          <p className="desc">Beskrivning: </p>
+          <p className="time">Tid: </p>
+          <p className="inv">Inbjudningar: </p>
           <nav className="navBar">
               <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
               <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/edit" />
