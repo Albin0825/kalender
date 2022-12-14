@@ -45,13 +45,11 @@ function Eventlista(response){
                 <img src={BG} alt="background image" />
                     
                     {eventlist.length}
-                    {eventlist?.length?(
+                    {
                     eventlist.map((events) => (
                     <Event key={events["ID"].toString()} event={events} />    
-                    )))
-                    :(
-                        <div>this is fel</div>
-                    )}
+                    ))}
+
                 <nav className="navBar">
                     <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
                     <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
