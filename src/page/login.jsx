@@ -45,10 +45,10 @@ function Login() {
             <div className='con'>
                 <img src={BG} alt="background image"/>
                 <div className="window blur">
-                    <h1>Login</h1>
-                    <input type="text" value={user} onChange={handleChangeUser} placeholder="Username"/>
-                    <input type="password" value={password} onChange={handleChangePassword} placeholder="Password"/>
-                    <button onClick={send}>Login</button>
+                    <h1>Inlogg</h1>
+                    <input type="text" value={user} onChange={handleChangeUser} placeholder="Användarnamn"/>
+                    <input type="password" value={password} onChange={handleChangePassword} placeholder="Lösenord"/>
+                    <button onClick={send}>Logga in</button>
                 </div>
             </div>
         </div>

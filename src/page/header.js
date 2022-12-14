@@ -10,19 +10,16 @@ function HeaderBar() {
                     <Link style={{textDecoration: "none"}} to="/Home">Kalender</Link>
                 </li>
                 <li style={{display: "inline-block", textAlign: "center"}}>
-                    <Link style={{textDecoration: "none"}} to='/Login'>Login</Link>
+                    <Link style={{textDecoration: "none"}} to='/Login'>Logga in</Link>
                 </li>
                 <li style={{display: "inline-block", textAlign: "center"}}>
-                    <Link style={{textDecoration: "none"}} to='/OneEventOpen'>OneEventOpen</Link>
+                    <Link style={{textDecoration: "none"}} to='/OneEventOpen'>En öppnad händelse</Link>
                 </li>
                 <li style={{display: "inline-block", textAlign: "center"}}>
-                    <Link style={{textDecoration: "none"}} to="/Hamburger">Hamburger meny</Link>
+                    <Link style={{textDecoration: "none"}} to="/Eventlist">Händelse lista</Link>
                 </li>
                 <li style={{display: "inline-block", textAlign: "center"}}>
-                    <Link style={{textDecoration: "none"}} to="/Eventlist">Eventlist</Link>
-                </li>
-                <li style={{display: "inline-block", textAlign: "center"}}>
-                    <Link style={{textDecoration: "none"}} to="/Createuser">Create user</Link>
+                    <Link style={{textDecoration: "none"}} to="/Createuser">Skapa användare</Link>
                 </li>
             </ul>
         </nav>;

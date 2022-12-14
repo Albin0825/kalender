@@ -49,7 +49,6 @@ function Eventlista(response){
                     eventlist.map((events) => (
                     <Event key={events["ID"].toString()} event={events} />    
                     ))}
-
                 <nav className="navBar">
                     <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
                     <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>

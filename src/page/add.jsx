@@ -3,7 +3,7 @@ import ARROW from '../bilder/Vector.svg';
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
-import { loadLs } from '../component/Funktioner';
+import { loadLs, saveLs} from '../component/Funktioner';
 
 function Add() {
     let navigate = useNavigate();
@@ -44,9 +44,11 @@ function Add() {
                     
                     if (result["Data"]["Result"] != undefined) {
                         console.log(result["Data"])
-                        navigate('/Eventlist')
 
-                    }
+                        navigate('/OneEventOpen')
+                        saveLs('title',result.Data.title);
+                        saveLs('token',result.Data.Token);
+                        saveLs('admin',result.Data.admin);       }
                     else {
                         setItem(result["Data"])
                         console.log(startdate)
@@ -62,10 +64,10 @@ function Add() {
                 <Link to='/Eventlist' className="vpil"><img src={ARROW} alt="Go back" /></Link>
                 <div key={text}>
                     <h1 className ="error">{item}</h1>
-                    <h2>Title: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
-                    <h2>Description: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
-                    <h2>Start-date: <input type="date" name={text} onChange={handleChangeStartdate} /><input type="time" name={text} onChange={handleChangeStarttime} /></h2>
-                    <h2>End-date: <input type="date" name={text} onChange={handleChangeEnddate} /><input type="time" name={text} onChange={handleChangeEndtime} /></h2>
+                    <h2>Titel: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
+                    <h2>Beskrivning: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
+                    <h2>Starttid: <input type="date" name={text} onChange={handleChangeStartdate} /><input type="time" name={text} onChange={handleChangeStarttime} /></h2>
+                    <h2>Sluttid: <input type="date" name={text} onChange={handleChangeEnddate} /><input type="time" name={text} onChange={handleChangeEndtime} /></h2>
                     <button onClick={send} className="add">Add</button>
                 </div>
 
