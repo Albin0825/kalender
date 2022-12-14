@@ -47,7 +47,7 @@ function Login() {
                     <h1>Login</h1>
                     <input type="text" value={user} onChange={handleChangeUser} placeholder="Username"/>
                     <input type="password" value={password} onChange={handleChangePassword} placeholder="Password"/>
-                    <button onClick={send}>Login</button>
+                    <button onClick={send}>Logga in</button>
                 </div>
             </div>
         </div>

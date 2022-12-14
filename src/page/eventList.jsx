@@ -46,7 +46,7 @@ function Eventlista(response){
                     <Event key={events["ID"].toString()} event={events} />    
                     )))
                     :(
-                        <div>this is fel</div>
+                        <div>Detta är fel</div>
                     )}
                 <nav className="navBar">
                     <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
