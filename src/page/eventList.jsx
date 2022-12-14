@@ -26,8 +26,8 @@ function Eventlista(response){
         .then(
             (result)=>{
                 console.log(loadLs());
-                console.log("bruh", loadLs('token'));
-                console.log("hej", result["Data"]["My events"]);
+                console.log(loadLs('token'));
+                console.log(result["Data"]["My events"]);
                 setEventlist(result["Data"]["My events"]);   
             }
         )
@@ -40,7 +40,7 @@ function Eventlista(response){
       }, []);
 
     return(
-        <div className='lista'>   
+        <div>   
             <div className='eventList'>
                 <img src={BG} alt="background image" />
                     
