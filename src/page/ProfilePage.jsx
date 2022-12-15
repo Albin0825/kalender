@@ -53,7 +53,10 @@ return (
                     )
                 } else {
                 return (
-                    <img src={profiledata.avatar} alt="Avatar"/>
+                    <div>
+                        <img src={profiledata.avatar} alt="Avatar"/>
+                        <p>{profiledata.avatar}</p>
+                    </div>
                     )
                 }
             })()}
@@ -61,9 +64,9 @@ return (
             <br></br>
             <span id="usrnm">{profiledata.name}</span> 
             <br></br>
-            <span id="dsc">{profiledata.description}</span>
+            <span id="dsc">Beskrivning: {profiledata.description}</span>
             <br></br>
-            <span id="mail">{profiledata.email}</span>
+            <span id="mail">E-post: {profiledata.email}</span>
         </div>
     </div>
 </div>
