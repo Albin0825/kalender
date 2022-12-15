@@ -10,6 +10,11 @@ import Nopfp from '../bilder/emptypfp.jpg';
 
 function ProfilePage(response) {
 
+    const [navbarOpen, setNavbarOpen] = useState(false)
+        const handleToggle = () => {
+        setNavbarOpen(prev => !prev)
+    }
+
     const [uid] = useState(loadLs('uID'));
     const [token] = useState(loadLs('token'));
     const [profiledata, setProfiledata] = useState([]);
@@ -28,6 +33,7 @@ function ProfilePage(response) {
                 console.log(result["Data"]["Users"]);
                 setProfiledata(result["Data"]["Users"]);
                 console.log(profiledata);
+                
             }
         )
         
@@ -40,36 +46,41 @@ function ProfilePage(response) {
 
 
 return (
-<div className="con">
-    <img src={BG} alt="background image"/>
-    <div className="window blur profil">
-        <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
-        <div className="profilRuta">
-            <span id="avatar">
-            {(() => {
-                if (profiledata.avatar == "unset") {
-                return (
-                    <img src={Nopfp} alt="Avatar"/>
-                    )
-                } else {
-                return (
-                    <div>
+    <div className="con">
+        <img src={BG} alt="background image"/>
+        <div className="window blur profil">
+            <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
+            <div className="profilRuta">
+                <span id="avatar">
+                {(() => {
+                    if (profiledata.avatar == "unset") {
+                    return (
+                        <img src={Nopfp} alt="Avatar"/>
+                        )
+                    } else {
+                    return (
                         <img src={profiledata.avatar} alt="Avatar"/>
-                        <p>{profiledata.avatar}</p>
-                    </div>
-                    )
-                }
-            })()}
-            </span>
-            <br></br>
-            <span id="usrnm">{profiledata.name}</span> 
-            <br></br>
-            <span id="dsc">Beskrivning: {profiledata.description}</span>
-            <br></br>
-            <span id="mail">E-post: {profiledata.email}</span>
+                        )
+                    }
+                })()}
+                </span>
+                <br></br>
+                <span id="usrnm">{profiledata.name}</span> 
+                <br></br>
+                <span id="subtit">Beskrivning:</span>
+                <br></br>
+                <span id="dsc">{profiledata.description}</span>
+                <br></br>
+                <span id="subtit">E-post:</span>
+                <br></br>
+                <span id="mail">{profiledata.email}</span>
+                <nav className="navBar">
+                    <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
+                    <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/editProfile" />
+                </nav>
+            </div>
         </div>
     </div>
-</div>
 );
 }
 

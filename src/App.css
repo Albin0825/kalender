@@ -399,22 +399,40 @@ h2{
 #avatar > img{
   border-radius: 50%;
   height: 100px;
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
 
 }
 #usrnm {
   font-size: larger;
-  margin-left: auto;
-  margin-right: auto;
- 
+  justify-content: center;
+  display: flex;
+  
 }
 
 #dsc{
   margin-top: -2vh;
   display: flex;
   justify-content: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 #mail{
   margin-top: -2vh;
   display: flex;
   justify-content: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+#subtit{
+  
+  display: flex;
+  justify-content: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  font-weight: bold;
+
 }

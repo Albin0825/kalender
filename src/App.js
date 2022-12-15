@@ -8,10 +8,11 @@ import OneEventOpen from "./page/OneEventOpen";
 import Hamburger from "./page/Hamburger";
 import Add from "./page/add";
 import Eventlist from "./page/eventList";
-import Edit from "./page/edit";
+import Editevent from "./page/editEvent";
 import Delete from "./page/delete";
 import Kalender from "./page/kalender";
 import Profile from "./page/ProfilePage";
+import EditProfile from "./page/editProfile";
 
 import HeaderBar from "./page/header";
 
@@ -28,10 +29,11 @@ function App() {
         <Route path='/Eventlist' element={<Eventlist />} />
         <Route path="/OneEventOpen" element ={<OneEventOpen />} />
         <Route path="/Add" element ={<Add />} />
-        <Route path="/Edit" element ={<Edit />} />
+        <Route path="/Editevent" element ={<Editevent />} />
         <Route path="/Delete" element ={<Delete />} />
         <Route path="/Kalender" element ={<Kalender />} />
         <Route path="/Profile" element ={<Profile />} />
+        <Route path="/Editprofile" element ={<EditProfile />} />
       </Routes>
     </div>
   );
