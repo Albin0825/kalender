@@ -47,15 +47,11 @@ function Add() {
 
                         navigate('/OneEventOpen')
                         saveLs('title',result.Data.title);
-<<<<<<< HEAD
                         saveLs('description',result.Data.description);
                         saveLs('startDate',result.Data.startDate);
                         saveLs('endDate',result.Data.endDate);
+
                     }
-=======
-                        saveLs('token',result.Data.Token);
-                        saveLs('admin',result.Data.admin);       }
->>>>>>> 623db41d108d5b7e3b229f0d88a8c60693bd98cf
                     else {
                         setItem(result["Data"])
                         console.log(startdate)
