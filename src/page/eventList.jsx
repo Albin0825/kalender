@@ -26,28 +26,29 @@ function Eventlista(response){
         .then(
             (result)=>{
                 console.log(loadLs());
-                console.log("bruh", loadLs('token'));
+                console.log(loadLs('token'));
                 console.log(result["Data"]["My events"]);
-                setEventlist(result["Data"]["My events"]);
+                setEventlist(result["Data"]["My events"]);   
             }
         )
         
        //const data = await response.json(); 
     }
-  
+    
+    useEffect(() => {
+        getEvents();
+      }, []);
+
     return(
-        <div className='lista'>   
+        <div>   
             <div className='eventList'>
                 <img src={BG} alt="background image" />
-                    <input id="showEvents" type="button" onClick={() => getEvents()} value="click"></input>
+                    
                     {eventlist.length}
-                    {eventlist?.length?(
+                    {
                     eventlist.map((events) => (
                     <Event key={events["ID"].toString()} event={events} />    
-                    )))
-                    :(
-                        <div>this is fel</div>
-                    )}
+                    ))}
                 <nav className="navBar">
                     <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
                     <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>

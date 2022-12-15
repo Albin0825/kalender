@@ -10,10 +10,10 @@ function App() {
         <div>
             <img src={BG} alt="background image"/>
             <div className="window blur">
-                <h1>Login</h1>
+                <h1>Inlogg</h1>
                 <input type="text" placeholder="Username"/>
                 <input type="password" placeholder="Password"/>
-                <Link to={Data}>Login</Link>
+                <Link to={Data}>Logga in</Link>
                 <input type="submit" value="Login" />
             </div>
         </div>

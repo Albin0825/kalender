@@ -40,7 +40,7 @@ function Delete() {
                 <Link to='/OneEventOpen' className="vpil"><img src={ARROW} alt="Go back" /></Link>
                 <div key={text}>
                     <h2>ID: <input type="text" name={text} onChange={handleChangeID} /></h2>
-                    <button onClick={send} className="add">Delete</button>
+                    <button onClick={send} className="add">Ta bort</button>
                 </div>
 
             </div>

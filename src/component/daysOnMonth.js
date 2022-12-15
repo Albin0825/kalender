@@ -51,13 +51,13 @@ function DaysOnMonth() {
       </caption>
       <thead>
         <tr>
-          <th>Monday</th>
-          <th>Tuesday</th>
-          <th>Wednesday</th>
-          <th>Thursday</th>
-          <th>Friday</th>
-          <th>Saturday</th>
-          <th>Sunday</th>
+          <th>Måndag</th>
+          <th>Tisdag</th>
+          <th>Onsdag</th>
+          <th>Torsdag</th>
+          <th>Fredag</th>
+          <th>Lördag</th>
+          <th>Söndag</th>
         </tr>
       </thead>
       <tbody>

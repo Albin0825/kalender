@@ -27,10 +27,11 @@ function Login() {
         .then(
             (result)=>{
                 if(result.Data.Token != undefined) {
-                    console.log(result.Data.Token);
                     console.log(result.Data.uID);
-                    console.log(result.Data.Admin);
+                    console.log(result.Data.Token);
+                    
                     navigate('/Kalender');
+                    saveLs('username',user)
                     saveLs('uID',result.Data.uID);
                     saveLs('token',result.Data.Token);
                     saveLs('admin',result.Data.admin);
@@ -44,10 +45,10 @@ function Login() {
             <div className='con'>
                 <img src={BG} alt="background image"/>
                 <div className="window blur">
-                    <h1>Login</h1>
-                    <input type="text" value={user} onChange={handleChangeUser} placeholder="Username"/>
-                    <input type="password" value={password} onChange={handleChangePassword} placeholder="Password"/>
-                    <button onClick={send}>Login</button>
+                    <h1>Inlogg</h1>
+                    <input type="text" value={user} onChange={handleChangeUser} placeholder="Användarnamn"/>
+                    <input type="password" value={password} onChange={handleChangePassword} placeholder="Lösenord"/>
+                    <button onClick={send}>Logga in</button>
                 </div>
             </div>
         </div>

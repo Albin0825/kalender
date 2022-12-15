@@ -9,10 +9,12 @@
   color: #222;
   font-family: 'Poppins', sans-serif;
 }
+
 nav,
 header > img {
   flex-basis: calc(100% / 2 - 100px);
 }
+
 li:not(:last-child) {
   margin-right: 100px;
 }
@@ -44,6 +46,13 @@ li:not(:last-child) {
 }
 
 .window:not(.notlogin){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.window:not(.profile){
   display: flex;
   justify-content: center;
   align-items: center;
@@ -385,4 +394,27 @@ h2{
 
 .Login:active {
   color: lightgray;
+}
+
+#avatar > img{
+  border-radius: 50%;
+  height: 100px;
+
+}
+#usrnm {
+  font-size: larger;
+  margin-left: auto;
+  margin-right: auto;
+ 
+}
+
+#dsc{
+  margin-top: -2vh;
+  display: flex;
+  justify-content: center;
+}
+#mail{
+  margin-top: -2vh;
+  display: flex;
+  justify-content: center;
 }
