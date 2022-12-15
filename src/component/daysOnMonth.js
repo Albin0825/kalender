@@ -1,14 +1,19 @@
 import React from 'react';
+import { loadLs, saveLs } from '../component/Funktioner';
+import { useState, useEffect } from "react"
 
 function DaysOnMonth() {
   let days = []
 
   let date = new Date();
-  
-  function getMonths(month){
-    // Get the month and year of the date
-    let year = date.getFullYear();
 
+  const [uid] = useState(loadLs('uID'));
+  const [token] = useState(loadLs('token'));
+  const [time,setTime] = useState([]);
+  const [day,setDay] = useState([]);
+
+  
+  function getMonths(month,year){
     // Determine the number of days in the month
     let daysInMonth = 0;
     switch (month) {
@@ -38,44 +43,87 @@ function DaysOnMonth() {
   }
 
   // Get the day of the week for this date
-  let dayOfWeek = date.getDay();
+  let dayOfWeek = date.setDate(1);
   dayOfWeek = dayOfWeek-1;
 
-  for(let i = 0; i != 35; i++) {
-    let prevMonth = getMonths(date.getMonth()-1)
-    let currMonth = getMonths(date.getMonth())
 
-    if(prevMonth - dayOfWeek + i < prevMonth){
-      days.push(
-        <div key={(i)}>{prevMonth - dayOfWeek + i +1}</div>
-      )
+  useEffect (()=>{
+    fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token="+token+"")
+    .then(res => res.json())
+    .then(
+        (result)=>{
+          console.log(result)
+            const d = result["Data"]["My events"];
+            for(let i = 0;i<d.length;i++) {
+                //console.log("Startdate: " +d[i]["startDate"].lastIndexOf(" "))
+                let startEnd = d[i]["startDate"].lastIndexOf(" ");
+                console.log("Startdate: "+d[i]["startDate"].slice(0,startEnd))
+                let endEnd = d[i]["endDate"].lastIndexOf(" ");
+                console.log("Enddate: "+d[i]["endDate"].slice(0,endEnd))
+                setTime(d[i])
+            }   
+        }
+    )
+  }, [])
+
+
+  
+
+  const handleChange = (event) => {
+    let inputMonth = event.target.value.indexOf("-")
+    let finalInputMonth = event.target.value.slice(inputMonth+1, event.target.value.length)
+    let finalInputYear = event.target.value.slice(0, inputMonth)
+    console.log("Month: "+finalInputMonth);
+    console.log("Year: "+finalInputYear);
+
+    days = []
+
+    for(let i = 0; i != 35; i++) {
+      let prevMonth = getMonths(parseInt(finalInputMonth)-2, parseInt(finalInputYear))
+      let currMonth = getMonths(parseInt(finalInputMonth)-1, parseInt(finalInputYear))
+  
+      if(prevMonth - dayOfWeek + i < prevMonth){
+        console.log(currMonth)
+        days.push(
+          <div key={(i)}>{prevMonth - dayOfWeek + i +1}</div>
+        )
+      }
+      else if(i - dayOfWeek < currMonth){
+        days.push(
+          <div key={(i)}>{i - dayOfWeek + 1}</div>
+        )
+      }
+      else{
+        days.push(
+          <div key={(i)}>{i - dayOfWeek + 1 - currMonth}</div>
+        )
+      }
     }
-    else if(i - dayOfWeek < currMonth){
-      days.push(
-        <div key={(i)}>{i - dayOfWeek + 1}</div>
-      )
-    }
-    else{
-      days.push(
-        <div key={(i)}>{i - dayOfWeek + 1 - currMonth}</div>
-      )
-    }
+    setDay(days);
+
   }
+
   return (
     <div style={{
-      display: "grid",
-      gridTemplateColumns: "repeat(7, 1fr)",
       height: "100%",
       width: "100%"
     }}>
-      <div>Måndag</div>
-      <div>Tisdag</div>
-      <div>Onsdag</div>
-      <div>Torsdag</div>
-      <div>Fredag</div>
-      <div>Lördag</div>
-      <div>Söndag</div>
-      {days}
+      <input type="month" onChange={handleChange}/>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(7, 1fr)",
+        height: "100%",
+        width: "100%"
+      }}>
+        <div>Måndag</div>
+        <div>Tisdag</div>
+        <div>Onsdag</div>
+        <div>Torsdag</div>
+        <div>Fredag</div>
+        <div>Lördag</div>
+        <div>Söndag</div>
+        {day}
+      </div>
     </div>
   );
 }
