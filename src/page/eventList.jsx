@@ -1,6 +1,6 @@
 import '../App.css';
-import BG from '../bilder/andrew-neel-cckf4TsHAuw-unsplash.jpg';
-
+import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
+import ARROW from '../bilder/Vector.svg';
 import { useEffect, useState } from "react";
 import React from 'react';
 import Event from '../component/Event';
@@ -27,8 +27,10 @@ function Eventlista(response){
             (result)=>{
                 console.log(loadLs());
                 console.log(loadLs('token'));
+                console.log(result);
                 console.log(result["Data"]["My events"]);
-                setEventlist(result["Data"]["My events"]);   
+                setEventlist(result["Data"]["My events"]); 
+                
             }
         )
         
@@ -40,11 +42,11 @@ function Eventlista(response){
       }, []);
 
     return(
-        <div>   
-            <div className='eventList'>
-                <img src={BG} alt="background image" />
-                    
-                    {eventlist.length}
+        <div className='con'>
+            <img src={BG} alt="background image" />
+                <div className='window blur eventList'>
+                    <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
+                    <p className="OneEventOpenRubrik">Dagens händelser</p>
                     {
                     eventlist.map((events) => (
                     <Event key={events["ID"].toString()} event={events} />    
@@ -54,7 +56,7 @@ function Eventlista(response){
                     <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
                     <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
                 </nav>
-            </div>
+                </div>
         </div>
     )
 }
