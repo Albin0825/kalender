@@ -7,10 +7,22 @@ const Event = ({event}) => {
 
     return ( 
         <div className='data' >
-            <span className='title'>{event.title}</span>
-            <span className='desc'>{event.description}</span>
-            <span className='stdt'>{event.startDate}</span>
-            <span className='eddt'>{event.endDate}</span>
+            <span className='eventTitle'>{event.title}</span>
+            <br></br>
+            <span className='eventDesc'>{event.description}</span>
+            <br></br>
+            <span className='eventStdt'>{event.startDate.substring(11)} </span>
+            {(() => {
+                    if (event.startDate.substring(0,10) == event.endDate.substring(0,10)){
+                        return (
+                            <span className='eventDddt'>- {event.endDate.substring(11)} </span>
+                            )
+                    } else {
+                        return (
+                            <span className='eventDddt'>- {event.endDate}</span>
+                            )
+                        }
+                })()}
         </div>
     ); 
 }
