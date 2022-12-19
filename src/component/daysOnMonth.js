@@ -1,10 +1,13 @@
 import React from 'react';
 import { loadLs, saveLs } from '../component/Funktioner';
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 
 
 function DaysOnMonth() {
   let days = []
+
+  let navigate = useNavigate();
 
   let date = new Date();
 
@@ -107,7 +110,7 @@ function DaysOnMonth() {
       if(prevMonth - dayOfWeek + i < prevMonth){
         console.log(currMonth)
         days.push(
-          <div key={(i)}>
+          <div key={(i)} onClick={save(finalInputYear, finalInputMonth, (i - dayOfWeek + 1 - currMonth))}>
             {prevMonth - dayOfWeek + i +1}
             {(() => {
               let elements = [];
@@ -148,7 +151,7 @@ function DaysOnMonth() {
       }
       else if(i - dayOfWeek < currMonth){
         days.push(
-          <div key={(i)}>
+          <div key={(i)} onClick={() => navigate("/Eventlist", save(finalInputYear, finalInputMonth, (i - dayOfWeek + 1 - currMonth)))}>
             {i - dayOfWeek + 1}
             {(() => {
               let elements = [];
@@ -181,7 +184,7 @@ function DaysOnMonth() {
       }
       else{
         days.push(
-          <div key={(i)}>
+          <div key={(i)} onClick={() => navigate("/Eventlist", save(finalInputYear, finalInputMonth, (i - dayOfWeek + 1 - currMonth)))}>
             {i - dayOfWeek + 1 - currMonth}
             {(() => {
               let elements = [];
@@ -224,6 +227,11 @@ function DaysOnMonth() {
     }
     setDay(days);
 
+  }
+
+  function save(year, month, day){
+    saveLs("startDate", year + "-" + month + "-" + day)
+    console.log(day)
   }
 
   return (
