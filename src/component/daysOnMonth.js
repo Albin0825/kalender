@@ -2,6 +2,7 @@ import React from 'react';
 import { loadLs, saveLs } from '../component/Funktioner';
 import { useState, useEffect } from "react"
 
+
 function DaysOnMonth() {
   let days = []
 
@@ -42,29 +43,20 @@ function DaysOnMonth() {
     return daysInMonth;
   }
 
-  // Get the day of the week for this date
-  let dayOfWeek = date.setDate(1);
-  dayOfWeek = dayOfWeek-1;
+ 
+  getData()
 
-
-  useEffect (()=>{
-    fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token="+token+"")
+  async function getData(){
+    await fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token="+token+"")
     .then(res => res.json())
     .then(
         (result)=>{
-          console.log(result)
             const d = result["Data"]["My events"];
-            for(let i = 0;i<d.length;i++) {
-                //console.log("Startdate: " +d[i]["startDate"].lastIndexOf(" "))
-                let startEnd = d[i]["startDate"].lastIndexOf(" ");
-                console.log("Startdate: "+d[i]["startDate"].slice(0,startEnd))
-                let endEnd = d[i]["endDate"].lastIndexOf(" ");
-                console.log("Enddate: "+d[i]["endDate"].slice(0,endEnd))
-                setTime(d[i])
-            }   
+            setTime(d)
+            //console.log(time)
         }
-    )
-  }, [])
+    ) 
+  }
 
 
   
@@ -73,30 +65,161 @@ function DaysOnMonth() {
     let inputMonth = event.target.value.indexOf("-")
     let finalInputMonth = event.target.value.slice(inputMonth+1, event.target.value.length)
     let finalInputYear = event.target.value.slice(0, inputMonth)
-    console.log("Month: "+finalInputMonth);
-    console.log("Year: "+finalInputYear);
+
+    let dataPrevMonth = finalInputMonth - 1;
+    if(dataPrevMonth <= 0){
+      dataPrevMonth = 12
+    }
+
+    let dataNextMonth = finalInputMonth + 1;
+    if(dataNextMonth >= 13){
+      dataNextMonth = 1
+    }
+
+    let prevMonth = 0;
+    if(parseInt(finalInputMonth) - 2 <= -1){
+      prevMonth = getMonths(11, parseInt(finalInputYear) - 1)
+    }
+    else{
+      prevMonth = getMonths(parseInt(finalInputMonth) - 2, parseInt(finalInputYear))
+    }
+
+    let currMonth = getMonths(parseInt(finalInputMonth)-1, parseInt(finalInputYear))
+
+
+    
+    console.log(parseInt(finalInputMonth) -1)
+
+    let datum = new Date(finalInputYear, finalInputMonth-1, 1);
+    
+    // Get the day of the week for this date
+    let dayOfWeek = datum.getDay();
+    if(dayOfWeek == 0){
+      dayOfWeek = 7;
+    }
+    dayOfWeek = dayOfWeek-1;
+    console.log(dayOfWeek)
 
     days = []
 
-    for(let i = 0; i != 35; i++) {
-      let prevMonth = getMonths(parseInt(finalInputMonth)-2, parseInt(finalInputYear))
-      let currMonth = getMonths(parseInt(finalInputMonth)-1, parseInt(finalInputYear))
-  
+    for(let i = 0; i != 42; i++) {
+
       if(prevMonth - dayOfWeek + i < prevMonth){
         console.log(currMonth)
         days.push(
-          <div key={(i)}>{prevMonth - dayOfWeek + i +1}</div>
-        )
+          <div key={(i)}>
+            {prevMonth - dayOfWeek + i +1}
+            {(() => {
+              let elements = [];
+              for (let x = 0; x < time.length; x++) {
+                let start = time[x]["startDate"].lastIndexOf(" ");
+                let stripStart = time[x]["startDate"].slice(0,start);
+                let end = time[x]["endDate"].lastIndexOf(" ");
+                let stripEnd = time[x]["endDate"].slice(0,end);
+        
+                let startYear = stripStart.slice(0, stripStart.indexOf("-"))
+                let endYear = stripEnd.slice(0, stripEnd.indexOf("-"))
+                let startMonth = stripStart.slice(stripStart.indexOf("-")+1, stripStart.lastIndexOf("-"))
+                let endMonth = stripEnd.slice(stripEnd.indexOf("-")+1, stripEnd.lastIndexOf("-"))
+                let startDay = stripStart.slice(stripStart.lastIndexOf("-")+1, stripStart.length)
+                let endDay = stripEnd.slice(stripEnd.lastIndexOf("-")+1, stripEnd.length)
+
+                let year = 0;
+
+                if(dataPrevMonth == 12){
+                  year = finalInputYear --;
+                }
+                else{
+                  year = finalInputYear;
+                }
+                if(year >= parseInt(startYear) && year <= parseInt(endYear)){
+                  if(dataPrevMonth >= parseInt(startMonth) && dataPrevMonth <= parseInt(endMonth)){
+                    if((prevMonth - dayOfWeek + i +1) >= parseInt(startDay) && (prevMonth - dayOfWeek + i +1) <= parseInt(endDay)){
+                      console.log(time[x])
+                      elements.push(<p>{time[x]["title"]}</p>);
+                    }
+                  }
+                }  
+              }
+              return elements;
+            })()}
+          </div>
+        );
       }
       else if(i - dayOfWeek < currMonth){
         days.push(
-          <div key={(i)}>{i - dayOfWeek + 1}</div>
-        )
+          <div key={(i)}>
+            {i - dayOfWeek + 1}
+            {(() => {
+              let elements = [];
+              for (let x = 0; x < time.length; x++) {
+                let start = time[x]["startDate"].lastIndexOf(" ");
+                let stripStart = time[x]["startDate"].slice(0,start);
+                let end = time[x]["endDate"].lastIndexOf(" ");
+                let stripEnd = time[x]["endDate"].slice(0,end);
+        
+                let startYear = stripStart.slice(0, stripStart.indexOf("-"))
+                let endYear = stripEnd.slice(0, stripEnd.indexOf("-"))
+                let startMonth = stripStart.slice(stripStart.indexOf("-")+1, stripStart.lastIndexOf("-"))
+                let endMonth = stripEnd.slice(stripEnd.indexOf("-")+1, stripEnd.lastIndexOf("-"))
+                let startDay = stripStart.slice(stripStart.lastIndexOf("-")+1, stripStart.length)
+                let endDay = stripEnd.slice(stripEnd.lastIndexOf("-")+1, stripEnd.length)
+        
+                if(finalInputYear >= parseInt(startYear) && finalInputYear <= parseInt(endYear)){
+                  if(finalInputMonth >= parseInt(startMonth) && finalInputMonth <= parseInt(endMonth)){
+                    if((i - dayOfWeek + 1) >= parseInt(startDay) && (i - dayOfWeek + 1) <= parseInt(endDay)){
+                      console.log(time[x])
+                      elements.push(<p>{time[x]["title"]}</p>);
+                    }
+                  }
+                }  
+              }
+              return elements;
+            })()}
+          </div>
+        );
       }
       else{
         days.push(
-          <div key={(i)}>{i - dayOfWeek + 1 - currMonth}</div>
-        )
+          <div key={(i)}>
+            {i - dayOfWeek + 1 - currMonth}
+            {(() => {
+              let elements = [];
+              for (let x = 0; x < time.length; x++) {
+                let start = time[x]["startDate"].lastIndexOf(" ");
+                let stripStart = time[x]["startDate"].slice(0,start);
+                let end = time[x]["endDate"].lastIndexOf(" ");
+                let stripEnd = time[x]["endDate"].slice(0,end);
+        
+                let startYear = stripStart.slice(0, stripStart.indexOf("-"))
+                let endYear = stripEnd.slice(0, stripEnd.indexOf("-"))
+                let startMonth = stripStart.slice(stripStart.indexOf("-")+1, stripStart.lastIndexOf("-"))
+                let endMonth = stripEnd.slice(stripEnd.indexOf("-")+1, stripEnd.lastIndexOf("-"))
+                let startDay = stripStart.slice(stripStart.lastIndexOf("-")+1, stripStart.length)
+                let endDay = stripEnd.slice(stripEnd.lastIndexOf("-")+1, stripEnd.length)
+
+                let year = 0;
+
+                if(dataNextMonth == 1){
+                  year = finalInputYear ++;
+                }
+                else{
+                  year = finalInputYear;
+                }
+        
+                if(year >= parseInt(startYear) && year <= parseInt(endYear)){
+                  if(finalInputMonth + 1 >= parseInt(startMonth) && finalInputMonth + 1 <= parseInt(endMonth)){
+                    if((i - dayOfWeek + 1 - currMonth) >= parseInt(startDay) && (i - dayOfWeek + 1 - currMonth) <= parseInt(endDay)){
+                      console.log(time[x])
+                      elements.push(<p>{time[x]["title"]}</p>);
+                    }
+                  }
+                }  
+              }
+              return elements;
+            })()}
+          </div>
+        );
       }
     }
     setDay(days);
