@@ -28,7 +28,7 @@ function App() {
         <Route path='/Eventlist' element={<Eventlist />} />
         <Route path="/OneEventOpen" element ={<OneEventOpen />} />
         <Route path="/Add" element ={<Add />} />
-        <Route path="/Edit" element ={<Edit />} />
+        <Route path="/Editevent" element ={<Editevent />} />
         <Route path="/Delete" element ={<Delete />} />
         <Route path="/Kalender" element ={<Kalender />} />
         <Route path="/Profile" element ={<Profile />} />
