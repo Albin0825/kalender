@@ -3,10 +3,9 @@ import ARROW from '../bilder/Vector.svg';
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
-import { loadLs, saveLs } from '../component/Funktioner';
+import { loadLs } from '../component/Funktioner';
 
-
-function Editevent() {
+function Editprofile() {
 
     let navigate = useNavigate();
     const [uid] = useState(loadLs('uID'));
@@ -49,12 +48,6 @@ function Editevent() {
                     if (result["Data"]["Result"] != undefined) {
                         console.log(result["Data"])
                         navigate('/OneEventOpen')
-
-                        saveLs('title',result.Data.title);
-                        saveLs('description',result.Data.description);
-                        saveLs('startDate',result.Data.startDate);
-                        saveLs('endDate',result.Data.endDate);
-
                     }
                     else {
                         console.log(result["Data"])
@@ -83,4 +76,4 @@ function Editevent() {
     );
 }
 
-export default Editevent;
+export default Editprofile;
