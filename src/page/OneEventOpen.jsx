@@ -15,7 +15,7 @@ function App() {
     <div className="con">
       <img src={BG} alt="background image"/>
         <div className="window blur notlogin">
-          <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
+          <Link to='/eventList' className="vpil"><img src={ARROW} alt="Go back"/></Link>
           <h1 className="rubrik">Rubrik!</h1>
           <p className="desc">Beskrivning: </p>
           <p className="time">Tid: </p>

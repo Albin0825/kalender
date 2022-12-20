@@ -47,8 +47,11 @@ function Add() {
 
                         navigate('/OneEventOpen')
                         saveLs('title',result.Data.title);
-                        saveLs('token',result.Data.Token);
-                        saveLs('admin',result.Data.admin);       }
+                        saveLs('description',result.Data.description);
+                        saveLs('startDate',result.Data.startDate);
+                        saveLs('endDate',result.Data.endDate);
+
+                    }
                     else {
                         setItem(result["Data"])
                         console.log(startdate)
