@@ -59,6 +59,13 @@ li:not(:last-child) {
   flex-flow: column;
 }
 
+.window:not(.eventList){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
 .blur {
   backdrop-filter: blur(40px);
 }
@@ -70,8 +77,10 @@ li:not(:last-child) {
 
 
 
+/*--------------------*\
+|   Calendar Design    | 
+\*--------------------*/
 
-/****************************Calendar design*********************************/
 .react-calendar {
   width: calc(90vw / 1.5);
   max-width: 100%;
@@ -211,6 +220,10 @@ li:not(:last-child) {
   width: calc(100vw / 2.5);
 }
 
+.eventList{
+  width: calc(100vw / 2.5);
+}
+
 .window > h1 {
   font-size: calc(17px * 4);
   font-weight: 600;
@@ -243,6 +256,11 @@ li:not(:last-child) {
 .window > button:hover {
   color: #0f1431;
 }
+
+
+/*--------------------*\
+|     OneEventOpen     | 
+\*--------------------*/
 
 .rubrik {
   text-align: center;
@@ -282,6 +300,24 @@ li:not(:last-child) {
   aspect-ratio: 86 / 67;
   margin: 25px;
 }
+
+
+
+/*--------------------*\
+|      Eventlist       | 
+\*--------------------*/
+
+.OneEventOpenRubrik{
+  text-align: center;
+  font-size: 3em;
+  font-weight: 550;
+  color: red;
+  margin-top: -545px;
+}
+
+/*--------------------*\
+|    Hamburger menu    | 
+\*--------------------*/
 
 /*Positionen för pop up menyn med öppna och stäng knappen*/
 .navBar {
@@ -399,22 +435,48 @@ h2{
 #avatar > img{
   border-radius: 50%;
   height: 100px;
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
 
 }
 #usrnm {
   font-size: larger;
-  margin-left: auto;
-  margin-right: auto;
- 
+  justify-content: center;
+  display: flex;
+  
 }
 
 #dsc{
   margin-top: -2vh;
   display: flex;
+  text-align: center;
   justify-content: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 #mail{
   margin-top: -2vh;
   display: flex;
   justify-content: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+#subtit{
+  
+  display: flex;
+  justify-content: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  font-weight: bold;
+
+}
+li{
+  color:black;
+  filter: drop-shadow(3px 1px 3px grey);
+}
+li:hover{
+  color: green;
 }

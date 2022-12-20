@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
 import { loadLs, saveLs } from '../component/Funktioner';
 
-function Edit() {
+
+function Editevent() {
 
     let navigate = useNavigate();
     const [uid] = useState(loadLs('uID'));
@@ -48,10 +49,12 @@ function Edit() {
                     if (result["Data"]["Result"] != undefined) {
                         console.log(result["Data"])
                         navigate('/OneEventOpen')
+
                         saveLs('title',result.Data.title);
                         saveLs('description',result.Data.description);
                         saveLs('startDate',result.Data.startDate);
                         saveLs('endDate',result.Data.endDate);
+
                     }
                     else {
                         console.log(result["Data"])
@@ -80,4 +83,4 @@ function Edit() {
     );
 }
 
-export default Edit;
+export default Editevent;
