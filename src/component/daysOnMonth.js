@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function DaysOnMonth() {
+
   let days = []
 
   let navigate = useNavigate();
@@ -15,6 +16,7 @@ function DaysOnMonth() {
   const [token] = useState(loadLs('token'));
   const [time, setTime] = useState([]);
   const [day, setDay] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState('');
 
 
   function getMonths(month, year) {
@@ -47,7 +49,7 @@ function DaysOnMonth() {
   }
 
 
-  getData()
+  
 
   async function getData() {
     await fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=" + uid + "&token=" + token + "")
@@ -62,12 +64,21 @@ function DaysOnMonth() {
   }
 
 
-
-
   const handleChange = (event) => {
-    let inputMonth = event.target.value.indexOf("-")
-    let finalInputMonth = event.target.value.slice(inputMonth + 1, event.target.value.length)
-    let finalInputYear = event.target.value.slice(0, inputMonth)
+    let inputMonth = 0;
+    let finalInputMonth = 0;
+    let finalInputYear = 0;
+
+    try{
+      setSelectedMonth(event.target.value);
+      inputMonth = event.target.value.indexOf("-")
+      finalInputMonth = event.target.value.slice(inputMonth + 1, event.target.value.length)
+      finalInputYear = event.target.value.slice(0, inputMonth)
+    }
+    catch{
+      finalInputMonth = date.getMonth() +1
+      finalInputYear = date.getFullYear()
+    }
 
     let dataPrevMonth = finalInputMonth - 1;
     if (dataPrevMonth <= 0) {
@@ -228,9 +239,16 @@ function DaysOnMonth() {
       }
     }
     setDay(days);
-
   }
 
+  useEffect(() => {
+    getData()
+  }, []);
+
+  useEffect(() => {
+    handleChange()
+  }, [time]);
+  
   function save(year, month, day) {
     saveLs("startDate", year + "-" + month + "-" + day)
     console.log(loadLs('startDate'));
@@ -241,7 +259,7 @@ function DaysOnMonth() {
       height: "100%",
       width: "100%"
     }}>
-      <input type="month" value={date.getFullYear()+"-"+date.getMonth()} onChange={handleChange} />
+      <input type="month" value={selectedMonth || date.getFullYear()+"-"+(date.getMonth()+1)} onChange={handleChange} />
       <div style={{
         display: "grid",
         gridTemplateColumns: "repeat(7, 1fr)",
