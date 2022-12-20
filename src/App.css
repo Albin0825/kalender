@@ -416,6 +416,7 @@ h2{
 #dsc{
   margin-top: -2vh;
   display: flex;
+  text-align: center;
   justify-content: center;
   margin-left: 2vw;
   margin-right: 2vw;
@@ -435,4 +436,11 @@ h2{
   margin-right: 2vw;
   font-weight: bold;
 
+}
+li{
+  color:black;
+  filter: drop-shadow(3px 1px 3px grey);
+}
+li:hover{
+  color: green;
 }

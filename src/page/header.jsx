@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import '../App.css';
+import { loadLs } from "../component/Funktioner";
+import { useState } from 'react';
 
 
 function HeaderBar() {
+    const [avatar] = useState(loadLs('avatar'));
     let setup =
         <nav>
             <ul style={{display: "flex", justifyContent: "flex-end"}}>
@@ -20,6 +23,9 @@ function HeaderBar() {
                 </li>
                 <li style={{display: "inline-block", textAlign: "center"}}>
                     <Link style={{textDecoration: "none"}} to="/Createuser">Skapa användare</Link>
+                </li>
+                <li style={{display: "inline-block", textAlign: "center"}}>
+                    <Link style={{textDecoration: "none"}} to="/Profile">Profil</Link>
                 </li>
             </ul>
         </nav>;
