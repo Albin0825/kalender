@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
 import { loadLs, saveLs } from '../component/Funktioner';
 
-function Edit() {
+function Editevent() {
 
     let navigate = useNavigate();
     const [uid] = useState(loadLs('uID'));
@@ -80,4 +80,4 @@ function Edit() {
     );
 }
 
-export default Edit;
+export default Editevent;
