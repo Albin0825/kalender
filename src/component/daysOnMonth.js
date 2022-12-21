@@ -2,6 +2,7 @@ import React from 'react';
 import { loadLs, saveLs } from '../component/Funktioner';
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
+import '../App.css';
 
 
 function DaysOnMonth() {
@@ -14,7 +15,7 @@ function DaysOnMonth() {
 
   const [uid] = useState(loadLs('uID'));
   const [token] = useState(loadLs('token'));
-  const [time, setTime] = useState([]);
+  const [Event, setEvent] = useState([]);
   const [day, setDay] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState('');
 
@@ -49,16 +50,13 @@ function DaysOnMonth() {
   }
 
 
-  
-
   async function getData() {
     await fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID=" + uid + "&token=" + token + "")
       .then(res => res.json())
       .then(
         (result) => {
           const d = result["Data"]["My events"];
-          setTime(d)
-          //console.log(time)
+          setEvent(d)
         }
       )
   }
@@ -136,104 +134,33 @@ function DaysOnMonth() {
     }
 
     for (let i = 0; i != 42; i++) {
-
+      
       if (prevMonth - dayOfWeek + i < prevMonth) {
         console.log(currMonth)
         days.push(
-          <div key={(i)} onClick={() => navigate("/Eventlist", save(prevYear, dataPrevMonth, (prevMonth - dayOfWeek + i + 1)))}>
+          <div key={(i)} className="item" onClick={() => navigate("/Eventlist", save(prevYear, dataPrevMonth, (prevMonth - dayOfWeek + i + 1)))}>
             {prevMonth - dayOfWeek + i + 1}
             {(() => {
-              let elements = [];
-              for (let x = 0; x < time.length; x++) {
-                let start = time[x]["startDate"].lastIndexOf(" ");
-                let stripStart = time[x]["startDate"].slice(0, start);
-                let end = time[x]["endDate"].lastIndexOf(" ");
-                let stripEnd = time[x]["endDate"].slice(0, end);
-
-                let startYear = stripStart.slice(0, stripStart.indexOf("-"))
-                let endYear = stripEnd.slice(0, stripEnd.indexOf("-"))
-                let startMonth = stripStart.slice(stripStart.indexOf("-") + 1, stripStart.lastIndexOf("-"))
-                let endMonth = stripEnd.slice(stripEnd.indexOf("-") + 1, stripEnd.lastIndexOf("-"))
-                let startDay = stripStart.slice(stripStart.lastIndexOf("-") + 1, stripStart.length)
-                let endDay = stripEnd.slice(stripEnd.lastIndexOf("-") + 1, stripEnd.length)
-
-                
-                if (prevYear >= parseInt(startYear) && prevYear <= parseInt(endYear)) {
-                  if (dataPrevMonth >= parseInt(startMonth) && dataPrevMonth <= parseInt(endMonth)) {
-                    if ((prevMonth - dayOfWeek + i + 1) >= parseInt(startDay) && (prevMonth - dayOfWeek + i + 1) <= parseInt(endDay)) {
-                      console.log(time[x])
-                      elements.push(<p>{time[x]["title"]}</p>);
-                    }
-                  }
-                }
-              }
-              return elements;
+              let events = stripData(prevYear, dataPrevMonth, (prevMonth - dayOfWeek + i + 1))
+              //return events;
             })()}
           </div>
         );
       }
       else if (i - dayOfWeek < currMonth) {
+        const isDay = (date.getDate() == (i - dayOfWeek + 1) && date.getMonth() == (finalInputMonth-1) && date.getFullYear() == finalInputYear)
         days.push(
-          <div key={(i)} onClick={() => navigate("/Eventlist", save(finalInputYear, finalInputMonth, (i - dayOfWeek + 1)))}>
+          <div key={(i)} className={isDay ? "day blur item":"item"} onClick={() => navigate("/Eventlist", save(finalInputYear, finalInputMonth, (i - dayOfWeek + 1)))}>
             {i - dayOfWeek + 1}
-            {(() => {
-              let elements = [];
-              for (let x = 0; x < time.length; x++) {
-                let start = time[x]["startDate"].lastIndexOf(" ");
-                let stripStart = time[x]["startDate"].slice(0, start);
-                let end = time[x]["endDate"].lastIndexOf(" ");
-                let stripEnd = time[x]["endDate"].slice(0, end);
-
-                let startYear = stripStart.slice(0, stripStart.indexOf("-"))
-                let endYear = stripEnd.slice(0, stripEnd.indexOf("-"))
-                let startMonth = stripStart.slice(stripStart.indexOf("-") + 1, stripStart.lastIndexOf("-"))
-                let endMonth = stripEnd.slice(stripEnd.indexOf("-") + 1, stripEnd.lastIndexOf("-"))
-                let startDay = stripStart.slice(stripStart.lastIndexOf("-") + 1, stripStart.length)
-                let endDay = stripEnd.slice(stripEnd.lastIndexOf("-") + 1, stripEnd.length)
-
-                if (finalInputYear >= parseInt(startYear) && finalInputYear <= parseInt(endYear)) {
-                  if (finalInputMonth >= parseInt(startMonth) && finalInputMonth <= parseInt(endMonth)) {
-                    if ((i - dayOfWeek + 1) >= parseInt(startDay) && (i - dayOfWeek + 1) <= parseInt(endDay)) {
-                      console.log(time[x])
-                      elements.push(<p>{time[x]["title"]}</p>);
-                    }
-                  }
-                }
-              }
-              return elements;
-            })()}
+            {stripData(finalInputYear, finalInputMonth, (i - dayOfWeek + 1))}
           </div>
         );
       }
       else {
         days.push(
-          <div key={(i)} onClick={() => navigate("/Eventlist", save(nextYear, dataNextMonth, (i - dayOfWeek + 1 - currMonth)))}>
+          <div key={(i)} className="item" onClick={() => navigate("/Eventlist", save(nextYear, dataNextMonth, (i - dayOfWeek + 1 - currMonth)))}>
             {i - dayOfWeek + 1 - currMonth}
-            {(() => {
-              let elements = [];
-              for (let x = 0; x < time.length; x++) {
-                let start = time[x]["startDate"].lastIndexOf(" ");
-                let stripStart = time[x]["startDate"].slice(0, start);
-                let end = time[x]["endDate"].lastIndexOf(" ");
-                let stripEnd = time[x]["endDate"].slice(0, end);
-
-                let startYear = stripStart.slice(0, stripStart.indexOf("-"))
-                let endYear = stripEnd.slice(0, stripEnd.indexOf("-"))
-                let startMonth = stripStart.slice(stripStart.indexOf("-") + 1, stripStart.lastIndexOf("-"))
-                let endMonth = stripEnd.slice(stripEnd.indexOf("-") + 1, stripEnd.lastIndexOf("-"))
-                let startDay = stripStart.slice(stripStart.lastIndexOf("-") + 1, stripStart.length)
-                let endDay = stripEnd.slice(stripEnd.lastIndexOf("-") + 1, stripEnd.length)
-
-                if (nextYear >= parseInt(startYear) && nextYear <= parseInt(endYear)) {
-                  if (finalInputMonth + 1 >= parseInt(startMonth) && finalInputMonth + 1 <= parseInt(endMonth)) {
-                    if ((i - dayOfWeek + 1 - currMonth) >= parseInt(startDay) && (i - dayOfWeek + 1 - currMonth) <= parseInt(endDay)) {
-                      elements.push(<p>{time[x]["title"]}</p>);
-                    }
-                  }
-                }
-              }
-              return elements;
-            })()}
+            {stripData(nextYear, dataNextMonth, (i - dayOfWeek + 1 - currMonth))}
           </div>
         );
       }
@@ -241,13 +168,42 @@ function DaysOnMonth() {
     setDay(days);
   }
 
+  function stripData(year, month, day){
+    let elements = []
+
+    for (let x = 0; x < Event.length; x++) {
+      let start = Event[x]["startDate"].lastIndexOf(" ");
+      let stripStart = Event[x]["startDate"].slice(0, start);
+      let end = Event[x]["endDate"].lastIndexOf(" ");
+      let stripEnd = Event[x]["endDate"].slice(0, end);
+
+      let startYear = stripStart.slice(0, stripStart.indexOf("-"))
+      let endYear = stripEnd.slice(0, stripEnd.indexOf("-"))
+      let startMonth = stripStart.slice(stripStart.indexOf("-") + 1, stripStart.lastIndexOf("-"))
+      let endMonth = stripEnd.slice(stripEnd.indexOf("-") + 1, stripEnd.lastIndexOf("-"))
+      let startDay = stripStart.slice(stripStart.lastIndexOf("-") + 1, stripStart.length)
+      let endDay = stripEnd.slice(stripEnd.lastIndexOf("-") + 1, stripEnd.length)
+
+      if (year >= parseInt(startYear) && year <= parseInt(endYear)) {
+        if (month + 1 >= parseInt(startMonth) && month + 1 <= parseInt(endMonth)) {
+          if (day >= parseInt(startDay) && day <= parseInt(endDay)) {
+            elements.push(<p>{Event[x]["title"]}</p>);
+            console.log(elements["props"])
+          }
+        }
+      }
+    }
+    return elements
+  }
+
+
   useEffect(() => {
     getData()
   }, []);
 
   useEffect(() => {
     handleChange()
-  }, [time]);
+  }, [Event]);
   
   function save(year, month, day) {
     saveLs("startDate", year + "-" + month + "-" + day)
@@ -266,13 +222,27 @@ function DaysOnMonth() {
         height: "100%",
         width: "100%"
       }}>
-        <div>Måndag</div>
-        <div>Tisdag</div>
-        <div>Onsdag</div>
-        <div>Torsdag</div>
-        <div>Fredag</div>
-        <div>Lördag</div>
-        <div>Söndag</div>
+        <div style={{
+          borderBottom: "1px solid black"
+        }}>Måndag</div>
+        <div style={{
+          borderBottom: "1px solid black"
+        }}>Tisdag</div>
+        <div style={{
+          borderBottom: "1px solid black"
+        }}>Onsdag</div>
+        <div style={{
+          borderBottom: "1px solid black"
+        }}>Torsdag</div>
+        <div style={{
+          borderBottom: "1px solid black"
+        }}>Fredag</div>
+        <div style={{
+          borderBottom: "1px solid black"
+        }}>Lördag</div>
+        <div style={{
+          borderBottom: "1px solid black"
+        }}>Söndag</div>
         {day}
       </div>
     </div>
