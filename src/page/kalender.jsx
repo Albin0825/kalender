@@ -15,7 +15,7 @@ function Kalender() {
         <div>
             <div className='con'>
                 <img src={BG} alt="background image"/>
-                <div className="window blur kalender" style={{overflow: "hidden", border: "solid 1px hsla(0, 0%, 0%, 0.25"}}>
+                <div className="window blur kalender">
                     <DaysOnMonth/>
                 </div>
             </div>
