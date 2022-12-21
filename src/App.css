@@ -72,6 +72,24 @@ li:not(:last-child) {
 
 .kalender {
   width: calc(100vw / 1.5);
+  overflow: hidden;
+  border: solid 1px hsla(0, 0%, 0%, 0.25);
+}
+
+.gridDiv {
+  height: 100%;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 100%;
+  width: 100%;
+}
+
+.weekDay {
+  border-bottom: 1px solid black;
 }
 
 .day{

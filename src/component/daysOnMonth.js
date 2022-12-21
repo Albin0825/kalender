@@ -140,10 +140,7 @@ function DaysOnMonth() {
         days.push(
           <div key={(i)} className="item" onClick={() => navigate("/Eventlist", save(prevYear, dataPrevMonth, (prevMonth - dayOfWeek + i + 1)))}>
             {prevMonth - dayOfWeek + i + 1}
-            {(() => {
-              let events = stripData(prevYear, dataPrevMonth, (prevMonth - dayOfWeek + i + 1))
-              //return events;
-            })()}
+            {stripData(prevYear, prevMonth, (prevMonth - dayOfWeek + i + 1))}
           </div>
         );
       }
@@ -152,7 +149,7 @@ function DaysOnMonth() {
         days.push(
           <div key={(i)} className={isDay ? "day blur item":"item"} onClick={() => navigate("/Eventlist", save(finalInputYear, finalInputMonth, (i - dayOfWeek + 1)))}>
             {i - dayOfWeek + 1}
-            {stripData(finalInputYear, finalInputMonth, (i - dayOfWeek + 1))}
+            {stripData(finalInputYear, (finalInputMonth-1), (i - dayOfWeek + 1))}
           </div>
         );
       }
@@ -187,8 +184,8 @@ function DaysOnMonth() {
       if (year >= parseInt(startYear) && year <= parseInt(endYear)) {
         if (month + 1 >= parseInt(startMonth) && month + 1 <= parseInt(endMonth)) {
           if (day >= parseInt(startDay) && day <= parseInt(endDay)) {
-            elements.push(<p>{Event[x]["title"]}</p>);
-            console.log(elements["props"])
+            elements.push(<p key={(x)}>{Event[x]["title"]}</p>);
+           
           }
         }
       }
@@ -206,7 +203,6 @@ function DaysOnMonth() {
   }, [Event]);
   
   function save(year, month, day) {
-    console.log(day.toString().length);
     if(day.toString().length == 1){
       saveLs("startDate", year + "-" + month + "-0" + day)
     }
@@ -216,38 +212,16 @@ function DaysOnMonth() {
   }
 
   return (
-    <div style={{
-      height: "100%",
-      width: "100%"
-    }}>
+    <div className="gridDiv">
       <input type="month" value={selectedMonth || date.getFullYear()+"-"+(date.getMonth()+1)} onChange={handleChange} />
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(7, 1fr)",
-        height: "100%",
-        width: "100%"
-      }}>
-        <div style={{
-          borderBottom: "1px solid black"
-        }}>Måndag</div>
-        <div style={{
-          borderBottom: "1px solid black"
-        }}>Tisdag</div>
-        <div style={{
-          borderBottom: "1px solid black"
-        }}>Onsdag</div>
-        <div style={{
-          borderBottom: "1px solid black"
-        }}>Torsdag</div>
-        <div style={{
-          borderBottom: "1px solid black"
-        }}>Fredag</div>
-        <div style={{
-          borderBottom: "1px solid black"
-        }}>Lördag</div>
-        <div style={{
-          borderBottom: "1px solid black"
-        }}>Söndag</div>
+      <div className="grid">
+        <div className="weekDay">Måndag</div>
+        <div className="weekDay">Tisdag</div>
+        <div className="weekDay">Onsdag</div>
+        <div className="weekDay">Torsdag</div>
+        <div className="weekDay">Fredag</div>
+        <div className="weekDay">Lördag</div>
+        <div className="weekDay">Söndag</div>
         {day}
       </div>
     </div>
