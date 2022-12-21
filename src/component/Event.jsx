@@ -7,6 +7,8 @@ const Event = ({event}) => {
 
     return ( 
         <div className='data' >
+            <span className='eventID'>{event.ID}</span>
+            <br></br>
             <span className='eventTitle'>{event.title}</span>
             <br></br>
             <span className='eventDesc'>{event.description}</span>
