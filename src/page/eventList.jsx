@@ -48,16 +48,25 @@ function Eventlista(response){
                 <div className='window blur eventList'>
                     <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
                     <p className="OneEventOpenRubrik">Dagens händelser</p>
-                    {
-                    eventlist.map((events) => (
-                    <Event key={events["ID"].toString()} event={events} />    
-                    ))}
-                    <nav className="navBar">
-                        <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
-                        <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
-                        <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/editevent"/>
-                        <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
-                    </nav>
+                    {(() => {
+                    if (eventlist != undefined) {
+                    return (
+                         eventlist.map((events) => (
+                        <Event key={events["ID"].toString()} event={events} />    
+                        ))
+                        )
+                    } else if (eventlist == undefined) {
+                    return (
+                        <span>Du har inga händelser den här dagen, men du kan skapa en via knappen nere till höger</span>
+                        )
+                    }
+                })()}
+                <nav className="navBar">
+                    <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
+                    <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
+                    <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/editevent"/>
+                    <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
+                </nav>
                 </div>
         </div>
     )
