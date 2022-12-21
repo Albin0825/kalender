@@ -18,6 +18,8 @@ function Editevent() {
     const [starttime, setStarttime] = useState([]);
     const [enddate, setEnddate] = useState([]);
     const [endtime, setEndtime] = useState([]);
+    const [eid, seteID] = useState([]);
+    const [rname, setrName] = useState([]);
 
     const handleChangeID = (e) => {
         setID(e.target.value);
@@ -63,6 +65,31 @@ function Editevent() {
                 }
             )
     }
+    const handleChangeEID = (e) => {
+        seteID(e.target.value);
+    }
+    const handleChangeRNAME = (e) => {
+        setrName(e.target.value);
+    }
+
+
+    function invite() {
+        fetch("https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=eventInvitation&uID="+uid+"&token="+token+"&eID="+eid+"&rName="+rname+"")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    if (result["Data"] != undefined) {
+                        console.log(result["Data"])
+
+
+                    }
+                    else {
+                        console.log(result["Data"])
+                        console.log("Invalid input")
+                    }
+                }
+            )
+    }
     const text = 0;
     return (
         <div className="con">
@@ -76,6 +103,9 @@ function Editevent() {
                     <h2>Starttid: <input type="date" name={text} onChange={handleChangeStartdate} /><input type="time" name={text} onChange={handleChangeStarttime} /></h2>
                     <h2>Sluttid: <input type="date" name={text} onChange={handleChangeEnddate} /><input type="time" name={text} onChange={handleChangeEndtime} /></h2>
                     <button onClick={send} className="add">Redigera</button>
+                    <h2>Eventets ID: <input type="text" name={text} onChange={handleChangeEID} /></h2>
+                    <h2>Användarens namn: <input type="text" name={text} onChange={handleChangeRNAME} /></h2>
+                    <button onClick={invite} className="add">Bjud in</button>
                 </div>
 
             </div>

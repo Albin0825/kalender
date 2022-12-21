@@ -248,6 +248,7 @@ button.showMenu {
 .menuNav2 {
   background-image: url(./bilder/edit.svg);
   bottom: 60px;
+  right: 60px;
 }
 
 .menuNav3 {
@@ -362,11 +363,4 @@ h2{
   margin-right: 2vw;
   font-weight: bold;
 
-}
-li{
-  color:black;
-  filter: drop-shadow(3px 1px 3px grey);
-}
-li:hover{
-  color: green;
 }

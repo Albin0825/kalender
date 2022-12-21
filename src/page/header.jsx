@@ -19,10 +19,7 @@ function HeaderBar() {
                     <Link style={{textDecoration: "none"}} to='/OneEventOpen'>En öppnad händelse</Link>
                 </li>
                 <li style={{display: "inline-block", textAlign: "center"}}>
-                    <Link style={{textDecoration: "none"}} to="/Eventlist">Händelse lista</Link>
-                </li>
-                <li style={{display: "inline-block", textAlign: "center"}}>
-                    <Link style={{textDecoration: "none"}} to="/Createuser">Skapa användare</Link>
+                    <Link style={{textDecoration: "none"}} to="/Allaevent">Händelse lista</Link>
                 </li>
                 <li style={{display: "inline-block", textAlign: "center"}}>
                     <Link style={{textDecoration: "none"}} to="/Profile">Profil</Link>
