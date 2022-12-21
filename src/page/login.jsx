@@ -11,11 +11,11 @@ import { loadLs, saveLs } from '../component/Funktioner';
 function Login() {
     let navigate = useNavigate();
     let uID;
-    let token;
+
     const [uid] = useState(loadLs('uID'));
     const [user, setUser ] = useState();
     const [password, setPassword ] = useState();
-    const [profpic, setProfpic] = useState([]);
+    const [eventinv, setEventinv] = useState([]);
     const handleChangeUser = (e) => {
         setUser(e.target.value);
     }
@@ -37,28 +37,11 @@ function Login() {
                     saveLs('uID',result.Data.uID);
                     saveLs('token',result.Data.Token);
                     saveLs('admin',result.Data.admin);
+                    navigate("/kalender");
                   
                 }
-                getProfilepic();
             }
             )
-
-
-    function getProfilepic() {
-        fetch("https://takeee.ntigskovde.se/Users/users_index.php?action=showUser&uID="+uid+"&token="+loadLs('token'))
-        .then(res => res.json())
-        .then(
-            (result)=>{
-                console.log(result["Data"]["Users"])
-                setProfpic(result["Data"]["Users"]);
-                console.log(profpic.avatar);
-                saveLs('avatar', profpic);
-                navigate('/Kalender');
-                
-            }
-        )
-    }
-
     }
 
     return (
