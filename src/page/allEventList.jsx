@@ -7,7 +7,7 @@ import Event from '../component/Event';
 import { loadLs } from '../component/Funktioner';
 import { Link } from 'react-router-dom';
 
-function Eventlista(response){
+function Alleventlist(response){
 
     const [navbarOpen, setNavbarOpen] = useState(false)
     const handleToggle = () => {
@@ -17,11 +17,11 @@ function Eventlista(response){
     const [uid] = useState(loadLs('uID'));
     const [token] = useState(loadLs('token'));
     const [eventlist, setEventlist] = useState([]);
-    const [startdate] = useState(loadLs('startDate'));
+    
 
     
     const getEvents = async () => {
-        let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=sortTimeline&uID="+uid+"&token="+token+"&startDate="+startdate.substring(0,10)+" 00:00&endDate="+startdate.substring(0,10)+" 23:59";
+        let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token="+token;
         const response = await fetch(`${API_URL}`)
         .then(response => response.json())
         .then(
@@ -47,7 +47,7 @@ function Eventlista(response){
             <img src={BG} alt="background image" />
                 <div className='window blur eventList'>
                     <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
-                    <p className="OneEventOpenRubrik">Dagens händelser</p>
+                    <p className="OneEventOpenRubrik">Dina händelser</p>
                     {
                     eventlist.map((events) => (
                     <Event key={events["ID"].toString()} event={events} />    
@@ -63,4 +63,4 @@ function Eventlista(response){
     )
 }
 
-export default Eventlista;
+export default Alleventlist;

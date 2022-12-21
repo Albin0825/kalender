@@ -13,6 +13,8 @@ import Delete from "./page/delete";
 import Kalender from "./page/kalender";
 import Profile from "./page/ProfilePage";
 import EditProfile from "./page/editProfile";
+import Invite from "./component/invSend";
+import Alleventlist from "./page/allEventList";
 
 import HeaderBar from "./page/header";
 
@@ -34,6 +36,9 @@ function App() {
         <Route path="/Kalender" element ={<Kalender />} />
         <Route path="/Profile" element ={<Profile />} />
         <Route path="/Editprofile" element ={<EditProfile />} />
+        <Route path="/Invite" element ={<Invite />} />
+        <Route path="/Allaevent" element ={<Alleventlist />} />
+        
       </Routes>
     </div>
   );
