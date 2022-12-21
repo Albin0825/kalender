@@ -206,8 +206,13 @@ function DaysOnMonth() {
   }, [Event]);
   
   function save(year, month, day) {
-    saveLs("startDate", year + "-" + month + "-" + day)
-    console.log(loadLs('startDate'));
+    console.log(day.toString().length);
+    if(day.toString().length == 1){
+      saveLs("startDate", year + "-" + month + "-0" + day)
+    }
+    else{
+      saveLs("startDate", year + "-" + month + "-" + day)
+    }
   }
 
   return (
