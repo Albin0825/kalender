@@ -14,6 +14,7 @@ function Alleventlist(response){
     const handleToggle = () => {
         setNavbarOpen(prev => !prev)
     }
+}
 
 function Alleventlist(){
     const [uid] = useState(loadLs('uID'));
