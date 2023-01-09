@@ -64,26 +64,24 @@ function DaysOnMonth() {
     let inputMonth = 0;
     let finalInputMonth = 0;
     let finalInputYear = 0;
-    
-    try{
+
+    try {
       setSelectedMonth(event.target.value);
       inputMonth = event.target.value.indexOf("-")
       finalInputMonth = event.target.value.slice(inputMonth + 1, event.target.value.length)
       finalInputYear = event.target.value.slice(0, inputMonth)
     }
-    catch{
-      finalInputMonth = date.getMonth() +1
+    catch {
+      finalInputMonth = date.getMonth() + 1
       finalInputYear = date.getFullYear()
     }
-    
-    console.log(inputMonth)
 
-    let dataPrevMonth = finalInputMonth - 1;
+    let dataPrevMonth = parseInt(finalInputMonth) - 1;
     if (dataPrevMonth <= 0) {
       dataPrevMonth = 11
     }
 
-    let dataNextMonth = finalInputMonth + 1;
+    let dataNextMonth = parseInt(finalInputMonth) + 1;
     if (dataNextMonth >= 13) {
       dataNextMonth = 1
     }
@@ -112,7 +110,7 @@ function DaysOnMonth() {
     let prevYear = 0;
 
     if (dataPrevMonth == 12) {
-      prevYear = parseInt(finalInputYear)-1;
+      prevYear = parseInt(finalInputYear) - 1;
     }
     else {
       prevYear = finalInputYear;
@@ -122,14 +120,14 @@ function DaysOnMonth() {
     let nextYear = 0;
 
     if (dataNextMonth == 1) {
-      nextYear = parseInt(finalInputYear)+1;
+      nextYear = parseInt(finalInputYear) + 1;
     }
     else {
       nextYear = finalInputYear;
     }
 
     for (let i = 0; i != 42; i++) {
-      
+
       if (prevMonth - dayOfWeek + i < prevMonth) {
         days.push(
           <div key={(i)} className="item" onClick={() => navigate("/Eventlist", save(prevYear, dataPrevMonth, (prevMonth - dayOfWeek + i + 1)))}>
@@ -139,11 +137,11 @@ function DaysOnMonth() {
         );
       }
       else if (i - dayOfWeek < currMonth) {
-        const isDay = (date.getDate() == (i - dayOfWeek + 1) && date.getMonth() == (finalInputMonth-1) && date.getFullYear() == finalInputYear)
+        const isDay = (date.getDate() == (i - dayOfWeek + 1) && date.getMonth() == (finalInputMonth - 1) && date.getFullYear() == finalInputYear)
         days.push(
-          <div key={(i)} className={isDay ? "day blur item":"item"} onClick={() => navigate("/Eventlist", save(finalInputYear, finalInputMonth, (i - dayOfWeek + 1)))}>
+          <div key={(i)} className={isDay ? "day blur item" : "item"} onClick={() => navigate("/Eventlist", save(finalInputYear, finalInputMonth, (i - dayOfWeek + 1)))}>
             {i - dayOfWeek + 1}
-            {stripData(finalInputYear, (finalInputMonth-1), (i - dayOfWeek + 1))}
+            {stripData(finalInputYear, (finalInputMonth - 1), (i - dayOfWeek + 1))}
           </div>
         );
       }
@@ -159,7 +157,7 @@ function DaysOnMonth() {
     setDay(days);
   }
 
-  function stripData(year, month, day){
+  function stripData(year, month, day) {
     let num = 1
     let elements = []
 
@@ -167,15 +165,15 @@ function DaysOnMonth() {
       let startDate = Event[x]["startDate"].slice(0, Event[x]["startDate"].lastIndexOf(" "))
       let endDate = Event[x]["endDate"].slice(0, Event[x]["endDate"].lastIndexOf(" "))
 
-      let thisday = year + "-" + month+1 + "-" + day
+      let thisday = year + "-" + month + 1 + "-" + day
 
       if (thisday >= startDate && thisday <= endDate) {
-        if(elements.length == 0) {
+        if (elements.length == 0) {
           elements.push(<p key={(x)}>{Event[x]["title"]}</p>);
-          elements.push(<p className='timeStamp' key={(x+1)}>{Event[x]["startDate"]}</p>);
-          elements.push(<p className='timeStamp' key={(x+2)}>{Event[x]["endDate"]}</p>);
+          elements.push(<p className='timeStamp' key={(x + 1)}>{Event[x]["startDate"]}</p>);
+          elements.push(<p className='timeStamp' key={(x + 2)}>{Event[x]["endDate"]}</p>);
         } else {
-          elements.splice(3,1,"+"+num++)
+          elements.splice(3, 1, "+" + num++)
         }
       }
     }
@@ -190,12 +188,12 @@ function DaysOnMonth() {
   useEffect(() => {
     handleChange()
   }, [Event]);
-  
+
   function save(year, month, day) {
-    if(day.toString().length == 1){
+    if (day.toString().length == 1) {
       day = "0" + day
     }
-    if(month.toString().length == 1){
+    if (month.toString().length == 1) {
       month = "0" + month
     }
     saveLs("startDate", year + "-" + month + "-" + day)
@@ -203,7 +201,7 @@ function DaysOnMonth() {
 
   return (
     <div className="gridDiv">
-      <input type="month" value={selectedMonth || date.getFullYear()+"-"+(date.getMonth()+1)} onChange={handleChange} />
+      <input type="month" value={selectedMonth || date.getFullYear() + "-" + (date.getMonth() + 1)} onChange={handleChange} />
       <div className="grid">
         <div className="weekDay">Måndag</div>
         <div className="weekDay">Tisdag</div>

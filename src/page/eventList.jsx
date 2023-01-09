@@ -6,6 +6,7 @@ import Event from '../component/Event';
 import { loadLs } from '../component/Funktioner';
 import { Link } from 'react-router-dom';
 import Backbutton from "../component/backbutton";
+import Hamburger from '../component/Hamburger'
 
 function Eventlista(response){
 
@@ -58,12 +59,7 @@ function Eventlista(response){
                         )
                     }
                 })()}
-                <nav className="navBar">
-                    <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
-                    <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
-                    <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/editevent"/>
-                    <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
-                </nav>
+                <Hamburger/>
                 </div>
         </div>
     )
