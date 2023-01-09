@@ -8,13 +8,6 @@ import ARROW from '../bilder/Vector.svg';
 import Event from '../component/Event';
 import Backbutton from "../component/backbutton";
 
-function Alleventlist(response){
-
-    const [navbarOpen, setNavbarOpen] = useState(false)
-    const handleToggle = () => {
-        setNavbarOpen(prev => !prev)
-    }
-
 function Alleventlist(){
     const [uid] = useState(loadLs('uID'));
     const [token] = useState(loadLs('token'));
@@ -23,12 +16,11 @@ function Alleventlist(){
         <div className='con'>
             <img src={BG} alt="background image" />
                 <div className='window blur eventList'>
-                    <Backbutton />
+                    <Backbutton/>
                     <p className="OneEventOpenRubrik">Dina händelser</p>
                     <Hamburger/>
                 </div>
         </div>
     )
 }
-
 export default Alleventlist;

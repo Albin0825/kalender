@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { useState, useEffect } from "react";
 import { loadLs } from "./Funktioner";
 
@@ -32,4 +32,4 @@ function Invnotif  () {
     ); 
 }
 
-export default Invnotif;
+export default Invnotif;*/
