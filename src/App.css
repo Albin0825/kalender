@@ -71,24 +71,29 @@ li:not(:last-child) {
 }
 
 .kalender {
+  position: relative;
   width: calc(100vw / 1.5);
   overflow: hidden;
   border: solid 1px hsla(0, 0%, 0%, 0.25);
 }
 
 .gridDiv {
+  position: absolute;
   height: 100%;
   width: 100%;
+  top: 0px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  height: 100%;
+  grid-auto-rows: 1fr;
+  height: calc(90%);
   width: 100%;
 }
 
 .weekDay {
+  text-align: center;
   border-bottom: 1px solid black;
 }
 
@@ -117,6 +122,14 @@ li:not(:last-child) {
   /* with flexbox:
   width: calc(50% - 21px);
   */
+}
+
+.item > p {
+  margin: -2.95px;
+}
+
+.timeStamp {
+  font-size: 12px;
 }
 
 /* Remove border bottom from last item & from second last if its odd */
