@@ -1,11 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { loadLS } from "./Funktioner";
+import { useState, useEffect } from "react";
+import { loadLs } from "./Funktioner";
 
 function Invnotif  () {
     
     const [uid] = useState(loadLs('uID'));
     const [token] = useState(loadLs('token'));
+    const [invites, setInvites] = useState([]);
    
 
     
@@ -15,20 +16,19 @@ function Invnotif  () {
         .then(response => response.json())
         .then(
             (result)=>{
-                console.log(loadLs());
-                console.log(loadLs('token'));
-                console.log(result);
-                console.log(result["Data"]["My events"]);
-                setEventlist(result["Data"]["My events"]); 
+                setInvites(result["Data"]["Event invitations"]); 
                 
             }
         )
         
-       //const data = await response.json(); 
+        
     }
+    useEffect(() => {
+        getInvites();
+      }, []);
 
     return ( 
-       <div>hej</div>
+       <span id="notification">{invites.length}</span>
     ); 
 }
 

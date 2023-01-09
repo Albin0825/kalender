@@ -1,11 +1,11 @@
 import '../App.css';
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
-import ARROW from '../bilder/Vector.svg';
 import { useEffect, useState } from "react";
 import React from 'react';
 import Event from '../component/Event';
 import { loadLs } from '../component/Funktioner';
 import { Link } from 'react-router-dom';
+import Backbutton from "../component/backbutton";
 
 function Eventlista(response){
 
@@ -18,7 +18,6 @@ function Eventlista(response){
     const [token] = useState(loadLs('token'));
     const [eventlist, setEventlist] = useState([]);
     const [startdate] = useState(loadLs('startDate'));
-
     
     const getEvents = async () => {
         let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=sortTimeline&uID="+uid+"&token="+token+"&startDate="+startdate.substring(0,10)+" 00:00&endDate="+startdate.substring(0,10)+" 23:59";
@@ -34,8 +33,6 @@ function Eventlista(response){
                 
             }
         )
-        
-       //const data = await response.json(); 
     }
     
     useEffect(() => {
@@ -46,18 +43,27 @@ function Eventlista(response){
         <div className='con'>
             <img src={BG} alt="background image" />
                 <div className='window blur eventList'>
-                    <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
+                    <Backbutton />
                     <p className="OneEventOpenRubrik">Dagens händelser</p>
-                    {
-                    eventlist.map((events) => (
-                    <Event key={events["ID"].toString()} event={events} />    
-                    ))}
-                    <nav className="navBar">
-                        <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
-                        <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
-                        <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/editevent"/>
-                        <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
-                    </nav>
+                    {(() => {
+                    if (eventlist != undefined) {
+                    return (
+                         eventlist.map((events) => (
+                        <Event key={events["ID"].toString()} event={events} />    
+                        ))
+                        )
+                    } else if (eventlist == undefined) {
+                    return (
+                        <span>Du har inga händelser den här dagen, men du kan skapa en via knappen nere till höger</span>
+                        )
+                    }
+                })()}
+                <nav className="navBar">
+                    <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
+                    <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
+                    <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/editevent"/>
+                    <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
+                </nav>
                 </div>
         </div>
     )

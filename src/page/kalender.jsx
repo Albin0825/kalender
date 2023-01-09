@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import '../App.css';
 
+import Invnotif from "../component/invNotif";
 import DaysOnMonth from "../component/daysOnMonth"
 import Calendar from 'react-calendar'
 import { loadLs, saveLs } from '../component/Funktioner';
@@ -16,6 +17,7 @@ function Kalender() {
             <div className='con'>
                 <img src={BG} alt="background image"/>
                 <div className="window blur kalender">
+                    
                     <DaysOnMonth/>
                 </div>
             </div>
