@@ -1,8 +1,12 @@
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
-import ARROW from '../bilder/Vector.svg';
+
 import React, {useState, useEffect} from "react"
 import '../App.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import Backbutton from "../component/backbutton";
+
+
 
 function App() {
 
@@ -10,12 +14,12 @@ function App() {
     const handleToggle = () => {
         setNavbarOpen(prev => !prev)
     }
-
+  let navigate = useNavigate();
   return (
     <div className="con">
       <img src={BG} alt="background image"/>
         <div className="window blur notlogin">
-          <Link to='/eventList' className="vpil"><img src={ARROW} alt="Go back"/></Link>
+        <Backbutton /> 
           <h1 className="rubrik">Rubrik!</h1>
           <p className="desc">Beskrivning: </p>
           <p className="time">Tid: </p>

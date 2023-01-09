@@ -6,6 +6,7 @@ import React from 'react';
 import Event from '../component/Event';
 import { loadLs } from '../component/Funktioner';
 import { Link } from 'react-router-dom';
+import Backbutton from "../component/backbutton";
 
 function Alleventlist(response){
 
@@ -46,7 +47,7 @@ function Alleventlist(response){
         <div className='con'>
             <img src={BG} alt="background image" />
                 <div className='window blur eventList'>
-                    <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
+                    <Backbutton />
                     <p className="OneEventOpenRubrik">Dina händelser</p>
                     {
                     eventlist.map((events) => (
