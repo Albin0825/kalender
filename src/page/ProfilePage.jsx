@@ -1,5 +1,4 @@
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
-import ARROW from '../bilder/Vector.svg';
 import React, { useState, useEffect } from "react";
 import '../App.css';
 import { Link } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { loadLs } from "../component/Funktioner";
 import Profile from "../component/profile";
 import { data } from 'jquery';
 import Nopfp from '../bilder/emptypfp.jpg';
+import Backbutton from "../component/backbutton";
 
 function ProfilePage(response) {
 
@@ -19,11 +19,6 @@ function ProfilePage(response) {
     const [token] = useState(loadLs('token'));
     const [profiledata, setProfiledata] = useState([]);
 
-    
-    
-
-
-
     const getProfile = async () =>{
         let API_URL = "https://takeee.ntigskovde.se/Users/users_index.php?action=showUser&uID="+uid+"&token="+token;
         const response = await fetch(`${API_URL}`)
@@ -35,9 +30,7 @@ function ProfilePage(response) {
                 console.log(profiledata);
                 
             }
-        )
-        
-       //const data = await response.json(); 
+        ) 
     } 
 
     useEffect(() => {
@@ -49,8 +42,8 @@ return (
     <div className="con">
         <img src={BG} alt="background image"/>
         <div className="window blur profil">
-            <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
-            <div className="profilRuta">
+            <Backbutton />
+            <div className="profilRuta"> 
                 <span id="avatar">
                 {(() => {
                     if (profiledata.avatar == "unset") {
