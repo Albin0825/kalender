@@ -61,7 +61,6 @@ function DaysOnMonth() {
       )
   }
 
-
   const handleChange = (event) => {
     let inputMonth = 0;
     let finalInputMonth = 0;
@@ -80,12 +79,12 @@ function DaysOnMonth() {
 
     let dataPrevMonth = finalInputMonth - 1;
     if (dataPrevMonth <= 0) {
-      dataPrevMonth = 12
+      dataPrevMonth = 11
     }
 
-    let dataNextMonth = finalInputMonth + 1;
-    if (dataNextMonth >= 13) {
-      dataNextMonth = 1
+    let dataNextMonth = finalInputMonth;
+    if (dataNextMonth >= 12) {
+      dataNextMonth = 0
     }
 
     let prevMonth = 0;
@@ -98,10 +97,6 @@ function DaysOnMonth() {
 
     let currMonth = getMonths(parseInt(finalInputMonth) - 1, parseInt(finalInputYear))
 
-
-
-    console.log(parseInt(finalInputMonth) - 1)
-
     let datum = new Date(finalInputYear, finalInputMonth - 1, 1);
 
     // Get the day of the week for this date
@@ -110,7 +105,6 @@ function DaysOnMonth() {
       dayOfWeek = 7;
     }
     dayOfWeek = dayOfWeek - 1;
-    console.log(dayOfWeek)
 
     days = []
 
@@ -136,11 +130,10 @@ function DaysOnMonth() {
     for (let i = 0; i != 42; i++) {
       
       if (prevMonth - dayOfWeek + i < prevMonth) {
-        console.log(currMonth)
         days.push(
           <div key={(i)} className="item" onClick={() => navigate("/Eventlist", save(prevYear, dataPrevMonth, (prevMonth - dayOfWeek + i + 1)))}>
             {prevMonth - dayOfWeek + i + 1}
-            {stripData(prevYear, prevMonth, (prevMonth - dayOfWeek + i + 1))}
+            {stripData(prevYear, dataPrevMonth, (prevMonth - dayOfWeek + i + 1))}
           </div>
         );
       }
@@ -166,27 +159,22 @@ function DaysOnMonth() {
   }
 
   function stripData(year, month, day){
+    let num = 1
     let elements = []
 
     for (let x = 0; x < Event.length; x++) {
-      let start = Event[x]["startDate"].lastIndexOf(" ");
-      let stripStart = Event[x]["startDate"].slice(0, start);
-      let end = Event[x]["endDate"].lastIndexOf(" ");
-      let stripEnd = Event[x]["endDate"].slice(0, end);
+      let startDate = Event[x]["startDate"].slice(0, Event[x]["startDate"].lastIndexOf(" "))
+      let endDate = Event[x]["endDate"].slice(0, Event[x]["endDate"].lastIndexOf(" "))
 
-      let startYear = stripStart.slice(0, stripStart.indexOf("-"))
-      let endYear = stripEnd.slice(0, stripEnd.indexOf("-"))
-      let startMonth = stripStart.slice(stripStart.indexOf("-") + 1, stripStart.lastIndexOf("-"))
-      let endMonth = stripEnd.slice(stripEnd.indexOf("-") + 1, stripEnd.lastIndexOf("-"))
-      let startDay = stripStart.slice(stripStart.lastIndexOf("-") + 1, stripStart.length)
-      let endDay = stripEnd.slice(stripEnd.lastIndexOf("-") + 1, stripEnd.length)
+      let thisday = year + "-" + month+1 + "-" + day
 
-      if (year >= parseInt(startYear) && year <= parseInt(endYear)) {
-        if (month + 1 >= parseInt(startMonth) && month + 1 <= parseInt(endMonth)) {
-          if (day >= parseInt(startDay) && day <= parseInt(endDay)) {
-            elements.push(<p key={(x)}>{Event[x]["title"]}</p>);
-           
-          }
+      if (thisday >= startDate && thisday <= endDate) {
+        if(elements.length == 0) {
+          elements.push(<p key={(x)}>{Event[x]["title"]}</p>);
+          elements.push(<p className='timeStamp' key={(x+1)}>{Event[x]["startDate"]}</p>);
+          elements.push(<p className='timeStamp' key={(x+2)}>{Event[x]["endDate"]}</p>);
+        } else {
+          elements.splice(3,1,"+"+num++)
         }
       }
     }
