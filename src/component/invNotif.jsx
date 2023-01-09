@@ -28,7 +28,7 @@ function Invnotif  () {
       }, []);
 
     return ( 
-       <div>{invites.length}</div>
+       <span id="notification">{invites.length}</span>
     ); 
 }
 
