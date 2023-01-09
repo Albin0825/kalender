@@ -5,6 +5,15 @@ import Hamburger from '../component/Hamburger'
 import '../App.css';
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import ARROW from '../bilder/Vector.svg';
+import Event from '../component/Event';
+import Backbutton from "../component/backbutton";
+
+function Alleventlist(response){
+
+    const [navbarOpen, setNavbarOpen] = useState(false)
+    const handleToggle = () => {
+        setNavbarOpen(prev => !prev)
+    }
 
 function Alleventlist(){
     const [uid] = useState(loadLs('uID'));
@@ -14,7 +23,7 @@ function Alleventlist(){
         <div className='con'>
             <img src={BG} alt="background image" />
                 <div className='window blur eventList'>
-                    <Link to='/Kalender' className="vpil"><img src={ARROW} alt="Go back"/></Link>
+                    <Backbutton />
                     <p className="OneEventOpenRubrik">Dina händelser</p>
                     <Hamburger/>
                 </div>

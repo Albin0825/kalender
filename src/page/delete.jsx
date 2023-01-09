@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
 import { loadLs } from '../component/Funktioner';
+import Backbutton from "../component/backbutton";
 
 function Delete() {
 
@@ -37,7 +38,7 @@ function Delete() {
         <div className="con">
             <img src={BG} alt="background image" />
             <div className="window blur notlogin">
-                <Link to='/OneEventOpen' className="vpil"><img src={ARROW} alt="Go back" /></Link>
+                <Backbutton />
                 <div key={text}>
                     <h2>ID: <input type="text" name={text} onChange={handleChangeID} /></h2>
                     <button onClick={send} className="add">Ta bort</button>

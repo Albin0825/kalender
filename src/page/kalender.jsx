@@ -17,8 +17,8 @@ function Kalender() {
             <div className='con'>
                 <img src={BG} alt="background image"/>
                 <div className="window blur kalender">
+                    
                     <DaysOnMonth/>
-                    <Invnotif />
                 </div>
             </div>
         </div>
