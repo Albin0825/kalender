@@ -1,7 +1,6 @@
-import React from 'react';
-import { loadLs, saveLs } from '../component/Funktioner';
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
+import { loadLs, saveLs } from '../component/Funktioner';
 import '../App.css';
 
 
@@ -65,7 +64,7 @@ function DaysOnMonth() {
     let inputMonth = 0;
     let finalInputMonth = 0;
     let finalInputYear = 0;
-
+    
     try{
       setSelectedMonth(event.target.value);
       inputMonth = event.target.value.indexOf("-")
@@ -76,15 +75,17 @@ function DaysOnMonth() {
       finalInputMonth = date.getMonth() +1
       finalInputYear = date.getFullYear()
     }
+    
+    console.log(inputMonth)
 
     let dataPrevMonth = finalInputMonth - 1;
     if (dataPrevMonth <= 0) {
       dataPrevMonth = 11
     }
 
-    let dataNextMonth = finalInputMonth;
-    if (dataNextMonth >= 12) {
-      dataNextMonth = 0
+    let dataNextMonth = finalInputMonth + 1;
+    if (dataNextMonth >= 13) {
+      dataNextMonth = 1
     }
 
     let prevMonth = 0;
@@ -192,11 +193,12 @@ function DaysOnMonth() {
   
   function save(year, month, day) {
     if(day.toString().length == 1){
-      saveLs("startDate", year + "-" + month + "-0" + day)
+      day = "0" + day
     }
-    else{
-      saveLs("startDate", year + "-" + month + "-" + day)
+    if(month.toString().length == 1){
+      month = "0" + month
     }
+    saveLs("startDate", year + "-" + month + "-" + day)
   }
 
   return (
