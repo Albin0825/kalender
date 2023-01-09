@@ -16,7 +16,6 @@ function Invnotif  () {
         .then(response => response.json())
         .then(
             (result)=>{
-                console.log(result["Data"]["Event invitations"]);
                 setInvites(result["Data"]["Event invitations"]); 
                 
             }
@@ -29,7 +28,7 @@ function Invnotif  () {
       }, []);
 
     return ( 
-       <div>hej</div>
+       <div>{invites.length}</div>
     ); 
 }
 
