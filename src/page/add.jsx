@@ -17,6 +17,7 @@ function Add() {
     const [starttime, setStarttime] = useState([]);
     const [enddate, setEnddate] = useState([]);
     const [endtime, setEndtime] = useState([]);
+    const [startDate] = useState(loadLs('startDate'));
 
     const handleChangeTitle = (e) => {
         setTitle(e.target.value);
@@ -70,7 +71,7 @@ function Add() {
                     <h1 className ="error">{item}</h1>
                     <h2>Titel: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
                     <h2>Beskrivning: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
-                    <h2>Starttid: <input type="date" name={text} onChange={handleChangeStartdate} /><input type="time" name={text} onChange={handleChangeStarttime} /></h2>
+                    <h2>Starttid: <input type="date" value={startDate} name={text} onChange={handleChangeStartdate} /><input type="time" value={startDate} name={text} onChange={handleChangeStarttime} /></h2>
                     <h2>Sluttid: <input type="date" name={text} onChange={handleChangeEnddate} /><input type="time" name={text} onChange={handleChangeEndtime} /></h2>
                     <button onClick={send} className="add">Add</button>
                 </div>

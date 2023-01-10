@@ -71,24 +71,38 @@ li:not(:last-child) {
 }
 
 .kalender {
+  position: relative;
   width: calc(100vw / 1.5);
-  overflow: hidden;
   border: solid 1px hsla(0, 0%, 0%, 0.25);
 }
 
 .gridDiv {
+  position: absolute;
   height: 100%;
   width: 100%;
+  top: 0px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 0fr 1fr 1fr 1fr 1fr 1fr 1fr;
   height: 100%;
   width: 100%;
 }
 
+input[type="month"] {
+  position: absolute;
+  width: 100%;
+  font-size: 37px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  transform: translate(0, -100%);
+}
+
 .weekDay {
+  text-align: center;
   border-bottom: 1px solid black;
 }
 
@@ -100,9 +114,6 @@ li:not(:last-child) {
   padding: 10px;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
-  /* with flexbox:
-  width: calc(50% - 21px);
-  */
 }
 
 .item:nth-child(14),
@@ -111,12 +122,16 @@ li:not(:last-child) {
 .item:nth-child(35),
 .item:nth-child(42),
 .item:nth-child(49){
-  padding: 10px;
   border-bottom: 1px solid black;
   border-right: none;
-  /* with flexbox:
-  width: calc(50% - 21px);
-  */
+}
+
+.item > p {
+  margin: -2.95px;
+}
+
+.timeStamp {
+  font-size: 12px;
 }
 
 /* Remove border bottom from last item & from second last if its odd */

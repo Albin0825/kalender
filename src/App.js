@@ -5,7 +5,6 @@ import Back from "./component/Back";
 import Login from "./page/login";
 import Home from "./page/kalender";
 import OneEventOpen from "./page/OneEventOpen";
-import Hamburger from "./page/Hamburger";
 import Add from "./page/add";
 import Eventlist from "./page/eventList";
 import Editevent from "./page/editEvent";
@@ -23,7 +22,6 @@ function App() {
     <div>
       <HeaderBar/>
       <Routes>
-        <Route path="/Hamburger" element={ <Hamburger/> } />
         <Route path="/Home" element={ <Home/> } />
         <Route path="/Back" element={ <Back/> } />
         <Route path="/" element ={<Login />} />

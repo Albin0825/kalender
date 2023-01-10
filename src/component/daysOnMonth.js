@@ -1,7 +1,6 @@
-import React from 'react';
-import { loadLs, saveLs } from '../component/Funktioner';
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
+import { loadLs, saveLs } from '../component/Funktioner';
 import '../App.css';
 
 
@@ -61,86 +60,56 @@ function DaysOnMonth() {
       )
   }
 
-
   const handleChange = (event) => {
     let inputMonth = 0;
-    let finalInputMonth = 0;
     let finalInputYear = 0;
+    let finalInputMonth = 0;
 
-    try{
+    try {
+      // sets the value in the input to the month and year you put in
       setSelectedMonth(event.target.value);
-      inputMonth = event.target.value.indexOf("-")
-      finalInputMonth = event.target.value.slice(inputMonth + 1, event.target.value.length)
-      finalInputYear = event.target.value.slice(0, inputMonth)
-    }
-    catch{
-      finalInputMonth = date.getMonth() +1
+      // finalInputYear: first half, finalInputMonth: second half
+      [finalInputYear, finalInputMonth] = event.target.value.split("-");
+      // make the strings into int
+      finalInputYear = parseInt(finalInputYear)
+      finalInputMonth = parseInt(finalInputMonth)
+    } catch {
+      // if you have not changed the input
+      finalInputMonth = date.getMonth()+1
       finalInputYear = date.getFullYear()
     }
+    
+    // if finalInputMonth is 1 dataPrevMonth is 12 else is just 1 less then finalInputMonth
+    const dataPrevMonth = (finalInputMonth === 1) ? 12 : (finalInputMonth - 1 + 12) % 12;
+    // if finalInputMonth is 12 dataNextMonth is 1 else is just 1 more then finalInputMonth
+    const dataNextMonth = (finalInputMonth + 1) % 12;
+    
+    // if finalInputMonth is 1 prevYear is finalInputYear - 1 for example: 2022 - 1 = 2021, otherwise it is the same as finalInputYear
+    const prevYear = (finalInputMonth == 1) ? finalInputYear - 1 : finalInputYear;
+    // if finalInputMonth is 12 nextYear is finalInputYear + 1 for example: 2022 + 1 = 2023, otherwise it is the same as finalInputYear
+    const nextYear = (finalInputMonth == 12) ? finalInputYear + 1 : finalInputYear;
 
-    let dataPrevMonth = finalInputMonth - 1;
-    if (dataPrevMonth <= 0) {
-      dataPrevMonth = 12
-    }
-
-    let dataNextMonth = finalInputMonth + 1;
-    if (dataNextMonth >= 13) {
-      dataNextMonth = 1
-    }
-
-    let prevMonth = 0;
-    if (parseInt(finalInputMonth) - 2 <= -1) {
-      prevMonth = getMonths(11, parseInt(finalInputYear) - 1)
-    }
-    else {
-      prevMonth = getMonths(parseInt(finalInputMonth) - 2, parseInt(finalInputYear))
-    }
-
-    let currMonth = getMonths(parseInt(finalInputMonth) - 1, parseInt(finalInputYear))
-
-
-
-    console.log(parseInt(finalInputMonth) - 1)
-
-    let datum = new Date(finalInputYear, finalInputMonth - 1, 1);
-
-    // Get the day of the week for this date
+    // gets the amount of days in the previus and current month
+    const prevMonth = getMonths(dataPrevMonth - 1, prevYear);
+    const currMonth = getMonths(finalInputMonth - 1, finalInputYear);
+    
+    
+    // Get what the first day of the month is, for example: 2022-01 is a sunday
+    const datum = new Date(finalInputYear, finalInputMonth - 1, 1);
     let dayOfWeek = datum.getDay();
     if (dayOfWeek == 0) {
       dayOfWeek = 7;
     }
     dayOfWeek = dayOfWeek - 1;
-    console.log(dayOfWeek)
 
     days = []
 
-    let prevYear = 0;
-
-    if (dataPrevMonth == 12) {
-      prevYear = parseInt(finalInputYear)-1;
-    }
-    else {
-      prevYear = finalInputYear;
-    }
-
-
-    let nextYear = 0;
-
-    if (dataNextMonth == 1) {
-      nextYear = parseInt(finalInputYear)+1;
-    }
-    else {
-      nextYear = finalInputYear;
-    }
-
     for (let i = 0; i != 42; i++) {
-      
       if (prevMonth - dayOfWeek + i < prevMonth) {
-        console.log(currMonth)
         days.push(
           <div key={(i)} className="item" onClick={() => navigate("/Eventlist", save(prevYear, dataPrevMonth, (prevMonth - dayOfWeek + i + 1)))}>
             {prevMonth - dayOfWeek + i + 1}
-            {stripData(prevYear, prevMonth, (prevMonth - dayOfWeek + i + 1))}
+            {stripData(prevYear, dataPrevMonth, (prevMonth - dayOfWeek + i + 1))}
           </div>
         );
       }
@@ -166,27 +135,26 @@ function DaysOnMonth() {
   }
 
   function stripData(year, month, day){
+    let num = 1
     let elements = []
-
+    
     for (let x = 0; x < Event.length; x++) {
-      let start = Event[x]["startDate"].lastIndexOf(" ");
-      let stripStart = Event[x]["startDate"].slice(0, start);
-      let end = Event[x]["endDate"].lastIndexOf(" ");
-      let stripEnd = Event[x]["endDate"].slice(0, end);
+      // gets the start and end day of that event
+      let startDate = Event[x]["startDate"].slice(0, Event[x]["startDate"].lastIndexOf(" "))
+      let endDate = Event[x]["endDate"].slice(0, Event[x]["endDate"].lastIndexOf(" "))
 
-      let startYear = stripStart.slice(0, stripStart.indexOf("-"))
-      let endYear = stripEnd.slice(0, stripEnd.indexOf("-"))
-      let startMonth = stripStart.slice(stripStart.indexOf("-") + 1, stripStart.lastIndexOf("-"))
-      let endMonth = stripEnd.slice(stripEnd.indexOf("-") + 1, stripEnd.lastIndexOf("-"))
-      let startDay = stripStart.slice(stripStart.lastIndexOf("-") + 1, stripStart.length)
-      let endDay = stripEnd.slice(stripEnd.lastIndexOf("-") + 1, stripEnd.length)
+      // makes month and day into 2 digits if they are not
+      // thisday is formated like this: 2022-01-01 (YYYY-MM-DD)
+      let thisday = year + "-" + (parseInt(month) + 1).toString().padStart(2, '0') + "-" + (day.toString().padStart(2, '0'))
 
-      if (year >= parseInt(startYear) && year <= parseInt(endYear)) {
-        if (month + 1 >= parseInt(startMonth) && month + 1 <= parseInt(endMonth)) {
-          if (day >= parseInt(startDay) && day <= parseInt(endDay)) {
-            elements.push(<p key={(x)}>{Event[x]["title"]}</p>);
-           
-          }
+      // checks if that event happens on that day
+      if (thisday >= startDate && thisday <= endDate) {
+        if(elements.length == 0) {
+          elements.push(<p key={(x)}>{Event[x]["title"]}</p>);
+          elements.push(<p className='timeStamp' key={(x+1)}>{Event[x]["startDate"]}</p>);
+          elements.push(<p className='timeStamp' key={(x+2)}>{Event[x]["endDate"]}</p>);
+        } else {
+          elements.splice(3,1,"+"+num++)
         }
       }
     }
@@ -204,11 +172,12 @@ function DaysOnMonth() {
   
   function save(year, month, day) {
     if(day.toString().length == 1){
-      saveLs("startDate", year + "-" + month + "-0" + day)
+      day = "0" + day
     }
-    else{
-      saveLs("startDate", year + "-" + month + "-" + day)
+    if(month.toString().length == 1){
+      month = "0" + month
     }
+    saveLs("startDate", year + "-" + month + "-" + day)
   }
 
   return (

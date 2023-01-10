@@ -37,7 +37,6 @@ function Invnotif  () {
             <div>{invites.length}</div>
          );
     }
-     
 }
 
 export default Invnotif;
