@@ -28,6 +28,7 @@ function HeaderBar() {
                 </li>
             </ul>
         </nav>;
+        console.log(window.location.href);
     return (
         <header style={{
             display: "flex",
