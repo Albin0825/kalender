@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react"
-import {Link} from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { loadLs } from './Funktioner';
-import Event from './Event';
+import '../App.css';
 
 function Hamburger() {
     const [navbarOpen, setNavbarOpen] = useState(false)
     const handleToggle = () => {
         setNavbarOpen(prev => !prev)
     }
+
+    const location = useLocation();
 
     const [uid] = useState(loadLs('uID'));
     const [token] = useState(loadLs('token'));
@@ -19,10 +21,6 @@ function Hamburger() {
         .then(response => response.json())
         .then(
             (result)=>{
-                console.log(loadLs());
-                console.log(loadLs('token'));
-                console.log(result);
-                console.log(result["Data"]["My events"]);
                 setEventlist(result["Data"]["My events"]);
             }
         )
@@ -36,9 +34,17 @@ function Hamburger() {
         <div>
             <nav className="navBar">
                 <button className={`button ${navbarOpen ? " showMenu" : "noMenu"}`} onClick={handleToggle}></button>
-                <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
-                <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/editevent"/>
-                <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
+                {location.pathname.match(/^\/Eventlist$/i) || location.pathname.match(/^\/Allaevent$/i) ? // if it is /Eventlist in the url (works with lowercase and uppercase and everything in between)
+                    <>
+                        <Link className={`button menuNav1 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/add"/>
+                    </>
+                : null}
+                {location.pathname.match(/^\/OneEventOpen$/i) ? // if it is /OneEventOpen in the url (works with lowercase and uppercase and everything in between)
+                    <>
+                        <Link className={`button menuNav2 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/editevent"/>
+                        <Link className={`button menuNav3 ${navbarOpen ? " showMenu" : "noMenu"}`} to="/delete" />
+                    </>
+                : null}
             </nav>
         </div>
     );
