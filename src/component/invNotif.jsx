@@ -16,6 +16,7 @@ function Invnotif  () {
         .then(response => response.json())
         .then(
             (result)=>{
+                console.log(result["Data"]);
                 setInvites(result["Data"]["Event invitations"]); 
                 
             }
@@ -26,10 +27,17 @@ function Invnotif  () {
     useEffect(() => {
         getInvites();
       }, []);
-
-    return ( 
-       <div>{invites.length}</div>
-    ); 
+    if (invites == 0 || invites == undefined){
+        return (
+            <div></div>
+        );
+    }
+    else{
+        return ( 
+            <div>{invites.length}</div>
+         );
+    }
+     
 }
 
 export default Invnotif;
