@@ -14,10 +14,12 @@ import Profile from "./page/ProfilePage";
 import EditProfile from "./page/editProfile";
 import Invite from "./component/invSend";
 import Alleventlist from "./page/allEventList";
+import Redirect from "./component/redirect";
 
 import HeaderBar from "./page/header";
 
 function App() {
+  Redirect();
   return (
     <div>
       <HeaderBar/>
