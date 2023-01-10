@@ -285,20 +285,26 @@ button.showMenu {
   background-image: url(./bilder/x.svg);
 }
 
+.navBar > :nth-child(2) {
+  bottom: 60px;
+}
+.navBar > :nth-child(3) {
+  right: 60px;
+}
+.navBar > :nth-child(4) {
+  bottom: 60px;
+  right: 60px;
+}
 .menuNav1 {
   background-image: url(./bilder/add.svg);
-  bottom: 60px;
 }
 
 .menuNav2 {
   background-image: url(./bilder/edit.svg);
-  bottom: 60px;
-  right: 60px;
 }
 
 .menuNav3 {
   background-image: url(./bilder/trash.svg);
-  right: 60px;
 }
 
 .menuNav1.showMenu,
