@@ -9,8 +9,9 @@ function HeaderBar() {
     const [avatar] = useState(loadLs('avatar'));
     let setup =
         <nav>
-            {/*<Invnotif />*/}
+            <Invnotif />
             <ul style={{display: "flex", justifyContent: "flex-end"}}>
+                
                 <li style={{display: "inline-block", textAlign: "center"}}>
                     <Link style={{textDecoration: "none"}} to="/Home">Kalender</Link>
                 </li>
@@ -23,9 +24,11 @@ function HeaderBar() {
                 <li style={{display: "inline-block", textAlign: "center"}}>
                     <Link style={{textDecoration: "none"}} to="/Allaevent">Händelse lista</Link>
                 </li>
+                
                 <li style={{display: "inline-block", textAlign: "center"}}>
                     <Link style={{textDecoration: "none"}} to="/Profile">Profil</Link>
                 </li>
+                <Invnotif />
             </ul>
         </nav>;
         console.log(window.location.href);
