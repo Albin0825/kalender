@@ -54,6 +54,7 @@ function DaysOnMonth() {
       .then(res => res.json())
       .then(
         (result) => {
+          console.log(result["Data"]["My events"])
           const d = result["Data"]["My events"];
           setEvent(d)
         }
