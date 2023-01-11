@@ -2,14 +2,13 @@ import { Link } from "react-router-dom";
 import '../App.css';
 import { loadLs } from "../component/Funktioner";
 import { useState } from 'react';
-//import Invnotif from "../component/invNotif";
+import Invnotif from "../component/invNotif";
 
 
 function HeaderBar() {
     const [avatar] = useState(loadLs('avatar'));
     let setup =
-        <nav>
-            <Invnotif />
+        <nav>   
             <ul style={{display: "flex", justifyContent: "flex-end"}}>
                 
                 <li style={{display: "inline-block", textAlign: "center"}}>
@@ -31,7 +30,6 @@ function HeaderBar() {
                 <Invnotif />
             </ul>
         </nav>;
-        console.log(window.location.href);
     return (
         <header style={{
             display: "flex",
