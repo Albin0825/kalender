@@ -5,7 +5,7 @@ import Back from "./component/Back";
 import Login from "./page/login";
 import Logout from "./component/logout";
 import Home from "./page/kalender";
-import OneEventOpen from "./page/OneEventOpen";
+import OneEvent from "./page/OneEventOpen";
 import Add from "./page/add";
 import Eventlist from "./page/eventList";
 import Editevent from "./page/editEvent";
@@ -15,6 +15,7 @@ import Profile from "./page/ProfilePage";
 import EditProfile from "./page/editProfile";
 import Invite from "./component/invSend";
 import Alleventlist from "./page/allEventList";
+import Invites from "./page/Invites";
 
 import HeaderBar from "./page/header";
 
@@ -29,7 +30,7 @@ function App() {
         <Route path="/Login" element ={<Login />} />
         <Route path="/Logout" element ={<Logout />} />
         <Route path='/Eventlist' element={<Eventlist />} />
-        <Route path="/OneEventOpen" element ={<OneEventOpen />} />
+        <Route path="/OneEventOpen" element ={<OneEvent />} />
         <Route path="/Add" element ={<Add />} />
         <Route path="/Editevent" element ={<Editevent />} />
         <Route path="/Delete" element ={<Delete />} />
@@ -38,6 +39,7 @@ function App() {
         <Route path="/Editprofile" element ={<EditProfile />} />
         <Route path="/Invite" element ={<Invite />} />
         <Route path="/Allaevent" element ={<Alleventlist />} />
+        <Route path="/Invites" element ={<Invites />} />
         
       </Routes>
     </div>

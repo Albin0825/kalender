@@ -8,7 +8,7 @@ import Invnotif from "../component/invNotif";
 function HeaderBar() {
     const [avatar] = useState(loadLs('avatar'));
     let setup =
-        <nav>
+        <nav>   
             <ul style={{display: "flex", justifyContent: "flex-end"}}>
                 
                 <li style={{display: "inline-block", textAlign: "center"}}>
@@ -32,7 +32,6 @@ function HeaderBar() {
                 </li>
             </ul>
         </nav>;
-        console.log(window.location.href);
     return (
         <header style={{
             display: "flex",

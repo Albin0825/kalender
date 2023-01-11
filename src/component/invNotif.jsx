@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { loadLs } from "./Funktioner";
+import { Link } from "react-router-dom";
 import "../App.css"
 
 function Invnotif  () {
@@ -38,10 +39,7 @@ function Invnotif  () {
     }
     else{
         return ( 
-            <div className="noti">
-                <p>{invites.length}</p>
-                <div className="padding"></div>
-            </div>
+            <Link to="/Invites">{invites.length}</Link>
          );
     }
 
