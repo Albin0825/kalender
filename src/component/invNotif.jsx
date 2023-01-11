@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { loadLs } from "./Funktioner";
 import { Link } from "react-router-dom";
+import "../App.css"
 
 function Invnotif  () {
     
@@ -30,7 +31,7 @@ function Invnotif  () {
       }, []);
     if (invites == 0 || invites == undefined){
         return (
-            <div></div>
+            <div className="noti"><div className="padding"></div></div>
         );
     }
     else{
