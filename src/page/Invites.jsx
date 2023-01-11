@@ -6,7 +6,7 @@ import Event from '../component/Event';
 import { loadLs } from '../component/Funktioner';
 import { Link } from 'react-router-dom';
 import Backbutton from "../component/backbutton";
-import Hamburger from '../component/Hamburger'
+import Invite from '../component/Invite';
 
 function Eventlista(response){
 
@@ -50,7 +50,7 @@ function Eventlista(response){
                     if (eventlist != undefined) {
                     return (
                          eventlist.map((events) => (
-                        <Event key={events["eID"].toString()} event={events} />    
+                        <Invite key={events["eID"].toString()} event={events} />    
                         ))
                         )
                     } else if (eventlist == undefined) {
@@ -59,7 +59,6 @@ function Eventlista(response){
                         )
                     }
                 })()}
-                <Hamburger/>
                 </div>
         </div>
     )
