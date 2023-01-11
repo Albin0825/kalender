@@ -62,6 +62,9 @@ function Add() {
                         setItem(result["Data"])
                         console.log(startdate)
                     }
+                    if(result.Type === 'Error') {
+                        navigate("/login")
+                    }
                 }
             )
     }

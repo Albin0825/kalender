@@ -56,6 +56,9 @@ function DaysOnMonth() {
         (result) => {
           const d = result["Data"]["My events"];
           setEvent(d)
+          if(result.Type === 'Error') {
+            navigate("/login")
+          }
         }
       )
   }

@@ -28,7 +28,9 @@ function ProfilePage(response) {
                 console.log(result["Data"]["Users"]);
                 setProfiledata(result["Data"]["Users"]);
                 console.log(profiledata);
-                
+                if(result.Type === 'Error') {
+                    navigate("/login")
+                }
             }
         ) 
     } 

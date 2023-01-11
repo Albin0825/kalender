@@ -31,7 +31,9 @@ function Eventlista(response){
                 console.log(result);
                 console.log(result["Data"]["My events"]);
                 setEventlist(result["Data"]["My events"]); 
-                
+                if(result.Type === 'Error') {
+                    navigate("/login")
+                }
             }
         )
     }

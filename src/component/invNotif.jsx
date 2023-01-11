@@ -19,7 +19,9 @@ function Invnotif  () {
             (result)=>{
                 console.log(result["Data"]);
                 setInvites(result["Data"]["Event invitations"]); 
-                
+                if(result.Type === 'Error') {
+                    navigate("/login")
+                }
             }
         )
         

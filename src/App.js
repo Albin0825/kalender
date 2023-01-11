@@ -20,9 +20,9 @@ import Redirect from "./component/redirect";
 import HeaderBar from "./page/header";
 
 function App() {
-  <Redirect/>;
   return (
     <div>
+      <Redirect/>
       <HeaderBar/>
       <Routes>
         <Route path="/Home" element={ <Home/> } />

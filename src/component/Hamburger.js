@@ -22,6 +22,9 @@ function Hamburger() {
         .then(
             (result)=>{
                 setEventlist(result["Data"]["My events"]);
+                if(result.Type === 'Error') {
+                    navigate("/login")
+                }
             }
         )
     }
