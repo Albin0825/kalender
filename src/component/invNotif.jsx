@@ -1,6 +1,7 @@
-/*import React from "react";
+import React from "react";
 import { useState, useEffect } from "react";
 import { loadLs } from "./Funktioner";
+import "../App.css"
 
 function Invnotif  () {
     
@@ -16,6 +17,7 @@ function Invnotif  () {
         .then(response => response.json())
         .then(
             (result)=>{
+                console.log(result["Data"]);
                 setInvites(result["Data"]["Event invitations"]); 
                 
             }
@@ -26,10 +28,20 @@ function Invnotif  () {
     useEffect(() => {
         getInvites();
       }, []);
+    if (invites == 0 || invites == undefined){
+        return (
+            <div className="noti"><div className="padding"></div></div>
+        );
+    }
+    else{
+        return ( 
+            <div className="noti">
+                <p>{invites.length}</p>
+                <div className="padding"></div>
+            </div>
+         );
+    }
 
-    return ( 
-       <span id="notification">{invites.length}</span>
-    ); 
 }
 
-export default Invnotif;*/
+export default Invnotif;

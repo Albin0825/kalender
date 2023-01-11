@@ -1,15 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
+import { saveLs } from "./Funktioner";
 
 const Event = ({event}) => {
     let navigate = useNavigate();
     const originEvents = event;
 
+
     return ( 
         <div className='data' >
             <span className='eventID'>{event.ID}</span>
             <br></br>
-            <span className='eventTitle'>{event.title}</span>
+            <Link to="/OneEventOpen">
+                <span onClick={() => saveLs("eID", event.ID)}>{event.title}</span>
+            </Link>
             <br></br>
             <span className='eventDesc'>{event.description}</span>
             <br></br>
