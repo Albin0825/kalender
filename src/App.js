@@ -20,7 +20,7 @@ import Redirect from "./component/redirect";
 import HeaderBar from "./page/header";
 
 function App() {
-  Redirect();
+  <Redirect />
   return (
     <div>
       <HeaderBar/>
