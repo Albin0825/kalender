@@ -51,11 +51,12 @@ function Add() {
                     if (result["Data"]["Result"] != undefined) {
                         console.log(result["Data"])
 
-                        navigate('/OneEventOpen')
+                        navigate('/Kalender');
                         saveLs('title',result.Data.title);
                         saveLs('description',result.Data.description);
                         saveLs('startDate',result.Data.startDate);
                         saveLs('endDate',result.Data.endDate);
+                        
 
                     }
                     else {
@@ -75,6 +76,7 @@ function Add() {
                     <h1 className ="error">{item}</h1>
                     <h2>Titel: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
                     <h2>Beskrivning: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
+
                     <h2>Starttid: <input type="date" value={selectedDate || startDate} name={text} onChange={handleChangeStartdate} /><input type="time" value={selectedTime || startDate} name={text} onChange={handleChangeStarttime} /></h2>
                     <h2>Sluttid: <input type="date" name={text} onChange={handleChangeEnddate} /><input type="time" name={text} onChange={handleChangeEndtime} /></h2>
                     <button onClick={send} className="add">Add</button>
