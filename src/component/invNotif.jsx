@@ -39,7 +39,7 @@ function Invnotif  () {
     }
     else{
         return ( 
-            <Link to="/Invites">{invites.length}</Link>
+            <div className="noti"><div className="padding"></div><Link to="/Invites">{invites.length}</Link></div>
          );
     }
 

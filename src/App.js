@@ -16,7 +16,6 @@ import EditProfile from "./page/editProfile";
 import Invite from "./component/invSend";
 import Alleventlist from "./page/allEventList";
 import Invites from "./page/Invites";
-import OneInviteOpen from "./page/OneInviteOpen";
 import HeaderBar from "./page/header";
 
 function App() {
@@ -40,7 +39,6 @@ function App() {
         <Route path = "/Invite" element = { <Invite /> } />
         <Route path = "/Allaevent" element = { <Alleventlist /> } />
         <Route path = "/Invites" element = { <Invites /> } />
-        <Route path = "/OneInviteOpen" element = { <OneInviteOpen /> } />
       </Routes>
     </div>
   );

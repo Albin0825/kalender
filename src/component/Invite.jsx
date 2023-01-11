@@ -12,9 +12,7 @@ const Event = ({event}) => {
         <div className='data' >
             <span className='eventID'>{event.ID}</span>
             <br></br>
-            <Link to="/OneInviteOpen">
                 <span onClick={() => saveLs("eID", event.ID)}>{event.title}</span>
-            </Link>
             <br></br>
             <span className='eventDesc'>{event.description}</span>
             <br></br>

@@ -21,7 +21,7 @@ function HeaderBar() {
                 <li style={{display: "inline-block", textAlign: "center"}}>
                     <Invnotif />
                 </li>
-                <li style={{display: "", textAlign: "center"}}>
+                <li style={{display: "inline-block", textAlign: "center"}}>
                     <Link style={{textDecoration: "none"}} to='/Logout'>Logga ut</Link>
                 </li>
             </ul>
