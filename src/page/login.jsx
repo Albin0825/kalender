@@ -29,6 +29,7 @@ function Login() {
         .then(
             (result)=>{
                 if(result.Data.Token != undefined) {
+                    console.log(result)
                     console.log(result.Data.uID);
                     console.log(result.Data.Token);
                    

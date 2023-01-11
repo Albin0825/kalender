@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Back from "./component/Back";
 import Login from "./page/login";
+import Logout from "./component/logout";
 import Home from "./page/kalender";
 import OneEvent from "./page/OneEventOpen";
 import Add from "./page/add";
@@ -14,10 +15,12 @@ import Profile from "./page/ProfilePage";
 import EditProfile from "./page/editProfile";
 import Invite from "./component/invSend";
 import Alleventlist from "./page/allEventList";
+import Redirect from "./component/redirect";
 
 import HeaderBar from "./page/header";
 
 function App() {
+  <Redirect/>;
   return (
     <div>
       <HeaderBar/>
@@ -26,6 +29,7 @@ function App() {
         <Route path="/Back" element={ <Back/> } />
         <Route path="/" element ={<Login />} />
         <Route path="/Login" element ={<Login />} />
+        <Route path="/Logout" element ={<Logout />} />
         <Route path='/Eventlist' element={<Eventlist />} />
         <Route path="/OneEventOpen" element ={<OneEvent />} />
         <Route path="/Add" element ={<Add />} />

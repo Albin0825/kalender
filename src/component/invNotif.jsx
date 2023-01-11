@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { loadLs } from "./Funktioner";
+import "../App.css"
 
 function Invnotif  () {
     
@@ -29,12 +30,15 @@ function Invnotif  () {
       }, []);
     if (invites == 0 || invites == undefined){
         return (
-            <div></div>
+            <div className="noti"><div className="padding"></div></div>
         );
     }
     else{
         return ( 
-            <div>{invites.length}</div>
+            <div className="noti">
+                <p>{invites.length}</p>
+                <div className="padding"></div>
+            </div>
          );
     }
 

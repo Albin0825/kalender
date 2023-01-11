@@ -15,7 +15,7 @@ function HeaderBar() {
                     <Link style={{textDecoration: "none"}} to="/Home">Kalender</Link>
                 </li>
                 <li style={{display: "inline-block", textAlign: "center"}}>
-                    <Link style={{textDecoration: "none"}} to='/Login'>Logga in</Link>
+                    <Link style={{textDecoration: "none"}} to='/Logout'>Logga ut</Link>
                 </li>
                 <li style={{display: "inline-block", textAlign: "center"}}>
                     <Link style={{textDecoration: "none"}} to='/OneEventOpen'>En öppnad händelse</Link>
@@ -27,7 +27,9 @@ function HeaderBar() {
                 <li style={{display: "inline-block", textAlign: "center"}}>
                     <Link style={{textDecoration: "none"}} to="/Profile">Profil</Link>
                 </li>
-                <Invnotif />
+                <li style={{display: "inline-block", textAlign: "center"}}>
+                    <Invnotif />
+                </li>
             </ul>
         </nav>;
     return (

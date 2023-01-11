@@ -22,7 +22,9 @@ function Editevent() {
     const [rname, setrName] = useState([]);
     const [startDate] = useState(loadLs('startDate'));
     const [endDate] = useState(loadLs('endDate'));
-
+    const [selectedDate, setSelectedDate] = useState('');
+    const [selectedTime, setSelectedTime] = useState('');
+    
     const handleChangeID = (e) => {
         setID(e.target.value);
     }
@@ -34,9 +36,11 @@ function Editevent() {
     }
     const handleChangeStartdate = (e) => {
         setStartdate(e.target.value);
+        setSelectedDate(e.target.value);
     }
     const handleChangeStarttime = (e) => {
         setStarttime(e.target.value);
+        setSelectedTime(e.target.value);
     }
     const handleChangeEnddate = (e) => {
         setEnddate(e.target.value);
@@ -102,7 +106,7 @@ function Editevent() {
                     <h2>ID: <input type="text" name={text} onChange={handleChangeID} /></h2>
                     <h2>Titel: <input type="text" name={text} onChange={handleChangeTitle} /></h2>
                     <h2>Beskrivning: <input type="text" name={text} onChange={handleChangeDescription} /></h2>
-                    <h2>Starttid: <input type="date" value={startDate} name={text} onChange={handleChangeStartdate} /><input type="time" value={startDate} name={text} onChange={handleChangeStarttime} /></h2>
+                    <h2>Starttid: <input type="date" value={selectedDate || startDate} name={text} onChange={handleChangeStartdate} /><input type="time" value={selectedTime || startDate} name={text} onChange={handleChangeStarttime} /></h2>
                     <h2>Sluttid: <input type="date" value={endDate} name={text} onChange={handleChangeEnddate} /><input type="time" value={endDate} name={text} onChange={handleChangeEndtime} /></h2>
                     <button onClick={send} className="add">Redigera</button>
                     <h2>Eventets ID: <input type="text" name={text} onChange={handleChangeEID} /></h2>
