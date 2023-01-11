@@ -30,7 +30,7 @@ function ProfilePage(response) {
                 console.log(result["Data"]["Users"]);
                 setProfiledata(result["Data"]["Users"]);
                 console.log(profiledata);
-                if(result.Type === 'Error') {
+                if(result.Type === 'Error' && result.Data === 'No user found or token not valid') {
                     navigate("/login")
                 }
             }

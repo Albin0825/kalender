@@ -57,7 +57,7 @@ function DaysOnMonth() {
           console.log(result["Data"]["My events"])
           const d = result["Data"]["My events"];
           setEvent(d)
-          if(result.Type === 'Error') {
+          if(result.Type === 'Error' && result.Data === 'No user found or token not valid') {
             navigate("/login")
           }
         }
