@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { loadLs } from './Funktioner';
 import '../App.css';
 
@@ -9,6 +9,7 @@ function Hamburger() {
         setNavbarOpen(prev => !prev)
     }
 
+    let navigate = useNavigate();
     const location = useLocation();
 
     const [uid] = useState(loadLs('uID'));

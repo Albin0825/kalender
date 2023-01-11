@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"
 import { loadLs } from "./Funktioner";
 import "../App.css"
 
@@ -9,7 +10,7 @@ function Invnotif  () {
     const [token] = useState(loadLs('token'));
     const [invites, setInvites] = useState([]);
    
-
+    let navigate = useNavigate();
     
     const getInvites = async () => {
         let API_URL = "https://takeee.ntigskovde.se/Calendar/calendar_index.php?action=showEvent&uID="+uid+"&token="+token+"";
