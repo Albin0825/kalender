@@ -6,7 +6,7 @@ import { saveLs } from "./Funktioner";
 const Event = ({event}) => {
     let navigate = useNavigate();
     const originEvents = event;
-
+    
 
     return ( 
         <div className='data' >
