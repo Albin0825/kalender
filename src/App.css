@@ -15,6 +15,10 @@ header > img {
   flex-basis: calc(100% / 2 - 100px);
 }
 
+nav {
+  height: 100%;
+}
+
 li:not(:last-child) {
   margin-right: 100px;
 }
@@ -414,4 +418,31 @@ h2{
   margin-right: 2vw;
   font-weight: bold;
 
+}
+
+header nav,
+header nav > * {
+  display: flex;
+  align-items: center;
+}
+
+.noti {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.noti *:not(.padding) {
+  transform: scale(0.62);
+}
+
+.padding {
+  position: absolute;
+  background-image: url("./bilder/bell.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  top: 0;
+  aspect-ratio: 1 / 1;
 }
