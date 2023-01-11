@@ -54,6 +54,9 @@ function Editprofile() {
                         console.log(result["Data"])
                         console.log("Invalid input")
                     }
+                    if(result.Type === 'Error') {
+                        navigate("/login")
+                    }
                 }
             )
     }

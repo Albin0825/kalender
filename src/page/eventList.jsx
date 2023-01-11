@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import React from 'react';
 import Event from '../component/Event';
 import { loadLs } from '../component/Funktioner';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Backbutton from "../component/backbutton";
 import Hamburger from '../component/Hamburger'
 
@@ -14,6 +14,8 @@ function Eventlista(response){
     const handleToggle = () => {
         setNavbarOpen(prev => !prev)
     }
+
+    let navigate = useNavigate();
 
     const [uid] = useState(loadLs('uID'));
     const [token] = useState(loadLs('token'));
@@ -31,7 +33,9 @@ function Eventlista(response){
                 console.log(result);
                 console.log(result["Data"]["My events"]);
                 setEventlist(result["Data"]["My events"]); 
-                
+                if(result.Type === 'Error') {
+                    navigate("/login")
+                }
             }
         )
     }

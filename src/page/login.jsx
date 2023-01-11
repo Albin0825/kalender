@@ -41,6 +41,9 @@ function Login() {
                     navigate("/kalender");
                   
                 }
+                if(result.Type === 'Error') {
+                    navigate("/login")
+                }
             }
             )
     }
