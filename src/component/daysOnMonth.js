@@ -80,9 +80,9 @@ function DaysOnMonth() {
     }
     
     // if finalInputMonth is 1 dataPrevMonth is 12 else is just 1 less then finalInputMonth
-    const dataPrevMonth = (finalInputMonth === 1) ? 12 : (finalInputMonth - 1 + 12) % 12;
+    const dataPrevMonth = (finalInputMonth === 1) ? 11 : (finalInputMonth - 2 + 11) % 11;
     // if finalInputMonth is 12 dataNextMonth is 1 else is just 1 more then finalInputMonth
-    const dataNextMonth = (finalInputMonth + 1) % 12;
+    const dataNextMonth = (finalInputMonth) % 12;
     
     // if finalInputMonth is 1 prevYear is finalInputYear - 1 for example: 2022 - 1 = 2021, otherwise it is the same as finalInputYear
     const prevYear = (finalInputMonth == 1) ? finalInputYear - 1 : finalInputYear;
@@ -90,7 +90,7 @@ function DaysOnMonth() {
     const nextYear = (finalInputMonth == 12) ? finalInputYear + 1 : finalInputYear;
 
     // gets the amount of days in the previus and current month
-    const prevMonth = getMonths(dataPrevMonth - 1, prevYear);
+    const prevMonth = getMonths(dataPrevMonth, prevYear);
     const currMonth = getMonths(finalInputMonth - 1, finalInputYear);
     
     
