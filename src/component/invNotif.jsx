@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { loadLs } from "./Funktioner";
+import dropdown from "../component/dropdown";
 
 function Invnotif  () {
     
@@ -29,12 +30,12 @@ function Invnotif  () {
       }, []);
     if (invites == 0 || invites == undefined){
         return (
-            <div></div>
+            <div><dropdown /></div>
         );
     }
     else{
         return ( 
-            <div>{invites.length}</div>
+            <div>{invites.length}<dropdown /></div>
          );
     }
 
