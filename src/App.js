@@ -16,31 +16,31 @@ import EditProfile from "./page/editProfile";
 import Invite from "./component/invSend";
 import Alleventlist from "./page/allEventList";
 import Invites from "./page/Invites";
-
+import OneInviteOpen from "./page/OneInviteOpen";
 import HeaderBar from "./page/header";
 
 function App() {
   return (
     <div>
-      <HeaderBar/>
+      <HeaderBar />
       <Routes>
-        <Route path="/Home" element={ <Home/> } />
-        <Route path="/Back" element={ <Back/> } />
-        <Route path="/" element ={<Login />} />
-        <Route path="/Login" element ={<Login />} />
-        <Route path="/Logout" element ={<Logout />} />
-        <Route path='/Eventlist' element={<Eventlist />} />
-        <Route path="/OneEventOpen" element ={<OneEvent />} />
-        <Route path="/Add" element ={<Add />} />
-        <Route path="/Editevent" element ={<Editevent />} />
-        <Route path="/Delete" element ={<Delete />} />
-        <Route path="/Kalender" element ={<Kalender />} />
-        <Route path="/Profile" element ={<Profile />} />
-        <Route path="/Editprofile" element ={<EditProfile />} />
-        <Route path="/Invite" element ={<Invite />} />
-        <Route path="/Allaevent" element ={<Alleventlist />} />
-        <Route path="/Invites" element ={<Invites />} />
-        
+        <Route path = "/Home" element = { <Home /> } />
+        <Route path = "/Back" element = { <Back /> } />
+        <Route path = "/" element = { <Login /> } />
+        <Route path = "/Login" element = { <Login /> } />
+        <Route path = "/Logout" element = { <Logout /> } />
+        <Route path = '/Eventlist' element = { <Eventlist /> } />
+        <Route path = "/OneEventOpen" element = { <OneEvent /> } />
+        <Route path = "/Add" element = { <Add /> } />
+        <Route path = "/Editevent" element = { <Editevent /> } />
+        <Route path = "/Delete" element = { <Delete /> } />
+        <Route path = "/Kalender" element = { <Kalender /> } />
+        <Route path = "/Profile" element = { <Profile /> } />
+        <Route path = "/Editprofile" element = { <EditProfile /> } />
+        <Route path = "/Invite" element = { <Invite /> } />
+        <Route path = "/Allaevent" element = { <Alleventlist /> } />
+        <Route path = "/Invites" element = { <Invites /> } />
+        <Route path = "/OneInviteOpen" element = { <OneInviteOpen /> } />
       </Routes>
     </div>
   );
