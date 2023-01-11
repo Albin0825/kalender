@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Back from "./component/Back";
 import Login from "./page/login";
+import Logout from "./component/logout";
 import Home from "./page/kalender";
 import OneEventOpen from "./page/OneEventOpen";
 import Add from "./page/add";
@@ -28,6 +29,7 @@ function App() {
         <Route path="/Back" element={ <Back/> } />
         <Route path="/" element ={<Login />} />
         <Route path="/Login" element ={<Login />} />
+        <Route path="/Logout" element ={<Logout />} />
         <Route path='/Eventlist' element={<Eventlist />} />
         <Route path="/OneEventOpen" element ={<OneEventOpen />} />
         <Route path="/Add" element ={<Add />} />
