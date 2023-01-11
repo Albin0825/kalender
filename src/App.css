@@ -244,8 +244,8 @@ input[type="month"] {
 
 .OneEventOpenRubrik{
   text-align: center;
-  font-size: 3em;
-  font-weight: 550;
+  font-size:2.5em;
+  font-weight: 200;
   color: red;
   margin-top: -545px;
 }
@@ -414,4 +414,16 @@ h2{
   margin-right: 2vw;
   font-weight: bold;
 
+}
+
+/*--------------------*\
+|       Invites        | 
+\*--------------------*/
+
+.InviteRequestTitle{
+  text-align: center;
+  font-size:2.5em;
+  font-weight: 200;
+  color: red;
+  margin-top: -545px;
 }

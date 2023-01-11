@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { loadLs } from "./Funktioner";
+import { Link } from "react-router-dom";
 
 function Invnotif  () {
     
@@ -34,7 +35,7 @@ function Invnotif  () {
     }
     else{
         return ( 
-            <div>{invites.length}</div>
+            <Link to="/Invites">{invites.length}</Link>
          );
     }
 

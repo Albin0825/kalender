@@ -15,6 +15,7 @@ import EditProfile from "./page/editProfile";
 import Invite from "./component/invSend";
 import Alleventlist from "./page/allEventList";
 import Redirect from "./component/redirect";
+import Invites from "./page/Invites";
 
 import HeaderBar from "./page/header";
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/Editprofile" element ={<EditProfile />} />
         <Route path="/Invite" element ={<Invite />} />
         <Route path="/Allaevent" element ={<Alleventlist />} />
+        <Route path="/Invites" element ={<Invites />} />
         
       </Routes>
     </div>
