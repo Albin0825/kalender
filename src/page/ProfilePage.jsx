@@ -1,7 +1,7 @@
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import React, { useState, useEffect } from "react";
 import '../App.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loadLs } from "../component/Funktioner";
 import Profile from "../component/profile";
 import { data } from 'jquery';
@@ -14,6 +14,8 @@ function ProfilePage(response) {
         const handleToggle = () => {
         setNavbarOpen(prev => !prev)
     }
+
+    let navigate = useNavigate();
 
     const [uid] = useState(loadLs('uID'));
     const [token] = useState(loadLs('token'));
@@ -28,7 +30,9 @@ function ProfilePage(response) {
                 console.log(result["Data"]["Users"]);
                 setProfiledata(result["Data"]["Users"]);
                 console.log(profiledata);
-                
+                if(result.Type === 'Error') {
+                    navigate("/login")
+                }
             }
         ) 
     } 
