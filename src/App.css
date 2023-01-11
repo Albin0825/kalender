@@ -15,6 +15,10 @@ header > img {
   flex-basis: calc(100% / 2 - 100px);
 }
 
+nav {
+  height: 100%;
+}
+
 li:not(:last-child) {
   margin-right: 100px;
 }
@@ -285,20 +289,26 @@ button.showMenu {
   background-image: url(./bilder/x.svg);
 }
 
+.navBar > :nth-child(2) {
+  bottom: 60px;
+}
+.navBar > :nth-child(3) {
+  right: 60px;
+}
+.navBar > :nth-child(4) {
+  bottom: 60px;
+  right: 60px;
+}
 .menuNav1 {
   background-image: url(./bilder/add.svg);
-  bottom: 60px;
 }
 
 .menuNav2 {
   background-image: url(./bilder/edit.svg);
-  bottom: 60px;
-  right: 60px;
 }
 
 .menuNav3 {
   background-image: url(./bilder/trash.svg);
-  right: 60px;
 }
 
 .menuNav1.showMenu,
@@ -408,4 +418,31 @@ h2{
   margin-right: 2vw;
   font-weight: bold;
 
+}
+
+header nav,
+header nav > * {
+  display: flex;
+  align-items: center;
+}
+
+.noti {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.noti *:not(.padding) {
+  transform: scale(0.62);
+}
+
+.padding {
+  position: absolute;
+  background-image: url("./bilder/bell.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  top: 0;
+  aspect-ratio: 1 / 1;
 }

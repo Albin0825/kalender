@@ -1,7 +1,7 @@
 import BG from '../bilder/marita-kavelashvili-ugnrXk1129g-unsplash.jpg';
 import ARROW from '../bilder/Vector.svg';
 import React, { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import '../App.css';
 import { loadLs } from '../component/Funktioner';
 import Backbutton from "../component/backbutton";
