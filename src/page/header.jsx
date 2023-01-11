@@ -27,7 +27,9 @@ function HeaderBar() {
                 <li style={{display: "inline-block", textAlign: "center"}}>
                     <Link style={{textDecoration: "none"}} to="/Profile">Profil</Link>
                 </li>
-                <Invnotif />
+                <li style={{display: "inline-block", textAlign: "center"}}>
+                    <Invnotif />
+                </li>
             </ul>
         </nav>;
         console.log(window.location.href);
