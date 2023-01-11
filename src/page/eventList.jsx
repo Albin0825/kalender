@@ -33,7 +33,7 @@ function Eventlista(response){
                 console.log(result);
                 console.log(result["Data"]["My events"]);
                 setEventlist(result["Data"]["My events"]); 
-                if(result.Type === 'Error') {
+                if(result.Type === 'Error' && result.Data === 'No user found or token not valid') {
                     navigate("/login")
                 }
             }

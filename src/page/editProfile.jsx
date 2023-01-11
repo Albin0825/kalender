@@ -54,7 +54,7 @@ function Editprofile() {
                         console.log(result["Data"])
                         console.log("Invalid input")
                     }
-                    if(result.Type === 'Error') {
+                    if(result.Type === 'Error' && result.Data === 'No user found or token not valid') {
                         navigate("/login")
                     }
                 }

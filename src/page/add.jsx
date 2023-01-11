@@ -28,15 +28,17 @@ function Add() {
         setDescription(e.target.value);
     }
     const handleChangeStartdate = (e) => {
-        setStartdate(e.target.value);
-        setSelectedDate(e.target.value);
+        const formattedDate = new Date(e.target.value).toISOString().slice(0, 10);
+        setStartdate(formattedDate);
+        setSelectedDate(formattedDate);
     }
     const handleChangeStarttime = (e) => {
         setStarttime(e.target.value);
         setSelectedTime(e.target.value);
     }
     const handleChangeEnddate = (e) => {
-        setEnddate(e.target.value);
+        const formattedDate = new Date(e.target.value).toISOString().slice(0, 10);
+        setEnddate(formattedDate);
     }
     const handleChangeEndtime = (e) => {
         setEndtime(e.target.value);
@@ -49,7 +51,7 @@ function Add() {
                 (result) => {
                     
                     if (result["Data"]["Result"] != undefined) {
-                        console.log(result["Data"])
+                        console.log(result.Type)
 
                         navigate('/Kalender');
                         saveLs('title',result.Data.title);
@@ -61,9 +63,9 @@ function Add() {
                     }
                     else {
                         setItem(result["Data"])
-                        console.log(startdate)
+                        console.log(result)
                     }
-                    if(result.Type === 'Error') {
+                    if(result.Type === 'Error' && result.Data === 'No user found or token not valid') {
                         navigate("/login")
                     }
                 }

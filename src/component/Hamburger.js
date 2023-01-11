@@ -23,7 +23,7 @@ function Hamburger() {
         .then(
             (result)=>{
                 setEventlist(result["Data"]["My events"]);
-                if(result.Type === 'Error') {
+                if(result.Type === 'Error' && result.Data === 'No user found or token not valid') {
                     navigate("/login")
                 }
             }
