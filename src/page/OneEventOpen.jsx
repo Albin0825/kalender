@@ -34,47 +34,26 @@ function OneEvent() {
   }
     
   useEffect(() => {
-    console.log("HEj");
     getEvent();
   }, []);
   
-  return (
-    // <div className="con">
-      
-    //   <img src={BG} alt="background image"/>
-    //   <div className="window blur notlogin">
-    //     <Link to='/eventList' className="vpil"><img src={ARROW} alt="Go back"/></Link>
-    //     <h1 className="rubrik">Rubrik!</h1>
-    //     <p className="desc">Beskrivning: </p>
-    //     <p className="time">Tid: </p>
-    //     <p className="inv">Inbjudningar: </p>
-    //     <Hamburger/>
-    //   </div>
-    // </div>
+  let filteredEvent;
+  eventlist.filter(event => {
+    if(event.ID == loadLs('eID')){
+       filteredEvent = event
+    }
+  });
+  return(
     <div className='con'>
-      <img src={BG} alt="background image" />
-          <div className='window blur eventList'>
-              <Backbutton />
-              {(() => { console.log(loadLs('eID'));
-              for (let i = 0; i < eventlist.length; i++) {
-                
-                if (loadLs('eID') == eventlist[i].ID)
-                {
-                  console.log(eventlist[i]);
-                  return (
-                          <div>
-                            {eventlist.map((event)=> {
-                              {}
-                            })}
-                          </div> 
-                      )
-                    
-                } 
-          }})()}
-          <Hamburger />
-          </div>
-    </div>
-  );
+    <img src={BG} alt="background image" />
+        <div className='window blur eventList'>
+            <Backbutton />
+
+            { filteredEvent ? <Event key={filteredEvent["ID"].toString()} event={filteredEvent} /> : <div>Event not found</div> }
+            <Hamburger />
+        </div>
+  </div>
+   );
 }
 
 export default OneEvent;
